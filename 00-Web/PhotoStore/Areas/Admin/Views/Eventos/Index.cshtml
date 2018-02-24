@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PhotoStore.Core.Model.Evento>
+
+@{
+    ViewBag.Title = "Eventos";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Eventos</h2>
+
+
+<div class="row" id="divBotoes">
+    <div class="col-sm-12 text-right">
+        @Html.ActionLink("Criar", "Editar", null, new { @class = "btn btn-primary", role = "button" })
+    </div>
+</div>
+
+<div class="sp-vertical">
+    <table id="tblLista" class="table table-striped table-bordered vtr_grid">
+
+        <thead>
+            <tr>
+                <th class="controles">
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th class="controles">
+                    @Html.DisplayNameFor(model => model.Inicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fim)
+                </th>
+                <th class="controles text-center"><span class="fa fa-pencil-square-o"></span></th>
+                <th class="controles text-center"><span class="fa fa-trash-o"></span></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fim)
+                    </td>
+                    <td class="text-center">
+                        <a href="@(Url.Action("Editar", "Eventos", new { id = item.Id}))"><span class="fa fa-pencil-square-o"></span></a>
+                    </td>
+                    <td class="text-center">
+                        <a href="@(Url.Action("Delete", "Eventos", new { id = item.Id}))"><span class="fa fa-trash-o"></span></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

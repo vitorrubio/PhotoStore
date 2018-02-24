@@ -1,0 +1,104 @@
+﻿@model PhotoStore.Core.Model.Evento
+
+@{
+    ViewBag.Title = "Cadastro de Eventos";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section scripts {
+
+<script type="text/javascript">
+
+        $(function () {
+
+
+        });
+
+</script>
+    
+}
+
+<h2>Cadastro de Eventos</h2>
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <div class="text-right">
+            @Html.ActionLink("Voltar à lista", "Index", null, new { @class = "btn btn-primary", role = "button" })
+        </div>
+    </div>
+
+    <div class="container-fluid bordered spacer">
+
+        <div class="form-horizontal">
+            <fieldset>
+                @Html.ValidationSummary(false, "Erros encontrados", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "col-form-label" })
+                        @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+
+
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+
+                </div>
+
+
+                <div class="row sp-vertical">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                                @Html.LabelFor(model => model.Inicio, htmlAttributes: new { @class = "col-form-label " })
+                                @Html.TextBoxFor(model => model.Inicio, "{0:dd/MM/yyyy}", new { @class = "form-control vtr_datepicker", title = "Data Inicial" })
+
+
+                            @Html.ValidationMessageFor(model => model.Inicio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                                @Html.LabelFor(model => model.Fim, htmlAttributes: new { @class = "col-form-label " })
+                                @Html.TextBoxFor(model => model.Fim, "{0:dd/MM/yyyy}", new { @class = "form-control vtr_datepicker", title = "Data Final" })
+
+
+                            @Html.ValidationMessageFor(model => model.Fim, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                        @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "col-form-label" })
+                        @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control" })
+
+
+                    @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+
+                </div>
+
+
+                <div class="form-group  text-right">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+
+            </fieldset>
+
+
+
+        </div>
+    </div>
+
+  
+
+}

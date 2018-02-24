@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\01-Core\FotUp.Core\FotUp.Core.csproj" />
+    <ProjectReference Include="..\..\02-Infra\FotUp.Infra\FotUp.Infra.csproj" />
+  </ItemGroup>
+
+</Project>

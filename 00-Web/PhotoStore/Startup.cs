@@ -1,0 +1,88 @@
+﻿using System;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
+using Owin;
+using System.Web.Security;
+using PhotoStore.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
+using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
+using System.Web.Mvc;
+using System.Collections.Generic;
+using PhotoStore.Infra.DbContext;
+
+[assembly: OwinStartupAttribute(typeof(PhotoStore.Startup))]
+namespace PhotoStore
+{
+    public partial class Startup
+    {
+
+        public void Configuration(IAppBuilder app)
+        {
+			var services = new ServiceCollection();
+
+			//o que estava originalmente
+			ConfigureAuth(app);
+
+
+			ConfigureServices(services);
+			var resolver = new DefaultDependencyResolver(services.BuildServiceProvider());
+			DependencyResolver.SetResolver(resolver);
+		}
+
+
+		/// <summary>
+		/// http://scottdorman.github.io/2016/03/17/integrating-asp.net-core-dependency-injection-in-mvc-4/
+		/// </summary>
+		/// <param name="services"></param>
+		public void ConfigureServices(IServiceCollection services)
+		{
+			services.AddControllersAsServices(typeof(Startup).Assembly.GetExportedTypes()
+			   .Where(t => !t.IsAbstract && !t.IsGenericTypeDefinition)
+			   .Where(t => typeof(IController).IsAssignableFrom(t)
+				  || t.Name.EndsWith("Controller", StringComparison.OrdinalIgnoreCase)));
+
+			services.AddTransient<ApplicationDbContext, ApplicationDbContext>();
+		}
+	}
+
+
+	public class DefaultDependencyResolver : IDependencyResolver
+	{
+		protected IServiceProvider serviceProvider;
+
+		public DefaultDependencyResolver(IServiceProvider serviceProvider)
+		{
+			this.serviceProvider = serviceProvider;
+		}
+
+		public object GetService(Type serviceType)
+		{
+			return this.serviceProvider.GetService(serviceType);
+		}
+
+		public IEnumerable<object> GetServices(Type serviceType)
+		{
+			return this.serviceProvider.GetServices(serviceType);
+		}
+	}
+
+
+	public static class ServiceProviderExtensions
+	{
+		public static IServiceCollection AddControllersAsServices(this IServiceCollection services, IEnumerable<Type> controllerTypes)		  
+		{
+			
+			foreach (var type in controllerTypes)
+			{
+				services.AddTransient(type);
+			}
+
+			return services;
+		}
+	}
+}
