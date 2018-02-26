@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using PhotoStore.Infra.DbContext;
+using PhotoStore.Infra.Services;
 
 [assembly: OwinStartupAttribute(typeof(PhotoStore.Startup))]
 namespace PhotoStore
@@ -47,6 +48,11 @@ namespace PhotoStore
 				  || t.Name.EndsWith("Controller", StringComparison.OrdinalIgnoreCase)));
 
 			services.AddTransient<ApplicationDbContext, ApplicationDbContext>();
+
+			services.AddTransient<ApplicationUserManager, ApplicationUserManager>();
+			services.AddTransient<ApplicationSignInManager, ApplicationSignInManager>();
+			services.AddTransient<ApplicationRoleManager, ApplicationRoleManager>();
+
 		}
 	}
 

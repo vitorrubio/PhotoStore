@@ -31,8 +31,6 @@ namespace PhotoStore.Core.Model
         [Display(Name = "Fotógrafo")]
         public virtual ApplicationUser Fotografo { get; set; }
 
-        public virtual ICollection<Produto> Produtos { get; set; }
-
 		public virtual bool Vitrine { get; set; }
 
     }

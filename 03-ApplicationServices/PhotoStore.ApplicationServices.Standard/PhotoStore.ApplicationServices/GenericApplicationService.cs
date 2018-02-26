@@ -11,25 +11,30 @@ namespace PhotoStore.ApplicationServices
 
     public class GenericApplicationService<T> where T:Entidade
     {
-        private GenericRepository<T> genericRepository;
+        private GenericRepository<T> _genericRepository;
+		private ApplicationDbContext _context;
 
-        public GenericApplicationService(ApplicationDbContext ctx)
+		public GenericApplicationService(ApplicationDbContext ctx)
         {
-            genericRepository = new GenericRepository<T>(ctx);
+			this._genericRepository = new GenericRepository<T>(ctx);
+			this._context = ctx;
         }
 
 
-         
+		/// <summary>
+		/// contexto para uso de dados de usuário que não são derivados de entity
+		/// </summary>
+        public virtual ApplicationDbContext Context { get { return this._context; } }
 
 
-        /// <summary>
-        /// obtém um elemento pelo seu id
-        /// </summary>
-        /// <param name="id">int - o id da entidade </param>
-        /// <returns>T - objeto encontrado</returns>
-        public virtual T GetById(int id, params Expression<Func<T, object>>[] includeExpressions)
+		/// <summary>
+		/// obtém um elemento pelo seu id
+		/// </summary>
+		/// <param name="id">int - o id da entidade </param>
+		/// <returns>T - objeto encontrado</returns>
+		public virtual T GetById(int id, params Expression<Func<T, object>>[] includeExpressions)
         {
-            return genericRepository.GetById(id, includeExpressions);
+            return this._genericRepository.GetById(id, includeExpressions);
         }
 
         /// <summary>
@@ -38,7 +43,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>List de T</returns>
         public virtual IQueryable<T> GetAll(params Expression<Func<T, object>>[] includeExpressions)
         {
-            return genericRepository.GetAll(includeExpressions);
+            return this._genericRepository.GetAll(includeExpressions);
         }
 
         /// <summary>
@@ -47,7 +52,7 @@ namespace PhotoStore.ApplicationServices
         /// <param name="ent">T - objeto a ser salvo</param>
         public virtual void Save(T ent)
         {
-            genericRepository.Save(ent);
+			this._genericRepository.Save(ent);
         }
 
 
@@ -57,7 +62,7 @@ namespace PhotoStore.ApplicationServices
         /// <param name="ent">T - objeto a ser excluído</param>
         public virtual void Delete(T ent)
         {
-            genericRepository.Delete(ent);
+			this._genericRepository.Delete(ent);
         }
 
 
@@ -67,7 +72,7 @@ namespace PhotoStore.ApplicationServices
         /// <param name="id">int - id do objeto a ser excluído</param>
         public virtual void Delete(int id)
         {
-            genericRepository.Delete(id);
+			this._genericRepository.Delete(id);
         }
 
 
@@ -80,7 +85,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>Task de T - o bojeto retornado do banco, assíncrono</returns>
         public virtual async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includeExpressions)
         {
-            return await genericRepository.GetByIdAsync(id, includeExpressions);
+            return await this._genericRepository.GetByIdAsync(id, includeExpressions);
         }
 
 
@@ -93,7 +98,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>Task</returns>
         public virtual async Task SaveAsync(T ent)
         {
-            await genericRepository.SaveAsync(ent); 
+            await this._genericRepository.SaveAsync(ent); 
         }
 
 
@@ -105,7 +110,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>Task</returns>
         public virtual async Task DeleteAsync(T ent)
         {
-            await genericRepository.DeleteAsync(ent);
+            await this._genericRepository.DeleteAsync(ent);
         }
 
 
@@ -117,7 +122,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>Task</returns>
         public virtual async Task DeleteAsync(int id)
         {
-            await genericRepository.DeleteAsync(id);
+            await this._genericRepository.DeleteAsync(id);
         }
     }
 }

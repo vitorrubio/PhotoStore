@@ -42,5 +42,12 @@ namespace PhotoStore.Core.Model
         public virtual ICollection<ItemDoPedido> Itens { get; set; }
 
 
+		public virtual void AddItem(ItemDoPedido item)
+		{
+			item.Pedido = this;
+			item.CalculaSubtotal();
+			this.Itens.Add(item);
+		}
+
     }
 }

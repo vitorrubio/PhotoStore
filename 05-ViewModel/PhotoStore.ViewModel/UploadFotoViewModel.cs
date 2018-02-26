@@ -1,11 +1,11 @@
-﻿using PhotoStore.Infra.Services;
+﻿using PhotoStore.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace PhotoStore.Models.ViewModels
+namespace PhotoStore.ViewModel
 {
     public class UploadFotoViewModel
     {

@@ -21,11 +21,12 @@ namespace PhotoStore
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+			app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
-            // Habilitar o aplicativo a usar um cookie para armazenar informações do usuário logado
-            // e para usar um cookie para armazenar temporariamente informações sobre um usuário fazendo logon com um provedor de logon de terceiros
-            // Configurar o cookie de logon
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
+			// Habilitar o aplicativo a usar um cookie para armazenar informações do usuário logado
+			// e para usar um cookie para armazenar temporariamente informações sobre um usuário fazendo logon com um provedor de logon de terceiros
+			// Configurar o cookie de logon
+			app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),

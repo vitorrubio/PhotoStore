@@ -121,10 +121,9 @@
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IProdutoRepository.cs" />
     <Compile Include="Repository\ITipoProdutoRepository.cs" />
+    <Compile Include="Services\ApplicationRoleManager.cs" />
+    <Compile Include="Services\ApplicationSignInManager.cs" />
     <Compile Include="Services\ApplicationUserManager.cs" />
-    <Compile Include="Services\AsyncHelper .cs" />
-    <Compile Include="Services\FileSizeAttribute.cs" />
-    <Compile Include="Services\FileTypesAttribute.cs" />
     <Compile Include="Services\FotUpAuthorizeAttribute.cs" />
     <Compile Include="Services\IdentityAdminInitializer.cs" />
     <Compile Include="Services\LogServices.cs" />
