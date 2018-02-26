@@ -8,13 +8,28 @@ namespace PhotoStore.Core.Model
     public class Entidade
     {
 
-        #region propriedades públicas
+		#region constructors
+
+		public Entidade()
+		{
+			this.Ativo = true;
+		}
+
+		#endregion
+
+		#region propriedades públicas
 
 
-        /// <summary>
-        ///O Id da tabela.
-        /// </summary>
-        public virtual int Id { get; set; }
+		/// <summary>
+		///O Id da tabela.
+		/// </summary>
+		public virtual int Id { get; set; }
+
+		/// <summary>
+		/// Indica se o item está ativo ou não
+		/// </summary>
+		public virtual bool Ativo { get; set; }
+
 
         /// <summary>
         /// login do usuário que fez a inclusão

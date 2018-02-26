@@ -69,6 +69,7 @@ namespace PhotoStore.Infra.Repository
         {
             if ((ent.Id == 0) || (!_dbSet.Any(x => x.Id == ent.Id)))
             {
+				ent.Ativo = true;
                 _dbSet.Add(ent);
             }
 			else
@@ -150,7 +151,8 @@ namespace PhotoStore.Infra.Repository
         {
             if ((ent.Id == 0) || (!await _dbSet.AnyAsync(x => x.Id == ent.Id)))
             {
-                _dbSet.Add(ent);
+				ent.Ativo = true;
+				_dbSet.Add(ent);
             }
 			else
 			{

@@ -109,6 +109,10 @@
     <Compile Include="Migrations\201802261737297_foto e produto unidos no item.Designer.cs">
       <DependentUpon>201802261737297_foto e produto unidos no item.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802261757462_campo ativo.cs" />
+    <Compile Include="Migrations\201802261757462_campo ativo.Designer.cs">
+      <DependentUpon>201802261757462_campo ativo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
@@ -141,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802261737297_foto e produto unidos no item.resx">
       <DependentUpon>201802261737297_foto e produto unidos no item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802261757462_campo ativo.resx">
+      <DependentUpon>201802261757462_campo ativo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

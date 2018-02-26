@@ -33,6 +33,8 @@ namespace PhotoStore.Core.Model
 
         public virtual ICollection<Produto> Produtos { get; set; }
 
+		public virtual bool Vitrine { get; set; }
+
     }
 
 

@@ -21,6 +21,10 @@ namespace PhotoStore.Core.Model
         [Display(Name = "Fotos deste evento")]
         public virtual ICollection<Foto> Fotos { get; set; }
 
+		public virtual Foto Capa { get; set; }
+
+		public virtual bool Vitrine { get; set; }
+
 		[Display(Name = "Fotógrafos deste evento")]
 		public virtual ICollection<ApplicationUser> Fotografos { get; set; }
 
