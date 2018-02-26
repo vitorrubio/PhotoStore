@@ -35,6 +35,11 @@ namespace PhotoStore.Core.Model
         [RegularExpression(@"^(\([0-9]{2}\))\s([0-9]{4})-([0-9]{4,5})$", ErrorMessage = "Celular Inválido")]
         public virtual string Celular { get; set; }
 
-        public virtual ICollection<Foto> Fotos { get; set; }
+		[Display(Name = "Fotos deste fotógrafo")]
+		public virtual ICollection<Foto> Fotos { get; set; }
+
+		[Display(Name = "Eventos deste fotógrafo")]
+		public virtual ICollection<Evento> Eventos { get; set; }
+
     }
 }

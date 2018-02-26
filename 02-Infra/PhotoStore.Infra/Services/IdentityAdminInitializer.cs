@@ -13,7 +13,7 @@ namespace PhotoStore.Infra.Services
     public class IdentityAdminInitializer
     {
 
-        public virtual async Task Initialize()
+        public virtual void Initialize()
         {
             const string adminRole = "Administrator";
             const string fotografoRole = "Fotografo";
@@ -27,22 +27,20 @@ namespace PhotoStore.Infra.Services
 
             using (var context = new ApplicationDbContext())
             {
-                await AdicionaUsuario(context, devUser, "#numb147", fotografoRole);
-                await AdicionaUsuario(context, adminUser, "#numb147", adminRole);
-
-                await context.SaveChangesAsync();
+				AdicionaUsuario(context, devUser, "#numb147", fotografoRole);
+				AdicionaUsuario(context, adminUser, "#numb147", adminRole);
             }
 
         }
 
 
-        public virtual async Task AdicionaUsuario(ApplicationDbContext context, ApplicationUser usuario, string senha, params string [] roles)
+        public virtual void AdicionaUsuario(ApplicationDbContext context, ApplicationUser usuario, string senha, params string [] roles)
         {
             var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
             string userName = usuario.UserName;
             if (!userManager.Users.Where(x => x.UserName == userName).Any())
             {
-                var result = await userManager.CreateAsync(usuario, senha);
+                var result = userManager.Create(usuario, senha);
                 if (!result.Succeeded)
                 {
                     throw new Exception("Falha ao criar usuário Admin");
@@ -52,7 +50,7 @@ namespace PhotoStore.Infra.Services
                 {
                     throw new Exception("O usuário admin não está na base");
                 }
-                await context.SaveChangesAsync();
+                context.SaveChanges();
             }
 
             var user = context.Users.Where(u => u.UserName == userName).SingleOrDefault();
@@ -62,10 +60,11 @@ namespace PhotoStore.Infra.Services
                 {
                     context.Roles.Add(new IdentityRole { Name = role });
                 }
+				context.SaveChanges();
 
-                await userManager.AddToRoleAsync(user.Id, role);
+				userManager.AddToRole(user.Id, role);
 
-                await context.SaveChangesAsync();
+                context.SaveChanges();
             }
         }
 

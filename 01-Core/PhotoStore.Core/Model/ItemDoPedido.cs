@@ -14,10 +14,16 @@ namespace PhotoStore.Core.Model
         public override int Id { get; set; }
 
         [Display(Name = "Produto")]
+		[Required]
         public virtual Produto Produto { get; set; }
 
+		[Display(Name = "Produto")]
+		[Required]
+		public virtual Foto Foto { get; set; }
+
         [Display(Name = "Pedido")]
-        public virtual Pedido Pedido { get; set; }
+		[Required]
+		public virtual Pedido Pedido { get; set; }
 
         [Display(Name = "Quantidade")]
         public virtual int Quantidade { get; set; }
@@ -31,8 +37,8 @@ namespace PhotoStore.Core.Model
 
         public virtual decimal CalculaSubtotal()
         {
-            this.Preco = this.Produto?.Tipo?.Preco ?? 0;
-            this.SubTotal = (this.Quantidade > 0 ? this.Quantidade + this.Preco : this.Preco);
+            this.Preco = this.Produto?.Preco ?? 0;
+            this.SubTotal = (this.Quantidade > 0 ? this.Quantidade * this.Preco : this.Preco);
             return this.SubTotal;
         }
     }

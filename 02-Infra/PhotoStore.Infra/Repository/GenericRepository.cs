@@ -71,8 +71,12 @@ namespace PhotoStore.Infra.Repository
             {
                 _dbSet.Add(ent);
             }
+			else
+			{
+				_db.Entry(ent).State = EntityState.Modified;
+			}
 
-            _db.SaveChanges();
+			_db.SaveChanges();
         }
 
 
@@ -148,8 +152,12 @@ namespace PhotoStore.Infra.Repository
             {
                 _dbSet.Add(ent);
             }
+			else
+			{
+				_db.Entry(ent).State = EntityState.Modified;
+			}
 
-            await _db.SaveChangesAsync();
+			await _db.SaveChangesAsync();
         }
 
 

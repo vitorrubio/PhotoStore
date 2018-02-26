@@ -13,32 +13,24 @@ namespace PhotoStore.Infra.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+			AutomaticMigrationDataLossAllowed = false;
         }
         
         protected override void Seed(ApplicationDbContext context)
         {
             Console.WriteLine("Inicialização");
             IdentityAdminInitializer initializer = new IdentityAdminInitializer();
-            initializer.Initialize().Wait(10000);
 
             //funcionou
-            //Task.Run(initializer.Initialize);
-            //Task.Run(()=>initializer.Initialize());
-            //Task.Run(async() => await initializer.Initialize());
+            Task.Run(()=>initializer.Initialize());
 
-            //não funcionou
-            //var task = Task.Run(async () => await initializer.Initialize());
-            //task.Wait();
-            //var asyncFunctionResult = task.Status;
-
-
-            if(!context.TiposProdutos.Any(x => x.Nome == "Foto em alta resolução"))
+            if(!context.TiposProdutos.Any(x => x.Nome == "Foto"))
             {
                 context.TiposProdutos.Add(new Core.Model.TipoProduto
                 {
-                    Nome = "Foto em alta resolução",
-                    Preco = 14.90M,
+                    Nome = "Foto",
+                    PrecoSugerido = 14.90M,
                     Descricao = "A foto digital escolhida em alta resolução"
                 });
 
@@ -46,7 +38,23 @@ namespace PhotoStore.Infra.Migrations
             }
 
 
-            Console.WriteLine("Fim");
+
+			if (!context.Produtos.Any(x => x.Nome == "Foto em alta resolução"))
+			{
+				var tipo = context.TiposProdutos.Where(x => x.Nome == "Foto").FirstOrDefault();
+				context.Produtos.Add(new Core.Model.Produto
+				{
+					Nome = "Foto em alta resolução",
+					Preco = 14.90M,
+					Descricao = "A foto digital escolhida em alta resolução",
+					Tipo = tipo
+				});
+
+				context.SaveChanges();
+			}
+
+
+			Console.WriteLine("Fim");
 
         }
     }

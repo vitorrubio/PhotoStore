@@ -21,7 +21,10 @@ namespace PhotoStore.Core.Model
         [Display(Name = "Fotos deste evento")]
         public virtual ICollection<Foto> Fotos { get; set; }
 
-        [Required]
+		[Display(Name = "Fotógrafos deste evento")]
+		public virtual ICollection<ApplicationUser> Fotografos { get; set; }
+
+		[Required]
         [Index()]
         [MaxLength(200, ErrorMessage = "O nome deve ter no máximo 200 caracteres")]
         [Display(Name = "Nome")]

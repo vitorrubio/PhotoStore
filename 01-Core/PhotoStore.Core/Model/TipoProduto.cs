@@ -24,9 +24,10 @@ namespace PhotoStore.Core.Model
         [Display(Name = "Descrição")]
         public virtual string Descricao { get; set; }
 
-        [Display(Name = "Preço")]
-        public virtual decimal Preco { get; set; }
+        [Display(Name = "Preço Sugerido")]
+        public virtual decimal PrecoSugerido { get; set; }
 
+		public virtual ICollection<Produto> Produtos { get; set; }
 
-    }
+	}
 }
