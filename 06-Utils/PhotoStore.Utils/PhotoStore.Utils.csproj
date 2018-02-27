@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncHelper .cs" />
+    <Compile Include="AsyncHelper.cs" />
     <Compile Include="FileSizeAttribute.cs" />
     <Compile Include="FileTypesAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
