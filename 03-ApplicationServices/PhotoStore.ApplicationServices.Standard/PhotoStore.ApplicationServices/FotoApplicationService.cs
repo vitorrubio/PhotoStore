@@ -8,6 +8,7 @@ using System.Text;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using System.IO;
+using System.Drawing;
 
 namespace PhotoStore.ApplicationServices
 {
@@ -62,6 +63,8 @@ namespace PhotoStore.ApplicationServices
 			arquivo.Bytes = fileData;
 			GenericApplicationService<ArquivoFoto> arqSvc = new GenericApplicationService<ArquivoFoto>(this.Context);
 			arqSvc.Save(arquivo);
+
+			
 
 			return foto;
 
