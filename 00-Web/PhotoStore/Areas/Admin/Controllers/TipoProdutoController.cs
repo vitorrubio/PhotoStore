@@ -63,7 +63,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Editar([Bind(Include = "Id, Nome, Descricao, Preco")] TipoProduto tp)
+        public async Task<ActionResult> Editar([Bind(Include = "Id, Nome, Descricao, PrecoSugerido")] TipoProduto tp)
         {
             if (ModelState.IsValid)
             {

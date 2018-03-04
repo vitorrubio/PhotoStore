@@ -6,16 +6,16 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhotoStore.Infra.Repository
+namespace PhotoStore.Core.Interfaces.Services
 {
     /// <summary>
-    /// Interfce de repositório genérico
+    /// Interfce de serviço genérico
     /// 
     /// seguindo as idéias de 
-    /// https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
-    /// http://appetere.com/post/passing-include-statements-into-a-repository
+	/// http://www.eduardopires.net.br/2014/10/tutorial-asp-net-mvc-5-ddd-ef-automapper-ioc-dicas-e-truques/
+	/// https://www.youtube.com/watch?time_continue=37&v=i9Il79a2uBU
     /// </summary>
-    public interface IGenericRepository<T> where T : Entidade
+    public interface IGenericService<T> where T : Entidade
     {
         /// <summary>
         /// obtém um elemento pelo seu id

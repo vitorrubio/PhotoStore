@@ -41,6 +41,9 @@ namespace PhotoStore.Core.Model
         [Display(Name = "Itens do Pedido")]
         public virtual ICollection<ItemDoPedido> Itens { get; set; }
 
+		public virtual StatusPedido Status { get; set; }
+
+		public virtual DateTime? ValidoAte { get; set; }
 
 		public virtual void AddItem(ItemDoPedido item)
 		{

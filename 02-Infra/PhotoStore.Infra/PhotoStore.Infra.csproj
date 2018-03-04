@@ -113,14 +113,13 @@
     <Compile Include="Migrations\201802261757462_campo ativo.Designer.cs">
       <DependentUpon>201802261757462_campo ativo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803042203140_statusPedido.cs" />
+    <Compile Include="Migrations\201803042203140_statusPedido.Designer.cs">
+      <DependentUpon>201803042203140_statusPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
-    <Compile Include="Repository\IEventoRepository.cs" />
-    <Compile Include="Repository\IFotoRepository.cs" />
-    <Compile Include="Repository\IGenericRepository.cs" />
-    <Compile Include="Repository\IProdutoRepository.cs" />
-    <Compile Include="Repository\ITipoProdutoRepository.cs" />
     <Compile Include="Services\ApplicationRoleManager.cs" />
     <Compile Include="Services\ApplicationSignInManager.cs" />
     <Compile Include="Services\ApplicationUserManager.cs" />
@@ -147,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802261757462_campo ativo.resx">
       <DependentUpon>201802261757462_campo ativo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803042203140_statusPedido.resx">
+      <DependentUpon>201803042203140_statusPedido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

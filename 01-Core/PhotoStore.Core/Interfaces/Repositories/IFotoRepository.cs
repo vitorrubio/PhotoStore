@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhotoStore.Infra.Repository
+namespace PhotoStore.Core.Interfaces.Repositories
 {
-    interface ITipoProdutoRepository : IGenericRepository<TipoProduto>
+    interface IFotoRepository : IGenericRepository<Foto>
     {
     }
 }

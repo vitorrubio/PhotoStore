@@ -1,4 +1,5 @@
-﻿using PhotoStore.Core.Model;
+﻿using PhotoStore.Core.Interfaces.Repositories;
+using PhotoStore.Core.Model;
 using PhotoStore.Infra.DbContext;
 using System;
 using System.Collections.Generic;

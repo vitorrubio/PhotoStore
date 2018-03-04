@@ -42,11 +42,11 @@
 
                 <div class="form-group">
 
-                        @Html.LabelFor(model => model.Preco, htmlAttributes: new { @class = "col-form-label" })
-                        @Html.TextBoxFor(model => model.Preco, new { @class = "form-control vtr_money" })
+                        @Html.LabelFor(model => model.PrecoSugerido, htmlAttributes: new { @class = "col-form-label" })
+                        @Html.TextBoxFor(model => model.PrecoSugerido, new { @class = "form-control vtr_money" })
 
 
-                    @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.PrecoSugerido, "", new { @class = "text-danger" })
 
                 </div>
 

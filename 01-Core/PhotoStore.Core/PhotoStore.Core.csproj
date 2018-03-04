@@ -99,6 +99,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Repositories\IEventoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFotoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IGenericRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IProdutoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPedidoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITipoProdutoRepository.cs" />
+    <Compile Include="Interfaces\Services\IEventoService.cs" />
+    <Compile Include="Interfaces\Services\IFotoService.cs" />
+    <Compile Include="Interfaces\Services\IGenericService.cs" />
+    <Compile Include="Interfaces\Services\IPedidoService.cs" />
+    <Compile Include="Interfaces\Services\IProdutoService.cs" />
+    <Compile Include="Interfaces\Services\ITipoProdutoService.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\ArquivoFoto.cs" />
     <Compile Include="Model\Entidade.cs" />
@@ -107,6 +119,7 @@
     <Compile Include="Model\ItemDoPedido.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\StatusPedido.cs" />
     <Compile Include="Model\TipoProduto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

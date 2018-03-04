@@ -26,7 +26,7 @@
                     @Html.DisplayNameFor(model => model.Nome)
                 </th>
                 <th class="controles">
-                    @Html.DisplayNameFor(model => model.Preco)
+                    @Html.DisplayNameFor(model => model.PrecoSugerido)
                 </th>
                 <th class="controles text-center"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></th>
                 <th class="controles text-center"><i class="fa fa-trash-o" aria-hidden="true"></i></th>
@@ -44,7 +44,7 @@
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Preco)
+                        @Html.DisplayFor(modelItem => item.PrecoSugerido)
                     </td>
                     <td class="text-center">
                         <a href="@(Url.Action("Editar", "TipoProduto", new { id = item.Id}))"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
