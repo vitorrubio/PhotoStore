@@ -1,8 +1,5 @@
-﻿using PhotoStore.Utils;
-using System;
-using System.Collections.Generic;
+﻿using PhotoStore.CrossCutting;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Web;
 
 namespace PhotoStore.ViewModel

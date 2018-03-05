@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 
-namespace PhotoStore.Infra.Services
+namespace PhotoStore.CrossCutting
 {
     public class LogServices
     {

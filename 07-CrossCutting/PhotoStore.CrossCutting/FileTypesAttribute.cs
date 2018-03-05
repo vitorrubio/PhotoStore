@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace PhotoStore.Utils
+namespace PhotoStore.CrossCutting
 {
     /// <summary>
     /// atributo para action de upload de arquivo

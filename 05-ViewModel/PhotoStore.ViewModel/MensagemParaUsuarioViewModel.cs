@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PhotoStore.Models.ViewModels
+namespace PhotoStore.ViewModel
 {
     /// <summary>
     /// viewmodel para passar mensagens para o usuário na página

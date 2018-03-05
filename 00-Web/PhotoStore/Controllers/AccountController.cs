@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using PhotoStore.Models;
 using PhotoStore.Infra.Services;
 using PhotoStore.Core.Model;
+using PhotoStore.ViewModel.Account;
 
 namespace PhotoStore.Controllers
 {

@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace PhotoStore.Utils
+namespace PhotoStore.CrossCutting
 {
 
     /// <summary>

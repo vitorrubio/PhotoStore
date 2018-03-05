@@ -2,7 +2,6 @@
 using PhotoStore.Core.Model;
 using PhotoStore.Infra.DbContext;
 using PhotoStore.Infra.Services;
-using PhotoStore.Models.ViewModels;
 using PhotoStore.ApplicationServices;
 using System;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using PhotoStore.ApplicationServices.Interfaces;
+using PhotoStore.ViewModel;
 
 namespace PhotoStore.Areas.Admin.Controllers
 {

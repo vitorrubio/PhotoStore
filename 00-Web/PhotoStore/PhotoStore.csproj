@@ -51,7 +51,6 @@
     <Compile Include="App_Start\AutoMapperBindings.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
@@ -68,13 +67,9 @@
     <Compile Include="Areas\Admin\Controllers\TipoProdutoController.cs" />
     <Compile Include="Controllers\ScriptsController.cs" />
     <Compile Include="Controllers\StylesController.cs" />
-    <Compile Include="Extensions\MvcExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\ViewModels\MensagemParaUsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -762,6 +757,10 @@
     <ProjectReference Include="..\..\06-Utils\PhotoStore.Utils\PhotoStore.Utils.csproj">
       <Project>{861e74c0-b272-450e-8550-4bde8512b21b}</Project>
       <Name>PhotoStore.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-CrossCutting\PhotoStore.CrossCutting\PhotoStore.CrossCutting.csproj">
+      <Project>{eeb2e561-41ad-49a9-b016-556305ce472b}</Project>
+      <Name>PhotoStore.CrossCutting</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

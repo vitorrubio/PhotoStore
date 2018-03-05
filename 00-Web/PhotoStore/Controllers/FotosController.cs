@@ -1,5 +1,4 @@
 ﻿using PhotoStore.Infra.DbContext;
-using PhotoStore.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
