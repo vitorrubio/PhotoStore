@@ -729,8 +729,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Teste\" />
     <Folder Include="Views\Fotos\" />
     <Folder Include="Views\Styles\" />
   </ItemGroup>

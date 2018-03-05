@@ -2,10 +2,8 @@
 using PhotoStore.Core.Interfaces.Services;
 using PhotoStore.Core.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PhotoStore.Core.Services

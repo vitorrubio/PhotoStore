@@ -1,14 +1,10 @@
 ﻿using PhotoStore.Core.Model;
-using PhotoStore.Infra.DbContext;
 using PhotoStore.Infra.Services;
 using PhotoStore.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using System.IO;
-using System.Drawing;
 using PhotoStore.ApplicationServices.Interfaces;
 using PhotoStore.Core.Interfaces.Services;
 

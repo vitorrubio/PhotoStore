@@ -12,34 +12,6 @@ namespace PhotoStore.Controllers
 	public class BaseController : Controller
 	{
 
-		//#region campos privados
-
-		//private readonly ApplicationDbContext _context;
-
-		//#endregion
-
-
-		//#region construtores
-
-		//public BaseController(ApplicationDbContext ctx)
-		//{
-		//	_context = ctx;
-		//}
-
-		//#endregion
-
-		//public virtual ApplicationDbContext Context
-  //      {
-  //          get
-  //          {
-  //              return _context;
-  //          }
-  //      }
-
-
-
-
-
 		#region métodos públicos
 
 		/// <summary>
@@ -78,24 +50,6 @@ namespace PhotoStore.Controllers
 			}
 		}
 
-
-		#endregion
-
-
-
-		#region métodos protegidos
-
-		/// <summary>
-		/// dispose padrão
-		/// </summary>
-		/// <param name="disposing"></param>
-		//protected override void Dispose(bool disposing)
-		//{
-		//	base.Dispose(disposing);
-		//	if(disposing)
-		//		_context.Dispose();
-			
-		//}
 
 		#endregion
 

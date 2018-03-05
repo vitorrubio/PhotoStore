@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using PhotoStore.Infra.Services;
 using PhotoStore.Core.Model;
 using PhotoStore.Controllers;
-using PhotoStore.ApplicationServices;
-using PhotoStore.Infra.DbContext;
 using PhotoStore.ApplicationServices.Interfaces;
 using PhotoStore.ViewModel;
 

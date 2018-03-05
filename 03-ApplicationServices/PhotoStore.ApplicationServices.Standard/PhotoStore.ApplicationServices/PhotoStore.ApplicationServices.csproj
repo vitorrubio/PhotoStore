@@ -89,7 +89,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PedidoApplicationService.cs" />
     <Compile Include="TipoProdutoApplicationService.cs" />
-    <Compile Include="UserResolverService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\01-Core\PhotoStore.Core\PhotoStore.Core.csproj">

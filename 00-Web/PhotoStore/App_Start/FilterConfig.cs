@@ -1,6 +1,4 @@
-﻿
-using PhotoStore.Infra.Services;
-using System.Web;
+﻿using PhotoStore.Infra.Services;
 using System.Web.Mvc;
 
 namespace PhotoStore

@@ -27,12 +27,5 @@ namespace PhotoStore.Controllers
             return View();
         }
 
-
-
-        public JsonResult Teste()
-        {
-            
-            return Json(new { nome = "vitor", sobrenome="rubio" }, JsonRequestBehavior.AllowGet);
-        }
     }
 }

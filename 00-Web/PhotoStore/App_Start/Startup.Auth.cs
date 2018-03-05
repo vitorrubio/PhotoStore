@@ -15,12 +15,6 @@ namespace PhotoStore
         // Para obter mais informações sobre a autenticação de configuração, visite https://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-            // Configure o contexto db, gerenciador de usuários e gerenciador de login para usar uma única instância por solicitação
-            //app.CreatePerOwinContext(ApplicationDbContext.Create);
-            //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            //app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
-			//app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
-
 			// Habilitar o aplicativo a usar um cookie para armazenar informações do usuário logado
 			// e para usar um cookie para armazenar temporariamente informações sobre um usuário fazendo logon com um provedor de logon de terceiros
 			// Configurar o cookie de logon

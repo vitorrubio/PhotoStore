@@ -1,8 +1,6 @@
 ﻿using PhotoStore.ApplicationServices.Interfaces;
 using PhotoStore.Core.Interfaces.Services;
 using PhotoStore.Core.Model;
-using PhotoStore.Infra.DbContext;
-using PhotoStore.Infra.Repository;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
