@@ -32,11 +32,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoStore.Utils", "06-Utils\PhotoStore.Utils\PhotoStore.Utils.csproj", "{861E74C0-B272-450E-8550-4BDE8512B21B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07-CrossCutting", "07-CrossCutting", "{A7E1D6C4-DD28-48F5-8C8C-F66ED279B147}"
-	ProjectSection(SolutionItems) = preProject
-		07-CrossCutting\PhotoStore.CrossCutting.Test\PhotoStore.CrossCutting.Test.csproj = 07-CrossCutting\PhotoStore.CrossCutting.Test\PhotoStore.CrossCutting.Test.csproj
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoStore.CrossCutting", "07-CrossCutting\PhotoStore.CrossCutting\PhotoStore.CrossCutting.csproj", "{EEB2E561-41AD-49A9-B016-556305CE472B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoStore.CrossCutting.Test", "07-CrossCutting\PhotoStore.CrossCutting.Test\PhotoStore.CrossCutting.Test.csproj", "{EF3AFA63-2534-4A0E-9E6C-6274AD22EB37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +75,10 @@ Global
 		{EEB2E561-41AD-49A9-B016-556305CE472B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEB2E561-41AD-49A9-B016-556305CE472B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEB2E561-41AD-49A9-B016-556305CE472B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3AFA63-2534-4A0E-9E6C-6274AD22EB37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3AFA63-2534-4A0E-9E6C-6274AD22EB37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3AFA63-2534-4A0E-9E6C-6274AD22EB37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3AFA63-2534-4A0E-9E6C-6274AD22EB37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +92,7 @@ Global
 		{A6CAF399-243F-487F-A8EF-C8D5729D1F8E} = {F9702221-8FA2-4A22-BB8B-5C7F4F33FE07}
 		{861E74C0-B272-450E-8550-4BDE8512B21B} = {31323CF4-390D-48E1-9AA5-F7272EBFAF4D}
 		{EEB2E561-41AD-49A9-B016-556305CE472B} = {A7E1D6C4-DD28-48F5-8C8C-F66ED279B147}
+		{EF3AFA63-2534-4A0E-9E6C-6274AD22EB37} = {A7E1D6C4-DD28-48F5-8C8C-F66ED279B147}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B7A05FC2-D890-44F6-94B2-D0A275A2FB0C}

@@ -1,49 +1,135 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 
 
 namespace PhotoStore.CrossCutting
 {
-    public class PhotoResizer
+	/// <summary>
+	/// https://www.codeproject.com/Tips/626124/Create-a-thumbnail-of-a-large-size-image-in-Csharp
+	/// </summary>
+	public class PhotoResizer : IPhotoResizer
     {
-		public virtual void ResizeAndWatermark(Stream stream, string destination, string watermark)
+		public virtual void ResizeAndWatermark(Stream stream,  string watermark, string destination, int newWidth)
 		{
 			stream.Position = 0;
-			Image image = Image.FromStream(stream);
-			Bitmap marcadagua = new Bitmap(Image.FromFile(watermark));
-			var size = GetThumbnailSize(image);
-			Image thumb = image.GetThumbnailImage(size.Width, size.Height, () => false, IntPtr.Zero);
-			Bitmap thumbMarcado = new Bitmap(thumb);
-			DrawWatermark(marcadagua, thumbMarcado, 0, 0);
 
-			thumb.Save(destination);
+			Bitmap original = new Bitmap(Image.FromStream(stream));
+
+			ResizeAndWatermark(original, watermark, destination, newWidth);
+
+			try
+			{
+				original.Dispose();
+			}
+			catch { }
 		}
 
 
 
-		public virtual Size GetThumbnailSize(Image original)
+		public virtual void ResizeAndWatermark(string fileName, string watermark, string destination, int newWidth)
 		{
-			// Maximum size of any dimension.
-			const int maxPixels = 450;
+			Bitmap original = new Bitmap(Image.FromFile(fileName));
 
-			// Width and height.
+			ResizeAndWatermark(original, watermark, destination, newWidth);
+
+			try
+			{
+				original.Dispose();
+			}
+			catch { }
+		}
+
+
+
+		public virtual void ResizeAndWatermark(Bitmap original, string watermark, string destination, int newWidth)
+		{
+			Bitmap marcadagua = new Bitmap(Image.FromFile(watermark));
+
+			var size = GetNewThumbnailSize(original, newWidth);
+
+			Bitmap thumb = CreateThumbnail(original, size);
+
+			DrawWatermark(marcadagua, thumb, 1, 1);
+
+			thumb.Save(destination, ImageFormat.Jpeg);
+
+			try
+			{
+				thumb.Dispose();
+			}
+			catch { }
+
+
+			try
+			{
+				marcadagua.Dispose();
+			}
+			catch { }
+		}
+
+
+
+		private  Bitmap CreateThumbnail(Bitmap loBMP, Size tamanho)
+		{
+			System.Drawing.Bitmap bmpOut = null;
+			try
+			{
+				ImageFormat loFormat = loBMP.RawFormat;
+
+				decimal lnRatio;
+				int lnNewWidth = 0;
+				int lnNewHeight = 0;
+
+				//*** If the image is smaller than a thumbnail just return it
+				if (loBMP.Width < tamanho.Width && loBMP.Height < tamanho.Height)
+					return loBMP;
+
+				if (loBMP.Width > loBMP.Height)
+				{
+					lnRatio = (decimal)tamanho.Width / loBMP.Width;
+					lnNewWidth = tamanho.Width;
+					decimal lnTemp = loBMP.Height * lnRatio;
+					lnNewHeight = (int)lnTemp;
+				}
+				else
+				{
+					lnRatio = (decimal)tamanho.Height / loBMP.Height;
+					lnNewHeight = tamanho.Height;
+					decimal lnTemp = loBMP.Width * lnRatio;
+					lnNewWidth = (int)lnTemp;
+				}
+				bmpOut = new Bitmap(lnNewWidth, lnNewHeight);
+				Graphics g = Graphics.FromImage(bmpOut);
+				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+				g.FillRectangle(Brushes.White, 0, 0, lnNewWidth, lnNewHeight);
+				g.DrawImage(loBMP, 0, 0, lnNewWidth, lnNewHeight);
+
+			}
+			catch
+			{
+				throw;
+			}
+
+			return bmpOut;
+		}
+
+
+		private Size GetNewThumbnailSize(Bitmap original, int newWidth)
+		{
+
+
 			int originalWidth = original.Width;
 			int originalHeight = original.Height;
 
-			// Compute best factor to scale entire image based on larger dimension.
-			double factor;
-			if (originalWidth > originalHeight)
-			{
-				factor = (double)maxPixels / originalWidth;
-			}
-			else
-			{
-				factor = (double)maxPixels / originalHeight;
-			}
+			int altura2 = (int)(newWidth * (double)originalHeight / (double)originalWidth);
 
-			// Return thumbnail size.
-			return new Size((int)(originalWidth * factor), (int)(originalHeight * factor));
+			return new Size
+			{
+				Height = altura2,
+				Width = newWidth
+			};
 		}
 
 

@@ -72,9 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncHelper.cs" />
+    <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\MvcExtensions.cs" />
     <Compile Include="FileSizeAttribute.cs" />
     <Compile Include="FileTypesAttribute.cs" />
+    <Compile Include="IPhotoResizer.cs" />
     <Compile Include="LogServices.cs" />
     <Compile Include="PhotoResizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
