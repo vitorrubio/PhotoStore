@@ -85,6 +85,11 @@
     <Compile Include="Account\SendCodeViewModel.cs" />
     <Compile Include="Account\ExternalLoginListViewModel.cs" />
     <Compile Include="Account\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ApplicationUserViewModel.cs" />
+    <Compile Include="ArquivoFotoViewModel.cs" />
+    <Compile Include="EventoViewModel.cs" />
+    <Compile Include="FotoViewModel.cs" />
+    <Compile Include="ItemDoPedidoViewModel.cs" />
     <Compile Include="ItemPaginaUploadFotoViewModel.cs" />
     <Compile Include="Manage\IndexViewModel.cs" />
     <Compile Include="Manage\ManageLoginsViewModel.cs" />
@@ -96,7 +101,10 @@
     <Compile Include="Manage\ConfigureTwoFactorViewModel.cs" />
     <Compile Include="MensagemParaUsuarioViewModel.cs" />
     <Compile Include="PaginaUploadFotoViewModel.cs" />
+    <Compile Include="PedidoViewModel.cs" />
+    <Compile Include="ProdutoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoProdutoViewModel.cs" />
     <Compile Include="UploadFotoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +112,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\01-Core\PhotoStore.Core\PhotoStore.Core.csproj">
+      <Project>{d4c12443-53d0-424e-b655-76c1fdee266c}</Project>
+      <Name>PhotoStore.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\07-CrossCutting\PhotoStore.CrossCutting\PhotoStore.CrossCutting.csproj">
       <Project>{eeb2e561-41ad-49a9-b016-556305ce472b}</Project>
       <Name>PhotoStore.CrossCutting</Name>
