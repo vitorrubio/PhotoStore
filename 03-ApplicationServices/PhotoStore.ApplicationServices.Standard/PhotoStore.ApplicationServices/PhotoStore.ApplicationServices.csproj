@@ -79,7 +79,15 @@
     <Compile Include="EventoApplicationService.cs" />
     <Compile Include="FotoApplicationService.cs" />
     <Compile Include="GenericApplicationService.cs" />
+    <Compile Include="Interfaces\IEventoApplicationService.cs" />
+    <Compile Include="Interfaces\IFotoApplicationService.cs" />
+    <Compile Include="Interfaces\IGenericApplicationService.cs" />
+    <Compile Include="Interfaces\IPedidoApplicationService.cs" />
+    <Compile Include="Interfaces\IProdutoApplicationService.cs" />
+    <Compile Include="Interfaces\ITipoProdutoApplicationService.cs" />
+    <Compile Include="ProdutoApplicationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PedidoApplicationService.cs" />
     <Compile Include="TipoProdutoApplicationService.cs" />
     <Compile Include="UserResolverService.cs" />
   </ItemGroup>

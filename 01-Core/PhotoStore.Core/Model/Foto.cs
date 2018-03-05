@@ -33,6 +33,9 @@ namespace PhotoStore.Core.Model
 
 		public virtual bool Vitrine { get; set; }
 
+
+		public virtual ArquivoFoto ArquivoFoto { get; set; }
+
     }
 
 

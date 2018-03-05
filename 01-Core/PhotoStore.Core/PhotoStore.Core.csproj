@@ -122,13 +122,17 @@
     <Compile Include="Model\StatusPedido.cs" />
     <Compile Include="Model\TipoProduto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EventoService.cs" />
+    <Compile Include="Services\FotoService.cs" />
+    <Compile Include="Services\GenericService.cs" />
+    <Compile Include="Services\PedidoService.cs" />
+    <Compile Include="Services\ProdutoService.cs" />
+    <Compile Include="Services\TipoProdutoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DomainServices\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

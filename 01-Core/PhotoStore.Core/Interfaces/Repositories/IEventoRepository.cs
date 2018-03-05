@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhotoStore.Core.Interfaces.Repositories
 {
-    interface IEventoRepository : IGenericRepository<Evento>
+    public interface IEventoRepository : IGenericRepository<Evento>
     {
     }
 }

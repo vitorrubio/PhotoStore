@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhotoStore.Core.Interfaces.Services
+namespace PhotoStore.ApplicationServices.Interfaces
 {
-	public interface ITipoProdutoService : IGenericService<TipoProduto>
+	public interface ITipoProdutoApplicationService : IGenericApplicationService<TipoProduto>
     {
     }
 }

@@ -119,7 +119,12 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\EventoRepository.cs" />
+    <Compile Include="Repository\FotoRepository.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\PedidoRepository.cs" />
+    <Compile Include="Repository\ProdutoRepository.cs" />
+    <Compile Include="Repository\TipoProdutoRepository.cs" />
     <Compile Include="Services\ApplicationRoleManager.cs" />
     <Compile Include="Services\ApplicationSignInManager.cs" />
     <Compile Include="Services\ApplicationUserManager.cs" />

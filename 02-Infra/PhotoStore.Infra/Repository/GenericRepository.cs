@@ -75,6 +75,17 @@ namespace PhotoStore.Infra.Repository
             }
 			else
 			{
+				//var original = _dbSet.Find(ent.Id);
+				//if (original != null)
+				//{
+				//	_db.Entry(original).CurrentValues.SetValues(ent);
+				//	_db.SaveChanges();
+				//}
+
+
+				var local = _dbSet.Local.FirstOrDefault(f => f.Id == ent.Id);
+				if (local != null)
+					_db.Entry(local).State = EntityState.Detached;
 				_db.Entry(ent).State = EntityState.Modified;
 			}
 
@@ -157,6 +168,18 @@ namespace PhotoStore.Infra.Repository
             }
 			else
 			{
+
+				//var original = await _dbSet.FindAsync(ent.Id);
+				//if (original != null)
+				//{
+				//	_db.Entry(original).CurrentValues.SetValues(ent);
+				//	await _db.SaveChangesAsync();
+				//}
+
+
+				var local = _dbSet.Local.FirstOrDefault(f => f.Id == ent.Id);
+				if(local != null)
+					_db.Entry(local).State = EntityState.Detached;
 				_db.Entry(ent).State = EntityState.Modified;
 			}
 

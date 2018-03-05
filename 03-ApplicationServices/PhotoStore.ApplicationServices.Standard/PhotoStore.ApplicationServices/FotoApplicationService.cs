@@ -9,22 +9,27 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using System.IO;
 using System.Drawing;
+using PhotoStore.ApplicationServices.Interfaces;
+using PhotoStore.Core.Interfaces.Services;
 
 namespace PhotoStore.ApplicationServices
 {
-    public class FotoApplicationService : GenericApplicationService<Foto>
+    public class FotoApplicationService : GenericApplicationService<Foto>, IFotoApplicationService
     {
-		private EventoApplicationService _eventSvc;
+		private IEventoService _eventSvc;
+		private IFotoService _fotoSvc;
 		private ApplicationUserManager _userMng;
 		private ApplicationSignInManager _sigMng;
 
 		public FotoApplicationService(
-			ApplicationDbContext ctx, 
-			EventoApplicationService evtsvc, 
+			IEventoService evtsvc,
+			IFotoService fotoSvc,
 			ApplicationUserManager usermng,
-			ApplicationSignInManager sigmng) : base(ctx)
+			ApplicationSignInManager sigmng) : base(fotoSvc)
         {
 			this._eventSvc = evtsvc;
+			this._fotoSvc = fotoSvc;
+
 			this._userMng = usermng;
 			this._sigMng = sigmng;
         }
@@ -47,24 +52,24 @@ namespace PhotoStore.ApplicationServices
 				NomeArquivo = upl.NomeArquivo,
 				Numero = upl.Numero,
 				Vitrine = true,
-				Fotografo = user
+				Fotografo = user,
+				
 			};
-
-			this.Save(foto);
 
 			ArquivoFoto arquivo = new ArquivoFoto();
 			arquivo.Foto = foto;
 			arquivo.Id = foto.Id;
+			foto.ArquivoFoto = arquivo;
+
 			byte[] fileData = null;
 			using (var binaryReader = new BinaryReader(upl.ArquivoAnexo.InputStream))
 			{
 				fileData = binaryReader.ReadBytes(upl.ArquivoAnexo.ContentLength);
 			}
 			arquivo.Bytes = fileData;
-			GenericApplicationService<ArquivoFoto> arqSvc = new GenericApplicationService<ArquivoFoto>(this.Context);
-			arqSvc.Save(arquivo);
 
-			
+			this.Save(foto);
+
 
 			return foto;
 

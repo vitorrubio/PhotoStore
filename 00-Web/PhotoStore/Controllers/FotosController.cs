@@ -11,7 +11,7 @@ namespace PhotoStore.Controllers
     public class FotosController : BaseController
     {
 
-		public FotosController(ApplicationDbContext ctx) : base(ctx)
+		public FotosController() 
 		{
 
 		}

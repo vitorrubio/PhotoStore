@@ -15,6 +15,12 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using PhotoStore.Infra.DbContext;
 using PhotoStore.Infra.Services;
+using PhotoStore.Core.Interfaces.Repositories;
+using PhotoStore.Infra.Repository;
+using PhotoStore.Core.Interfaces.Services;
+using PhotoStore.Core.Services;
+using PhotoStore.ApplicationServices.Interfaces;
+using PhotoStore.ApplicationServices;
 
 [assembly: OwinStartupAttribute(typeof(PhotoStore.Startup))]
 namespace PhotoStore
@@ -49,6 +55,26 @@ namespace PhotoStore
 
 			services.AddTransient<ApplicationDbContext, ApplicationDbContext>();
 
+			services.AddTransient<IEventoRepository, EventoRepository>();
+			services.AddTransient<IFotoRepository, FotoRepository>();
+			services.AddTransient<IPedidoRepository, PedidoRepository>();
+			services.AddTransient<IProdutoRepository, ProdutoRepository>();
+			services.AddTransient<ITipoProdutoRepository, TipoProdutoRepository>();
+
+
+			services.AddTransient<IEventoService, EventoService>();
+			services.AddTransient<IFotoService, FotoService>();
+			services.AddTransient<IPedidoService, PedidoService>();
+			services.AddTransient<IProdutoService, ProdutoService>();
+			services.AddTransient<ITipoProdutoService, TipoProdutoService>();
+
+
+			services.AddTransient<IEventoApplicationService, EventoApplicationService>();
+			services.AddTransient<IFotoApplicationService, FotoApplicationService>();
+			services.AddTransient<IPedidoApplicationService, PedidoApplicationService>();
+			services.AddTransient<IProdutoApplicationService, ProdutoApplicationService>();
+			services.AddTransient<ITipoProdutoApplicationService, TipoProdutoApplicationService>();
+
 			services.AddTransient<ApplicationUserManager, ApplicationUserManager>();
 			services.AddTransient<ApplicationSignInManager, ApplicationSignInManager>();
 			services.AddTransient<ApplicationRoleManager, ApplicationRoleManager>();
@@ -57,13 +83,15 @@ namespace PhotoStore
 	}
 
 
-	public class DefaultDependencyResolver : IDependencyResolver
+	public class DefaultDependencyResolver : System.Web.Mvc.IDependencyResolver
 	{
 		protected IServiceProvider serviceProvider;
 
 		public DefaultDependencyResolver(IServiceProvider serviceProvider)
 		{
 			this.serviceProvider = serviceProvider;
+
+
 		}
 
 		public object GetService(Type serviceType)
@@ -75,6 +103,7 @@ namespace PhotoStore
 		{
 			return this.serviceProvider.GetServices(serviceType);
 		}
+
 	}
 
 

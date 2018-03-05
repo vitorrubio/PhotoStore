@@ -13,10 +13,6 @@ namespace PhotoStore.Areas.Admin.Controllers
     [RouteArea("Admin")]
     public class HomeController : BaseController
     {
-		public HomeController(ApplicationDbContext ctx) : base(ctx)
-		{
-
-		}
 
 		public ActionResult Index()
         {

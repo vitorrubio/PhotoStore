@@ -8,11 +8,11 @@ using System.Text;
 
 namespace PhotoStore.ApplicationServices
 {
-    public class EventoApplicationService : GenericApplicationService<Evento>, IEventoApplicationService
-    {
-        public EventoApplicationService(IEventoService svc) : base(svc)
-        {
+    public class PedidoApplicationService :  GenericApplicationService<Pedido>, IPedidoApplicationService
+	{
+		public PedidoApplicationService(IPedidoService svc) : base(svc)
+		{
 
-        }
-    }
+		}
+	}
 }

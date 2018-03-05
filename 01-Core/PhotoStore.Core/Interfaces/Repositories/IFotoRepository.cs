@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhotoStore.Core.Interfaces.Repositories
 {
-    interface IFotoRepository : IGenericRepository<Foto>
+	public interface IFotoRepository : IGenericRepository<Foto>
     {
     }
 }

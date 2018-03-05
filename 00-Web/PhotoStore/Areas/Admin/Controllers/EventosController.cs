@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using PhotoStore.ApplicationServices.Interfaces;
 
 namespace PhotoStore.Areas.Admin.Controllers
 {
@@ -21,17 +22,17 @@ namespace PhotoStore.Areas.Admin.Controllers
     public class EventosController : BaseController
     {
 
-        private EventoApplicationService _appSvc;
+        private IEventoApplicationService _appSvc;
         
 
-        public EventosController(ApplicationDbContext ctx):base(ctx)
+        public EventosController(IEventoApplicationService appSvc)
         {
-            _appSvc = new EventoApplicationService(this.Context);
+			_appSvc = appSvc;
         }
 
         public async Task<ActionResult> Index()
         {
-            return View(await Context.Eventos.ToListAsync());
+            return View(await _appSvc.GetAll().ToListAsync());
         }
 
         public async Task<ActionResult> Editar(int? id)
@@ -66,16 +67,6 @@ namespace PhotoStore.Areas.Admin.Controllers
             {
                 try
                 {
-
-                    //if (ev.Id == 0)
-                    //{
-                    //    Context.Eventos.Add(ev);
-                    //}
-                    //else
-                    //{
-                    //    Context.Entry(ev).State = EntityState.Modified;
-                    //}
-                    //await Context.SaveChangesAsync();
 
                     await _appSvc.SaveAsync(ev);
 

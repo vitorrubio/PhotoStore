@@ -1,4 +1,6 @@
-﻿using PhotoStore.Core.Model;
+﻿using PhotoStore.ApplicationServices.Interfaces;
+using PhotoStore.Core.Interfaces.Services;
+using PhotoStore.Core.Model;
 using PhotoStore.Infra.DbContext;
 using PhotoStore.Infra.Repository;
 using System;
@@ -9,22 +11,16 @@ using System.Threading.Tasks;
 namespace PhotoStore.ApplicationServices
 {
 
-    public class GenericApplicationService<T> where T:Entidade
+    public class GenericApplicationService<T> : IGenericApplicationService<T> where T:Entidade
     {
-        private GenericRepository<T> _genericRepository;
-		private ApplicationDbContext _context;
+        private IGenericService<T> _genericService;
 
-		public GenericApplicationService(ApplicationDbContext ctx)
+
+		public GenericApplicationService(IGenericService<T> svc)
         {
-			this._genericRepository = new GenericRepository<T>(ctx);
-			this._context = ctx;
+			this._genericService = svc;
         }
 
-
-		/// <summary>
-		/// contexto para uso de dados de usuário que não são derivados de entity
-		/// </summary>
-        public virtual ApplicationDbContext Context { get { return this._context; } }
 
 
 		/// <summary>
@@ -34,7 +30,7 @@ namespace PhotoStore.ApplicationServices
 		/// <returns>T - objeto encontrado</returns>
 		public virtual T GetById(int id, params Expression<Func<T, object>>[] includeExpressions)
         {
-            return this._genericRepository.GetById(id, includeExpressions);
+            return this._genericService.GetById(id, includeExpressions);
         }
 
         /// <summary>
@@ -43,7 +39,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>List de T</returns>
         public virtual IQueryable<T> GetAll(params Expression<Func<T, object>>[] includeExpressions)
         {
-            return this._genericRepository.GetAll(includeExpressions);
+            return this._genericService.GetAll(includeExpressions);
         }
 
         /// <summary>
@@ -52,7 +48,7 @@ namespace PhotoStore.ApplicationServices
         /// <param name="ent">T - objeto a ser salvo</param>
         public virtual void Save(T ent)
         {
-			this._genericRepository.Save(ent);
+			this._genericService.Save(ent);
         }
 
 
@@ -62,7 +58,7 @@ namespace PhotoStore.ApplicationServices
         /// <param name="ent">T - objeto a ser excluído</param>
         public virtual void Delete(T ent)
         {
-			this._genericRepository.Delete(ent);
+			this._genericService.Delete(ent);
         }
 
 
@@ -72,7 +68,7 @@ namespace PhotoStore.ApplicationServices
         /// <param name="id">int - id do objeto a ser excluído</param>
         public virtual void Delete(int id)
         {
-			this._genericRepository.Delete(id);
+			this._genericService.Delete(id);
         }
 
 
@@ -85,7 +81,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>Task de T - o bojeto retornado do banco, assíncrono</returns>
         public virtual async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includeExpressions)
         {
-            return await this._genericRepository.GetByIdAsync(id, includeExpressions);
+            return await this._genericService.GetByIdAsync(id, includeExpressions);
         }
 
 
@@ -98,7 +94,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>Task</returns>
         public virtual async Task SaveAsync(T ent)
         {
-            await this._genericRepository.SaveAsync(ent); 
+            await this._genericService.SaveAsync(ent); 
         }
 
 
@@ -110,7 +106,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>Task</returns>
         public virtual async Task DeleteAsync(T ent)
         {
-            await this._genericRepository.DeleteAsync(ent);
+            await this._genericService.DeleteAsync(ent);
         }
 
 
@@ -122,7 +118,7 @@ namespace PhotoStore.ApplicationServices
         /// <returns>Task</returns>
         public virtual async Task DeleteAsync(int id)
         {
-            await this._genericRepository.DeleteAsync(id);
+            await this._genericService.DeleteAsync(id);
         }
     }
 }

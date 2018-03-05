@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhotoStore.Core.Interfaces.Services
 {
-    interface IProdutoService : IGenericService<Produto>
+	public interface IProdutoService : IGenericService<Produto>
     {
     }
 }

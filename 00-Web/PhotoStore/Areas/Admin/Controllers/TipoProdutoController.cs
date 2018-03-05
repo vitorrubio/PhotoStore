@@ -12,6 +12,7 @@ using PhotoStore.Core.Model;
 using PhotoStore.Controllers;
 using PhotoStore.ApplicationServices;
 using PhotoStore.Infra.DbContext;
+using PhotoStore.ApplicationServices.Interfaces;
 
 namespace PhotoStore.Areas.Admin.Controllers
 {
@@ -20,12 +21,12 @@ namespace PhotoStore.Areas.Admin.Controllers
     public class TipoProdutoController : BaseController
     {
 
-        private TipoProdutoApplicationService _appSvc;
+        private ITipoProdutoApplicationService _appSvc;
 
 
-        public TipoProdutoController(ApplicationDbContext ctx) : base(ctx)
+        public TipoProdutoController(ITipoProdutoApplicationService svc)
 		{
-            _appSvc = new TipoProdutoApplicationService(this.Context);
+			_appSvc = svc;
         }
 
 
