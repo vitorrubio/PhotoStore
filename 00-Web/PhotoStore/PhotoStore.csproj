@@ -263,6 +263,7 @@
     <Content Include="Content\Images\erro.png" />
     <Content Include="Content\Images\glyphicons-halflings-white.png" />
     <Content Include="Content\Images\glyphicons-halflings.png" />
+    <Content Include="Content\Images\horizontal.png" />
     <Content Include="Content\Images\hourglass.gif" />
     <Content Include="Content\Images\new_folder.png" />
     <Content Include="Content\Images\pare.png" />
@@ -270,6 +271,7 @@
     <Content Include="Content\Images\tecnunpeq.png" />
     <Content Include="Content\Images\time.png" />
     <Content Include="Content\Images\update.png" />
+    <Content Include="Content\Images\vertical.png" />
     <Content Include="Content\Images\vish.png" />
     <Content Include="Content\Images\worker.png" />
     <Content Include="Content\Images\youshallnotpass.gif" />

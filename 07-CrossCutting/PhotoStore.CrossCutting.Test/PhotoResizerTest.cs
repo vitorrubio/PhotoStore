@@ -17,7 +17,8 @@ namespace PhotoStore.CrossCutting.Test
 			Image original = Image.FromFile(@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\1099326.jpg");
 			pr.ResizeAndWatermark(
 				original.ToStream(ImageFormat.Jpeg),
-				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\howto_watermark_imageA.png",
+				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\horizontal.png",
+				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\vertical.png",
 				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\1099326.thumb.jpg", 				 
 				450);
 
@@ -30,7 +31,8 @@ namespace PhotoStore.CrossCutting.Test
 			Image original = Image.FromFile(@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\DY5A3810.jpg");
 			pr.ResizeAndWatermark(
 				original.ToStream(ImageFormat.Jpeg),
-				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\howto_watermark_imageA.png",
+				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\horizontal.png",
+				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\vertical.png",
 				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\DY5A3810.thumb.jpg", 				 
 				450);
 

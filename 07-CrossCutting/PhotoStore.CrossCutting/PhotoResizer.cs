@@ -11,13 +11,13 @@ namespace PhotoStore.CrossCutting
 	/// </summary>
 	public class PhotoResizer : IPhotoResizer
     {
-		public virtual void ResizeAndWatermark(Stream stream,  string watermark, string destination, int newWidth)
+		public virtual void ResizeAndWatermark(Stream stream, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
 			stream.Position = 0;
 
 			Bitmap original = new Bitmap(Image.FromStream(stream));
 
-			ResizeAndWatermark(original, watermark, destination, newWidth);
+			ResizeAndWatermark(original, watermarkHorizontal, watermarkVertical,  destination, newSize);
 
 			try
 			{
@@ -28,11 +28,11 @@ namespace PhotoStore.CrossCutting
 
 
 
-		public virtual void ResizeAndWatermark(string fileName, string watermark, string destination, int newWidth)
+		public virtual void ResizeAndWatermark(string fileName, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
 			Bitmap original = new Bitmap(Image.FromFile(fileName));
 
-			ResizeAndWatermark(original, watermark, destination, newWidth);
+			ResizeAndWatermark(original, watermarkHorizontal, watermarkVertical, destination, newSize);
 
 			try
 			{
@@ -43,13 +43,14 @@ namespace PhotoStore.CrossCutting
 
 
 
-		public virtual void ResizeAndWatermark(Bitmap original, string watermark, string destination, int newWidth)
+		public virtual void ResizeAndWatermark(Bitmap original, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
-			Bitmap marcadagua = new Bitmap(Image.FromFile(watermark));
+			
+			var size = GetNewThumbnailSize(original, newSize);
 
-			var size = GetNewThumbnailSize(original, newWidth);
+			Bitmap thumb = CreateThumbnail(original, size, out bool isPortrait);
 
-			Bitmap thumb = CreateThumbnail(original, size);
+			Bitmap marcadagua = (isPortrait)? new Bitmap(Image.FromFile(watermarkVertical)) : new Bitmap(Image.FromFile(watermarkHorizontal));
 
 			DrawWatermark(marcadagua, thumb, 1, 1);
 
@@ -71,7 +72,7 @@ namespace PhotoStore.CrossCutting
 
 
 
-		private  Bitmap CreateThumbnail(Bitmap loBMP, Size tamanho)
+		private  Bitmap CreateThumbnail(Bitmap loBMP, Size tamanho, out bool isPortrait)
 		{
 			System.Drawing.Bitmap bmpOut = null;
 			try
@@ -82,11 +83,16 @@ namespace PhotoStore.CrossCutting
 				int lnNewWidth = 0;
 				int lnNewHeight = 0;
 
+				isPortrait = (loBMP.Height > loBMP.Width);
+
+
 				//*** If the image is smaller than a thumbnail just return it
 				if (loBMP.Width < tamanho.Width && loBMP.Height < tamanho.Height)
+				{
 					return loBMP;
+				}
 
-				if (loBMP.Width > loBMP.Height)
+				if (!isPortrait)
 				{
 					lnRatio = (decimal)tamanho.Width / loBMP.Width;
 					lnNewWidth = tamanho.Width;
@@ -116,20 +122,34 @@ namespace PhotoStore.CrossCutting
 		}
 
 
-		private Size GetNewThumbnailSize(Bitmap original, int newWidth)
+		private Size GetNewThumbnailSize(Bitmap original, int newSize)
 		{
 
 
 			int originalWidth = original.Width;
 			int originalHeight = original.Height;
 
-			int altura2 = (int)(newWidth * (double)originalHeight / (double)originalWidth);
-
-			return new Size
+			if (originalWidth > originalHeight)
 			{
-				Height = altura2,
-				Width = newWidth
-			};
+				int largura2 = (int)(newSize * (double)originalWidth / (double)originalHeight);
+
+				return new Size
+				{
+					Height = newSize,
+					Width = largura2
+				};
+			}
+			else
+			{
+
+				int altura2 = (int)(newSize * (double)originalHeight / (double)originalWidth);
+
+				return new Size
+				{
+					Height = altura2,
+					Width = newSize
+				};
+			}
 		}
 
 

@@ -10,8 +10,8 @@ namespace PhotoStore.CrossCutting
 {
 	public interface IPhotoResizer
 	{
-		void ResizeAndWatermark(Stream stream, string watermark, string destination, int newWidth);
-		void ResizeAndWatermark(string fileName, string watermark, string destination, int newWidth);
-		void ResizeAndWatermark(Bitmap bmp, string watermark, string destination, int newWidth);
+		void ResizeAndWatermark(Stream stream, string watermarkHorizontal, string watermarkVertical, string destination, int newSize);
+		void ResizeAndWatermark(string fileName, string watermarkHorizontal, string watermarkVertical, string destination, int newSize);
+		void ResizeAndWatermark(Bitmap bmp, string watermarkHorizontal, string watermarkVertical, string destination, int newSize);
 	}
 }
