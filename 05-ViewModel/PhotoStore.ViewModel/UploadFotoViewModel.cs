@@ -6,6 +6,7 @@ namespace PhotoStore.ViewModel
 {
     public class UploadFotoViewModel
     {
+		public virtual int Id { get; set; }
 
         public virtual string Login { get; set; }
 
@@ -14,18 +15,20 @@ namespace PhotoStore.ViewModel
 
 
 
+		[Display(Name = "Evento")]
+		public virtual int IdEvento { get; set; }
 
-        public virtual int IdEvento { get; set; }
+		[Display(Name = "Nome do Arquivo")]
+		public virtual string NomeArquivo { get; set; }
 
-        public virtual string LoginFotografo { get; set; }
+		[Display(Name = "MD5")]
+		public virtual string MD5 { get; set; }
 
-        public virtual string NomeArquivo { get; set; }
+		[Display(Name = "Nome na Foto")]
+		public virtual string Nome { get; set; }
 
-        public virtual string MD5 { get; set; }
-
-        public virtual string Nome { get; set; }
-
-        public virtual string Numero { get; set; }
+		[Display(Name = "Número na Foto")]
+		public virtual string Numero { get; set; }
 
 
         [Required(ErrorMessage = "Por favor selecione uma foto.")]

@@ -45,7 +45,11 @@ namespace PhotoStore.Areas.Admin.Controllers
                 {
                     return View(ev);
                 }
-            }
+				else
+				{
+					MensagemParaUsuarioViewModel.MensagemErro("Esse registro não pôde ser encontrado. ", TempData, ModelState);
+				}
+			}
             catch (Exception err)
             {
                 MensagemParaUsuarioViewModel.MensagemErro("Esse registro não pôde ser visualizado. " + err.Message, TempData, ModelState);

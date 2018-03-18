@@ -1,4 +1,5 @@
 ﻿using PhotoStore.Infra.DbContext;
+using PhotoStore.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +23,27 @@ namespace PhotoStore.Controllers
         }
 
 
-
-        //public JsonResult UploadFoto(UploadFotoViewModel vm)
-        //{
-            
-        //}
-
-
-
-    }
+		[HttpPost]
+		public JsonResult UploadFoto(UploadFotoViewModel vm)
+		{
+			try
+			{
+				return Json(new
+				{
+					Sucesso = true,
+					Mensagem = "",
+					IdFoto = 0
+				});
+			}
+			catch(Exception err)
+			{
+				return Json(new
+				{
+					Sucesso = false,
+					Mensagem = err.Message,
+					IdFoto = 0
+				});
+			}
+		}
+	}
 }

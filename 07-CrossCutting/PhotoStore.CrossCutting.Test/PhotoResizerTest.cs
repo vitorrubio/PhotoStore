@@ -11,29 +11,29 @@ namespace PhotoStore.CrossCutting.Test
 	public class PhotoResizerTest
 	{
 		[TestMethod]
-		public void ResizeVerticalTest()
+		public void ResizeHorizontalTest()
 		{
 			PhotoResizer pr = new PhotoResizer();
-			Image original = Image.FromFile(@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\1099326.jpg");
+			Image original = Image.FromFile(@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\CF000891.IIQ");
 			pr.ResizeAndWatermark(
 				original.ToStream(ImageFormat.Jpeg),
 				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\horizontal.png",
 				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\vertical.png",
-				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\1099326.thumb.jpg", 				 
+				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\CF000891.IIQ.thumb.jpg", 				 
 				450);
 
 		}
 
 		[TestMethod]
-		public void ResizeHorizontalTest()
+		public void ResizeVerticalTest()
 		{
 			PhotoResizer pr = new PhotoResizer();
-			Image original = Image.FromFile(@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\DY5A3810.jpg");
+			Image original = Image.FromFile(@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\1099327.jpg");
 			pr.ResizeAndWatermark(
 				original.ToStream(ImageFormat.Jpeg),
 				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\horizontal.png",
 				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\vertical.png",
-				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\DY5A3810.thumb.jpg", 				 
+				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\1099327.thumb.jpg", 				 
 				450);
 
 		}

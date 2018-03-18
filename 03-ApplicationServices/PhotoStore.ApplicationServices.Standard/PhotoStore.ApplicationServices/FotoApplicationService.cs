@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using System.IO;
 using PhotoStore.ApplicationServices.Interfaces;
 using PhotoStore.Core.Interfaces.Services;
+using PhotoStore.CrossCutting;
 
 namespace PhotoStore.ApplicationServices
 {
@@ -14,24 +15,26 @@ namespace PhotoStore.ApplicationServices
     {
 		private IEventoService _eventSvc;
 		private IFotoService _fotoSvc;
+		private IPhotoResizer _resizer;
 		private ApplicationUserManager _userMng;
 		private ApplicationSignInManager _sigMng;
 
 		public FotoApplicationService(
 			IEventoService evtsvc,
 			IFotoService fotoSvc,
+			IPhotoResizer resizer,
 			ApplicationUserManager usermng,
 			ApplicationSignInManager sigmng) : base(fotoSvc)
         {
 			this._eventSvc = evtsvc;
 			this._fotoSvc = fotoSvc;
-
+			this._resizer = resizer;
 			this._userMng = usermng;
 			this._sigMng = sigmng;
         }
 
 
-		public virtual  Foto UpoadDeFoto(UploadFotoViewModel upl)
+		public virtual  Foto UpoadDeFoto(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
 			var evento = _eventSvc.GetById(upl.IdEvento);
 			var status = _sigMng.PasswordSignIn(upl.Login, upl.Senha, false, false);
@@ -65,6 +68,8 @@ namespace PhotoStore.ApplicationServices
 			arquivo.Bytes = fileData;
 
 			this.Save(foto);
+
+			_resizer.ResizeAndWatermark(upl.ArquivoAnexo.InputStream, watermarkHorizontal, watermarkVertical, destination, newSize);
 
 
 			return foto;

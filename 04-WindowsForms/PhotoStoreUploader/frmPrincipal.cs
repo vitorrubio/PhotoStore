@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PhotoStoreUploader
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
         }
-    }
+
+		private void panel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+	}
 }

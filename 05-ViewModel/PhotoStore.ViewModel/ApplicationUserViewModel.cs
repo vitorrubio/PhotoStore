@@ -7,8 +7,10 @@ namespace PhotoStore.ViewModel
 
     public class ApplicationUserViewModel
 	{
+		[Display(Name = "Login")]
+		public virtual string UserName { get; set; }
 
-        [MaxLength(11)]
+		[MaxLength(11)]
         public virtual string CPF { get; set; }
 
         [Required]

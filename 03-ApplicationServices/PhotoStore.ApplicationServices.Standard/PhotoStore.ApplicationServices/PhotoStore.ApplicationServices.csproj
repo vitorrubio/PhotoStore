@@ -107,6 +107,10 @@
       <Project>{861e74c0-b272-450e-8550-4bde8512b21b}</Project>
       <Name>PhotoStore.Utils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\07-CrossCutting\PhotoStore.CrossCutting\PhotoStore.CrossCutting.csproj">
+      <Project>{eeb2e561-41ad-49a9-b016-556305ce472b}</Project>
+      <Name>PhotoStore.CrossCutting</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTO\" />
