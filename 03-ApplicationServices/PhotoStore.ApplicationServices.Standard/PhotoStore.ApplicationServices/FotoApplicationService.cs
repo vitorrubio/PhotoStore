@@ -34,15 +34,31 @@ namespace PhotoStore.ApplicationServices
         }
 
 
-		public virtual  Foto UpoadDeFoto(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
+		public virtual  Foto UpoadDeFotoViaAplicativo(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
-			var evento = _eventSvc.GetById(upl.IdEvento);
+			
 			var status = _sigMng.PasswordSignIn(upl.Login, upl.Senha, false, false);
 
 			if (status != SignInStatus.Success)
 				throw new Exception("Usuário ou Senha inválidos");
 
-			var user = _userMng.FindByName(upl.Login);
+			return SavePhoto(upl, upl.Login, watermarkHorizontal, watermarkVertical, destination, newSize);
+
+		}
+
+		public virtual Foto UpoadDeFoto(UploadFotoViewModel upl, string userName, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
+		{
+			return SavePhoto(upl, upl.Login, watermarkHorizontal, watermarkVertical, destination, newSize);
+		}
+
+
+		private Foto SavePhoto(UploadFotoViewModel upl, string userName, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
+		{
+			if (string.IsNullOrWhiteSpace(upl.NomeArquivo))
+				upl.NomeArquivo = upl.ArquivoAnexo.FileName;
+
+			var evento = _eventSvc.GetById(upl.IdEvento);
+			var user = _userMng.FindByName(userName);
 
 			Foto foto = new Foto
 			{
@@ -52,7 +68,7 @@ namespace PhotoStore.ApplicationServices
 				Numero = upl.Numero,
 				Vitrine = true,
 				Fotografo = user,
-				
+
 			};
 
 			ArquivoFoto arquivo = new ArquivoFoto();
@@ -69,11 +85,18 @@ namespace PhotoStore.ApplicationServices
 
 			this.Save(foto);
 
-			_resizer.ResizeAndWatermark(upl.ArquivoAnexo.InputStream, watermarkHorizontal, watermarkVertical, destination, newSize);
+			
+			_resizer.ResizeAndWatermark(
+				upl.ArquivoAnexo.InputStream, 
+				watermarkHorizontal, 
+				watermarkVertical, 
+				string.Format(destination + "{0}.thumb.jpg", foto.Id), 
+				newSize);
 
 
 			return foto;
-
 		}
-    }
+
+
+	}
 }

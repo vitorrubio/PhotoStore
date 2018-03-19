@@ -553,6 +553,12 @@
     <Content Include="Content\gijgo\fonts\gijgo-material.woff" />
     <Content Include="Content\gijgo\fonts\gijgo-material.ttf" />
     <Content Include="Areas\Fotografo\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\FotoAdmin\Upload.cshtml" />
+    <Content Include="Areas\Admin\Views\FotoAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\FotoAdmin\Editar.cshtml" />
+    <Content Include="Areas\Admin\Views\FotoAdmin\Index.cshtml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -734,7 +740,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\FotoAdmin\" />
     <Folder Include="Areas\Fotografo\Controllers\" />
     <Folder Include="Areas\Fotografo\Models\" />
     <Folder Include="Areas\Fotografo\Views\Shared\" />

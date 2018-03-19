@@ -1,0 +1,123 @@
+﻿@model PhotoStore.ViewModel.Admin.FotoAdmin.FotoAdminIndexViewModel
+
+@{
+    ViewBag.Title = "Fotos";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Fotos</h2>
+
+
+<div class="row" id="divBotoes">
+    <div class="col-sm-12 text-right">
+        @Html.ActionLink("Criar", "Editar", null, new { @class = "btn btn-primary", role = "button" })
+    </div>
+</div>
+
+<div class="sp-vertical">
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="container-fluid bordered spacer">
+
+            <div class="form-horizontal">
+                <fieldset>
+                    @Html.ValidationSummary(false, "Erros encontrados", new { @class = "text-danger" })
+
+                    <div class="row sp-vertical">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "col-form-label" })
+                                @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "col-form-label" })
+                                @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row sp-vertical">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "col-form-label" })
+                                @Html.TextBoxFor(model => model.Numero, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group  text-right">
+                        <input type="submit" value="Buscar" class="btn btn-primary" />
+                    </div>
+
+                </fieldset>
+            </div>
+        </div>
+
+    }
+
+
+
+    @if (Model.Fotos != null && Model.Fotos.Count() > 0)
+    {
+        <table id="tblLista" class="table table-striped table-bordered vtr_grid">
+
+            <thead>
+                <tr>
+                    <th class="controles">
+                        Id
+                    </th>
+                    <th>
+                        Thumb
+                    </th>
+                    <th>
+                        Nome
+                    </th>
+                    <th class="controles">
+                        Número
+                    </th>
+
+                    <th class="controles text-center"><span class="fa fa-pencil-square-o"></span></th>
+                    <th class="controles text-center"><span class="fa fa-trash-o"></span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.Fotos)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            <img src='~/Content/Images/@string.Format("{0}.thumb.jpg", item.Id)' />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Numero)
+                        </td>
+                        <td class="text-center">
+                            <a href="@(Url.Action("Editar", "Eventos", new { id = item.Id }))"><span class="fa fa-pencil-square-o"></span></a>
+                        </td>
+                        <td class="text-center">
+                            <a href="@(Url.Action("Delete", "Eventos", new { id = item.Id }))"><span class="fa fa-trash-o"></span></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+</div>

@@ -11,6 +11,7 @@ using System.Data.Entity;
 using PhotoStore.Core.Model;
 using System.Data.Entity.Infrastructure;
 using AutoMapper;
+using PhotoStore.ViewModel.Admin.FotoAdmin;
 
 namespace PhotoStore.Areas.Admin.Controllers
 {
@@ -20,17 +21,41 @@ namespace PhotoStore.Areas.Admin.Controllers
     {
 
 		private IFotoApplicationService _appSvc;
+		private IEventoApplicationService _evtSvc;
 
-
-		public FotoAdminController(IFotoApplicationService appSvc)
+		public FotoAdminController(IFotoApplicationService appSvc, IEventoApplicationService evtSvc)
 		{
 			_appSvc = appSvc;
+			_evtSvc = evtSvc;
 		}
 
-		public async Task<ActionResult> Index()
+		public ActionResult Index()
 		{
-			return View(await _appSvc.GetAll().ToListAsync());
+			return View(new FotoAdminIndexViewModel());
 		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> Index(FotoAdminIndexViewModel vm)
+		{
+			var qry = _appSvc.GetAll(x => x.Evento);
+
+			if (!string.IsNullOrWhiteSpace(vm.Evento))
+				qry = qry.Where(x => x.Evento.Nome.Contains(vm.Evento));
+
+			if (!string.IsNullOrWhiteSpace(vm.Nome))
+				qry = qry.Where(x => x.Nome.Contains(vm.Nome));
+
+			if (!string.IsNullOrWhiteSpace(vm.Evento))
+				qry = qry.Where(x => x.Numero.Contains(vm.Numero));
+
+			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await _appSvc.GetAll(x => x.Evento).ToListAsync());
+
+			vm.Fotos = fotos;
+
+			return View(vm);
+		}
+
 
 		public async Task<ActionResult> Editar(int? id)
 		{
@@ -64,6 +89,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Editar(FotoViewModel fotoVm)
 		{
+			PopulaEventos(fotoVm?.IdEvento);
 			if (ModelState.IsValid)
 			{
 				try
@@ -87,6 +113,8 @@ namespace PhotoStore.Areas.Admin.Controllers
 			return View(fotoVm);
 		}
 
+
+
 		public async Task<ActionResult> Detalhes(int id)
 		{
 			if (id == 0)
@@ -98,7 +126,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 			try
 			{
 				Foto ft = await _appSvc.GetByIdAsync(id);
-				
+
 				if (ft != null)
 				{
 					FotoViewModel ftvm = Mapper.Map<FotoViewModel>(ft);
@@ -133,7 +161,8 @@ namespace PhotoStore.Areas.Admin.Controllers
 					MensagemParaUsuarioViewModel.MensagemErro("O item não foi encontrado", TempData, ModelState);
 					return RedirectToAction("index");
 				}
-				return View(ft);
+				FotoViewModel ftvm = Mapper.Map<FotoViewModel>(ft);
+				return View(ftvm);
 			}
 			catch (Exception err)
 			{
@@ -173,5 +202,66 @@ namespace PhotoStore.Areas.Admin.Controllers
 
 			return View(ft);
 		}
+
+
+		public virtual ActionResult Upload()
+		{
+			PopulaEventos();
+			return View();
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult Upload(UploadFotoViewModel fotoVm)
+		{
+			PopulaEventos(fotoVm.IdEvento);
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var currentUsername = !string.IsNullOrWhiteSpace(this.HttpContext?.User?.Identity?.Name)
+					? HttpContext.User.Identity.Name
+					: "Anonymous";
+
+					Foto foto =  _appSvc.UpoadDeFoto(
+							fotoVm,
+							currentUsername,
+							Server.MapPath("~/content/images/horizontal.png"),
+							Server.MapPath("~/content/images/vertical.png"),
+							Server.MapPath("~/content/images/thumbnails/"),
+							450
+						);
+
+					if (foto != null)
+					{
+						MensagemParaUsuarioViewModel.MensagemSucesso("Registro Salvo.", TempData);
+						return RedirectToAction("Detalhes", new { id = foto.Id });
+					}
+					else
+					{
+						MensagemParaUsuarioViewModel.MensagemErro(" Não foi possível salvar a foto ", TempData, ModelState);
+					}
+				}
+				catch (DbUpdateConcurrencyException duce)
+				{
+					MensagemParaUsuarioViewModel.MensagemErro(" Talvez esse registro tenha sido excluído por outra pessoa. " + duce.Message, TempData, ModelState);
+				}
+				catch (Exception err)
+				{
+					MensagemParaUsuarioViewModel.MensagemErro("Esse registro não pôde ser salvo. " + err.Message, TempData, ModelState);
+				}
+			}
+			return View(fotoVm);
+		}
+
+
+
+		private void PopulaEventos(int? selecionado = null)
+		{
+			var eventos = _evtSvc.GetAll().ToList();
+			var eventosList = new SelectList(eventos, "Id", "Nome", selecionado);
+			ViewBag.ComboEventos = eventosList;
+		}
+
 	}
 }

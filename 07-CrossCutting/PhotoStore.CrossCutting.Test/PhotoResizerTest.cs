@@ -14,12 +14,12 @@ namespace PhotoStore.CrossCutting.Test
 		public void ResizeHorizontalTest()
 		{
 			PhotoResizer pr = new PhotoResizer();
-			Image original = Image.FromFile(@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\CF000891.IIQ");
+			Image original = Image.FromFile(@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\DY5A3810.jpg");
 			pr.ResizeAndWatermark(
 				original.ToStream(ImageFormat.Jpeg),
 				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\horizontal.png",
 				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\vertical.png",
-				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\CF000891.IIQ.thumb.jpg", 				 
+				@"C:\Users\vitor\Dropbox\Projetos\FotUp\Testes\DY5A3810.thumb.jpg", 				 
 				450);
 
 		}

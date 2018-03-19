@@ -1,0 +1,98 @@
+﻿@model PhotoStore.ViewModel.FotoViewModel
+
+@{
+    ViewBag.Title = "Cadastro de Fotos";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section scripts {
+
+<script type="text/javascript">
+
+        $(function () {
+
+
+        });
+
+</script>
+    
+}
+
+<h2>Cadastro de Fotos</h2>
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <div class="text-right">
+            @Html.ActionLink("Voltar à lista", "Index", null, new { @class = "btn btn-primary", role = "button" })
+        </div>
+    </div>
+
+    <div class="container-fluid bordered spacer">
+
+        <div class="form-horizontal">
+            <fieldset>
+                @Html.ValidationSummary(false, "Erros encontrados", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+
+                <div class="row sp-vertical">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <img src='~/Content/Images/@string.Format("{0}.thumb.jpg", Model.Id)' />
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "col-form-label" })
+                            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row sp-vertical">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "col-form-label" })
+                            @Html.TextBoxFor(model => model.Numero, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.IdEvento, htmlAttributes: new { @class = "col-form-label " })
+                            @Html.DropDownListFor(model => model.IdEvento, ViewBag.ComboEventos as SelectList, "Selecione...", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IdEvento, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group  text-right">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+
+            </fieldset>
+
+
+
+        </div>
+    </div>
+
+  
+
+}
