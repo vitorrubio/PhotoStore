@@ -20,6 +20,8 @@ namespace PhotoStore.ViewModel
 
         public virtual TipoProdutoViewModel Tipo { get; set; }
 
+		public virtual int IdTipoProduto { get; set; }
+
 		[Required(ErrorMessage = "O preço é obrigatório")]
 		public virtual decimal Preco { get; set; }
 

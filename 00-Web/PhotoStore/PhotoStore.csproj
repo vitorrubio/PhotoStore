@@ -58,6 +58,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\FotoAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProdutoController.cs" />
     <Compile Include="Areas\Fotografo\FotografoAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -559,6 +560,10 @@
     <Content Include="Areas\Admin\Views\FotoAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\FotoAdmin\Editar.cshtml" />
     <Content Include="Areas\Admin\Views\FotoAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\FotoAdmin\Detalhes.cshtml" />
+    <Content Include="Areas\Admin\Views\Produto\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Produto\Editar.cshtml" />
+    <Content Include="Areas\Admin\Views\Produto\Index.cshtml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />

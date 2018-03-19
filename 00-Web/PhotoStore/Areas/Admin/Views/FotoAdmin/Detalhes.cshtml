@@ -1,7 +1,7 @@
 ﻿@model PhotoStore.ViewModel.FotoViewModel
 
 @{
-    ViewBag.Title = "Excluir Foto";
+    ViewBag.Title = "Detalhes Foto";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,11 +11,25 @@
 <div>
     <h4>Foto @Model.Nome</h4>
     <hr />
-        <img src='~/Content/Images/@string.Format("{0}.thumb.jpg", @Model.Id)' />
+    <img src='@Model.ArquivoFoto.Base64SourceString' />
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayNameFor(model => model.Evento.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evento.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeArquivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeArquivo)
         </dt>
 
         <dd>

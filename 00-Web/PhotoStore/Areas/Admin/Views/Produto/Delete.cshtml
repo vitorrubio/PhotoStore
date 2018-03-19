@@ -1,11 +1,11 @@
-﻿@model PhotoStore.ViewModel.FotoViewModel
+﻿@model PhotoStore.Core.Model.Produto
 
 @{
-    ViewBag.Title = "Excluir Foto";
+    ViewBag.Title = "Excluir Produto";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Excluir Foto</h2>
+<h2>Excluir Produto</h2>
 
 <h3>Você tem certeza que deseja excluir?</h3>
 <div>
@@ -23,11 +23,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Numero)
+            @Html.DisplayNameFor(model => model.Descricao)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Numero)
+            @Html.DisplayFor(model => model.Descricao)
         </dd>
 
     </dl>

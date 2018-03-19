@@ -1,11 +1,11 @@
-﻿@model PhotoStore.ViewModel.Admin.FotoAdmin.FotoAdminIndexViewModel
+﻿@model IEnumerable< PhotoStore.Core.Model.Produto>
 
 @{
-    ViewBag.Title = "Fotos";
+    ViewBag.Title = "Produtos";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Fotos</h2>
+<h2>Produtos</h2>
 
 
 <div class="row" id="divBotoes">
@@ -18,7 +18,7 @@
 
 
 
-    @using (Html.BeginForm())
+    @*@using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
@@ -64,27 +64,30 @@
             </div>
         </div>
 
-    }
+    }*@
 
 
 
-    @if (Model.Fotos != null && Model.Fotos.Count() > 0)
-    {
+
+
         <table id="tblLista" class="table table-striped table-bordered vtr_grid">
 
             <thead>
                 <tr>
                     <th class="controles">
-                        Id
+                        @Html.DisplayNameFor(m => m.Id)
                     </th>
                     <th>
-                        Thumb
+                        @Html.DisplayNameFor(m => m.Nome)
                     </th>
                     <th>
-                        Nome
+                        @Html.DisplayNameFor(m => m.Descricao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Tipo.Nome)
                     </th>
                     <th class="controles">
-                        Número
+                        @Html.DisplayNameFor(m => m.Preco)
                     </th>
 
                     <th class="controles text-center"><span class="fa fa-pencil-square-o"></span></th>
@@ -93,31 +96,39 @@
             </thead>
 
             <tbody>
-                @foreach (var item in Model.Fotos)
+                @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            <img src='~/Content/Images/@string.Format("{0}.thumb.jpg", item.Id)' />
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Numero)
-                        </td>
-                        <td class="text-center">
-                            <a href="@(Url.Action("Editar", "FotoAdmin", new { id = item.Id }))"><span class="fa fa-pencil-square-o"></span></a>
-                        </td>
-                        <td class="text-center">
-                            <a href="@(Url.Action("Delete", "FotoAdmin", new { id = item.Id }))"><span class="fa fa-trash-o"></span></a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo.Nome)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Preco)
+                    </td>
+
+                    <td class="text-center">
+                        <a href="@(Url.Action("Editar", "Produto", new { id = item.Id }))"><span class="fa fa-pencil-square-o"></span></a>
+                    </td>
+                    <td class="text-center">
+                        <a href="@(Url.Action("Delete", "Produto", new { id = item.Id }))"><span class="fa fa-trash-o"></span></a>
+                    </td>
+                </tr>
                 }
             </tbody>
 
         </table>
-    }
+
 </div>

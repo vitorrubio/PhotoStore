@@ -12,13 +12,14 @@ using PhotoStore.Core.Model;
 using System.Data.Entity.Infrastructure;
 using AutoMapper;
 using PhotoStore.ViewModel.Admin.FotoAdmin;
+using PhotoStore.Controllers;
 
 namespace PhotoStore.Areas.Admin.Controllers
 {
 	[PhotoStoreAuthorize(Roles = "Administrator")]
 	[RouteArea("Admin")]
-	public class FotoAdminController : Controller
-    {
+	public class FotoAdminController : BaseController
+	{
 
 		private IFotoApplicationService _appSvc;
 		private IEventoApplicationService _evtSvc;

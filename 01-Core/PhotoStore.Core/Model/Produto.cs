@@ -21,6 +21,9 @@ namespace PhotoStore.Core.Model
 
         public virtual TipoProduto Tipo { get; set; }
 
+		[ForeignKey("Tipo")]
+		public virtual int IdTipoProduto { get; set; }
+
 		[Required(ErrorMessage = "O preço é obrigatório")]
 		public virtual decimal Preco { get; set; }
 
