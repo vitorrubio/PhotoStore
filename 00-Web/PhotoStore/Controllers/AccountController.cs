@@ -18,7 +18,7 @@ namespace PhotoStore.Controllers
         private ApplicationUserManager _userManager;
 
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;

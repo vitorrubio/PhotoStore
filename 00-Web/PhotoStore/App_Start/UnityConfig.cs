@@ -1,15 +1,23 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using PhotoStore.ApplicationServices;
 using PhotoStore.ApplicationServices.Interfaces;
+using PhotoStore.Controllers;
 using PhotoStore.Core.Interfaces.Repositories;
 using PhotoStore.Core.Interfaces.Services;
+using PhotoStore.Core.Model;
 using PhotoStore.Core.Services;
 using PhotoStore.Infra.DbContext;
 using PhotoStore.Infra.Repository;
 using PhotoStore.Infra.Services;
 using System;
-
+using System.Data.Entity;
+using System.Web;
 using Unity;
 using Unity.AspNet.Mvc;
+using Unity.Injection;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 
 namespace PhotoStore
 {
@@ -52,7 +60,9 @@ namespace PhotoStore
 			// TODO: Register your type's mappings here.
 			// container.RegisterType<IProductRepository, ProductRepository>();
 
+			container.RegisterType<DbContext, ApplicationDbContext>(new PerRequestLifetimeManager());
 			container.RegisterType<ApplicationDbContext, ApplicationDbContext>(new PerRequestLifetimeManager());
+			
 
 			container.RegisterType<IEventoRepository, EventoRepository>();
 			container.RegisterType<IFotoRepository, FotoRepository>();
@@ -74,9 +84,21 @@ namespace PhotoStore
 			container.RegisterType<IProdutoApplicationService, ProdutoApplicationService>();
 			container.RegisterType<ITipoProdutoApplicationService, TipoProdutoApplicationService>();
 
+
+			container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
 			container.RegisterType<ApplicationUserManager, ApplicationUserManager>();
 			container.RegisterType<ApplicationSignInManager, ApplicationSignInManager>();
 			container.RegisterType<ApplicationRoleManager, ApplicationRoleManager>();
+			container.RegisterType<IAuthenticationManager>(
+				new InjectionFactory(
+					o => System.Web.HttpContext.Current.GetOwinContext().Authentication
+				)
+			);
+
+			//container.RegisterType<AccountController>(new InjectionConstructor(System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationUserManager>(), System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>()));
+			//container.RegisterType<RolesAdminController>(new InjectionConstructor());
+			//container.RegisterType<ManageController>(new InjectionConstructor(System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationUserManager>(), System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>()));
+			//container.RegisterType<UsersAdminController>(new InjectionConstructor());
 		}
 	}
 }
