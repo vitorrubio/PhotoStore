@@ -68,7 +68,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Editar([Bind(Include = "Id, Nome, Descricao, Preco, TipoProdutoId")] Produto pd)
+		public async Task<ActionResult> Editar([Bind(Include = "Id, Nome, Descricao, Preco, IdTipoProduto")] Produto pd)
 		{
 			ComboTipoProduto(pd?.IdTipoProduto);
 			if (ModelState.IsValid)

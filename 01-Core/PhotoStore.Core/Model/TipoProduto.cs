@@ -16,7 +16,7 @@ namespace PhotoStore.Core.Model
         [MaxLength(80, ErrorMessage = "O nome deve ter no máximo 80 caracteres")]
         [Display(Name = "Nome")]
         public virtual string Nome { get; set; }
-
+		 
         [Required]
         [MaxLength(2000, ErrorMessage = "a Descricao deve ter no máximo 80 caracteres")]
         [Display(Name = "Descrição")]

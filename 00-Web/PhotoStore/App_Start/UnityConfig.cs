@@ -18,6 +18,7 @@ using Unity.AspNet.Mvc;
 using Unity.Injection;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using PhotoStore.CrossCutting;
 
 namespace PhotoStore
 {
@@ -84,6 +85,8 @@ namespace PhotoStore
 			container.RegisterType<IProdutoApplicationService, ProdutoApplicationService>();
 			container.RegisterType<ITipoProdutoApplicationService, TipoProdutoApplicationService>();
 
+
+			container.RegisterType<IPhotoResizer, PhotoResizer>();
 
 			container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
 			container.RegisterType<ApplicationUserManager, ApplicationUserManager>();
