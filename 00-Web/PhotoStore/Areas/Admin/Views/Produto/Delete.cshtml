@@ -9,10 +9,7 @@
 
 <h3>Você tem certeza que deseja excluir?</h3>
 <div>
-    <h4>Foto @Model.Nome</h4>
-    <hr />
-        <img src='~/Content/Images/@string.Format("{0}.thumb.jpg", @Model.Id)' />
-    <hr />
+    <h4>@Model.Nome</h4>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Nome)

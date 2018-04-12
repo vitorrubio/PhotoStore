@@ -1207,3 +1207,258 @@ StackTrace:---------------------------------------------------------------------
    em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
 ================================================================================
+Data: 2018-04-12 09:04:07-------------------------------------------------------
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+mscorlib
+StackTrace:---------------------------------------------------------------------
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   em PhotoStore.Infra.DbContext.ApplicationDbContext.<SaveChangesAsync>d__32.MoveNext() na C:\Users\vitor\Source\Repos\PhotoStore\02-Infra\PhotoStore.Infra\DbContext\ApplicationDbContext.cs:linha 70
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+EntityFramework
+StackTrace:---------------------------------------------------------------------
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+Mensagem:-----------------------------------------------------------------------
+Não é possível inserir uma linha de chave duplicada no objeto 'dbo.TipoProduto' com índice exclusivo 'IX_Nome'. O valor de chave duplicada é (teste).
+A instrução foi finalizada.
+Source:-------------------------------------------------------------------------
+.Net SqlClient Data Provider
+StackTrace:---------------------------------------------------------------------
+   em System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__174_0(Task`1 result)
+   em System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   em System.Threading.Tasks.Task.Execute()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   em System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+================================================================================
+Data: 2018-04-12 09:04:42-------------------------------------------------------
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+mscorlib
+StackTrace:---------------------------------------------------------------------
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   em PhotoStore.Infra.DbContext.ApplicationDbContext.<SaveChangesAsync>d__32.MoveNext() na C:\Users\vitor\Source\Repos\PhotoStore\02-Infra\PhotoStore.Infra\DbContext\ApplicationDbContext.cs:linha 70
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+EntityFramework
+StackTrace:---------------------------------------------------------------------
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+Mensagem:-----------------------------------------------------------------------
+Não é possível inserir uma linha de chave duplicada no objeto 'dbo.Produto' com índice exclusivo 'IX_Nome'. O valor de chave duplicada é (teste).
+A instrução foi finalizada.
+Source:-------------------------------------------------------------------------
+.Net SqlClient Data Provider
+StackTrace:---------------------------------------------------------------------
+   em System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__174_0(Task`1 result)
+   em System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   em System.Threading.Tasks.Task.Execute()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   em System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+================================================================================
+Data: 2018-04-12 09:09:31-------------------------------------------------------
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+mscorlib
+StackTrace:---------------------------------------------------------------------
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   em PhotoStore.Infra.DbContext.ApplicationDbContext.<SaveChangesAsync>d__32.MoveNext() na C:\Users\vitor\Source\Repos\PhotoStore\02-Infra\PhotoStore.Infra\DbContext\ApplicationDbContext.cs:linha 70
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+EntityFramework
+StackTrace:---------------------------------------------------------------------
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+Mensagem:-----------------------------------------------------------------------
+Não é possível inserir uma linha de chave duplicada no objeto 'dbo.TipoProduto' com índice exclusivo 'IX_Nome'. O valor de chave duplicada é (tete).
+A instrução foi finalizada.
+Source:-------------------------------------------------------------------------
+.Net SqlClient Data Provider
+StackTrace:---------------------------------------------------------------------
+   em System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__174_0(Task`1 result)
+   em System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   em System.Threading.Tasks.Task.Execute()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   em System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+================================================================================
+Data: 2018-04-12 09:10:38-------------------------------------------------------
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+mscorlib
+StackTrace:---------------------------------------------------------------------
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   em PhotoStore.Infra.DbContext.ApplicationDbContext.<SaveChangesAsync>d__32.MoveNext() na C:\Users\vitor\Source\Repos\PhotoStore\02-Infra\PhotoStore.Infra\DbContext\ApplicationDbContext.cs:linha 70
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+EntityFramework
+StackTrace:---------------------------------------------------------------------
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+Mensagem:-----------------------------------------------------------------------
+Não é possível inserir uma linha de chave duplicada no objeto 'dbo.TipoProduto' com índice exclusivo 'IX_Nome'. O valor de chave duplicada é (tete).
+A instrução foi finalizada.
+Source:-------------------------------------------------------------------------
+.Net SqlClient Data Provider
+StackTrace:---------------------------------------------------------------------
+   em System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__174_0(Task`1 result)
+   em System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   em System.Threading.Tasks.Task.Execute()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   em System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+================================================================================
+Data: 2018-04-12 09:11:37-------------------------------------------------------
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+mscorlib
+StackTrace:---------------------------------------------------------------------
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   em PhotoStore.Infra.DbContext.ApplicationDbContext.<SaveChangesAsync>d__32.MoveNext() na C:\Users\vitor\Source\Repos\PhotoStore\02-Infra\PhotoStore.Infra\DbContext\ApplicationDbContext.cs:linha 70
+Mensagem:-----------------------------------------------------------------------
+An error occurred while updating the entries. See the inner exception for details.
+Source:-------------------------------------------------------------------------
+EntityFramework
+StackTrace:---------------------------------------------------------------------
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+Mensagem:-----------------------------------------------------------------------
+Não é possível inserir uma linha de chave duplicada no objeto 'dbo.TipoProduto' com índice exclusivo 'IX_Nome'. O valor de chave duplicada é (tete).
+A instrução foi finalizada.
+Source:-------------------------------------------------------------------------
+.Net SqlClient Data Provider
+StackTrace:---------------------------------------------------------------------
+   em System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__174_0(Task`1 result)
+   em System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   em System.Threading.Tasks.Task.Execute()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   em System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- Fim do rastreamento de pilha do local anterior onde a exceção foi gerada ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+================================================================================
