@@ -79,6 +79,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 					await _appSvc.SaveAsync(pd);
 
 					MensagemParaUsuarioViewModel.MensagemSucesso("Registro Salvo.", TempData);
+					ModelState.Clear();
 					return View(pd);
 				}
 				catch (DbUpdateConcurrencyException duce)

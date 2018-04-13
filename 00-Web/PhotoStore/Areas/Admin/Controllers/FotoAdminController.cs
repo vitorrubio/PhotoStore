@@ -100,6 +100,9 @@ namespace PhotoStore.Areas.Admin.Controllers
 					await _appSvc.SaveAsync(foto);
 
 					MensagemParaUsuarioViewModel.MensagemSucesso("Registro Salvo.", TempData);
+
+					ModelState.Clear();
+					//ModelState["Id"].Value = new ValueProviderResult(ev.Id, "", new System.Globalization.CultureInfo("pt-BR"));
 					return View(fotoVm);
 				}
 				catch (DbUpdateConcurrencyException duce)
@@ -236,6 +239,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 					if (foto != null)
 					{
 						MensagemParaUsuarioViewModel.MensagemSucesso("Registro Salvo.", TempData);
+						ModelState.Clear();
 						return RedirectToAction("Detalhes", new { id = foto.Id });
 					}
 					else
