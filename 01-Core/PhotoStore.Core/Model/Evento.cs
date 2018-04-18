@@ -20,7 +20,10 @@ namespace PhotoStore.Core.Model
         [Display(Name = "Fotos deste evento")]
         public virtual ICollection<Foto> Fotos { get; set; }
 
-		public virtual Foto Capa { get; set; }
+		[ForeignKey("FotoDeCapa")]
+		public virtual int? FotoDeCapaId { get; set; }
+
+		public virtual Foto FotoDeCapa { get; set; }
 
 		public virtual bool Vitrine { get; set; }
 
