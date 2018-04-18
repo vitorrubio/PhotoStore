@@ -10,8 +10,12 @@ namespace PhotoStore.Core.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
 
-        [Display(Name = "Evento")]
-        public virtual Evento Evento { get; set; }
+
+
+        [Display(Name = "Evento")]		
+		public virtual Evento Evento { get; set; }
+		[ForeignKey("Evento")]
+		public virtual int EventoId { get; set; }
 
         [Display(Name = "Nome do Arquivo")]
         public virtual string NomeArquivo { get; set; }

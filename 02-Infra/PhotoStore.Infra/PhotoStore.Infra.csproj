@@ -101,30 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContext\ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201802132138063_inicial.cs" />
-    <Compile Include="Migrations\201802132138063_inicial.Designer.cs">
-      <DependentUpon>201802132138063_inicial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802261737297_foto e produto unidos no item.cs" />
-    <Compile Include="Migrations\201802261737297_foto e produto unidos no item.Designer.cs">
-      <DependentUpon>201802261737297_foto e produto unidos no item.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802261757462_campo ativo.cs" />
-    <Compile Include="Migrations\201802261757462_campo ativo.Designer.cs">
-      <DependentUpon>201802261757462_campo ativo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803042203140_statusPedido.cs" />
-    <Compile Include="Migrations\201803042203140_statusPedido.Designer.cs">
-      <DependentUpon>201803042203140_statusPedido.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803050217381_licacaoFoto.cs" />
-    <Compile Include="Migrations\201803050217381_licacaoFoto.Designer.cs">
-      <DependentUpon>201803050217381_licacaoFoto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804030141160_sincronizacao20180402.cs" />
-    <Compile Include="Migrations\201804030141160_sincronizacao20180402.Designer.cs">
-      <DependentUpon>201804030141160_sincronizacao20180402.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EventoRepository.cs" />
@@ -152,26 +128,6 @@
       <Project>{eeb2e561-41ad-49a9-b016-556305ce472b}</Project>
       <Name>PhotoStore.CrossCutting</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802132138063_inicial.resx">
-      <DependentUpon>201802132138063_inicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802261737297_foto e produto unidos no item.resx">
-      <DependentUpon>201802261737297_foto e produto unidos no item.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802261757462_campo ativo.resx">
-      <DependentUpon>201802261757462_campo ativo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803042203140_statusPedido.resx">
-      <DependentUpon>201803042203140_statusPedido.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803050217381_licacaoFoto.resx">
-      <DependentUpon>201803050217381_licacaoFoto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804030141160_sincronizacao20180402.resx">
-      <DependentUpon>201804030141160_sincronizacao20180402.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -71,8 +71,6 @@ namespace PhotoStore.Areas.Admin.Controllers
 
 					MensagemParaUsuarioViewModel.MensagemSucesso("Registro Salvo.", TempData);
 					ModelState.Clear();
-					//ModelState["Id"].Value = new ValueProviderResult(ev.Id, "", new System.Globalization.CultureInfo("pt-BR"));
-
 					return View(ev);
                 }
                 catch (DbUpdateConcurrencyException duce)

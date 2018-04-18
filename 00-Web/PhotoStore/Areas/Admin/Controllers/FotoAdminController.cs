@@ -47,7 +47,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 			if (!string.IsNullOrWhiteSpace(vm.Nome))
 				qry = qry.Where(x => x.Nome.Contains(vm.Nome));
 
-			if (!string.IsNullOrWhiteSpace(vm.Evento))
+			if (!string.IsNullOrWhiteSpace(vm.Numero))
 				qry = qry.Where(x => x.Numero.Contains(vm.Numero));
 
 			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await _appSvc.GetAll(x => x.Evento).ToListAsync());
