@@ -14,7 +14,7 @@ namespace PhotoStore.ViewModel
         public virtual EventoViewModel Evento { get; set; }
 
 		[Display(Name = "Evento")]
-		public virtual int IdEvento { get; set; }
+		public virtual int EventoId { get; set; }
 
         [Display(Name = "Nome do Arquivo")]
         public virtual string NomeArquivo { get; set; }

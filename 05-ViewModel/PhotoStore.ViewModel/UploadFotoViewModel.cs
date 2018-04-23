@@ -13,10 +13,11 @@ namespace PhotoStore.ViewModel
         public virtual string Senha { get; set; }
 
 
-
+		[Display(Name = "Evento")]
+		public virtual EventoViewModel Evento { get; set; }
 
 		[Display(Name = "Evento")]
-		public virtual int IdEvento { get; set; }
+		public virtual int EventoId { get; set; }
 
 		[Display(Name = "Nome do Arquivo")]
 		public virtual string NomeArquivo { get; set; }
@@ -30,8 +31,20 @@ namespace PhotoStore.ViewModel
 		[Display(Name = "Número na Foto")]
 		public virtual string Numero { get; set; }
 
+		[Display(Name = "Fotógrafo")]
+		public virtual ApplicationUserViewModel Fotografo { get; set; }
 
-        [Required(ErrorMessage = "Por favor selecione uma foto.")]
+		[Display(Name = "Mostrar na Vitrine")]
+		public virtual bool Vitrine { get; set; }
+
+		[Display(Name = "Capa de Evento")]
+		public virtual bool CapaDeEvento { get; set; }
+
+		[Display(Name = "Arquivo da Foto")]
+		public virtual ArquivoFotoViewModel ArquivoFoto { get; set; }
+
+
+		[Required(ErrorMessage = "Por favor selecione uma foto.")]
         [FileTypes("jpg,jpeg,png,bmp,gif")]
         [DataType(DataType.Upload)]
         [Display(Name = "Foto")]

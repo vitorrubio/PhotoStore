@@ -90,7 +90,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Editar(FotoViewModel fotoVm)
 		{
-			PopulaEventos(fotoVm?.IdEvento);
+			PopulaEventos(fotoVm?.EventoId);
 			if (ModelState.IsValid)
 			{
 				try
@@ -218,7 +218,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Upload(UploadFotoViewModel fotoVm)
 		{
-			PopulaEventos(fotoVm.IdEvento);
+			PopulaEventos(fotoVm.EventoId);
 			if (ModelState.IsValid)
 			{
 				try

@@ -101,6 +101,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContext\ApplicationDbContext.cs" />
+    <Compile Include="Migrations\201804230010077_inicial.cs" />
+    <Compile Include="Migrations\201804230010077_inicial.Designer.cs">
+      <DependentUpon>201804230010077_inicial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EventoRepository.cs" />
@@ -128,6 +132,11 @@
       <Project>{eeb2e561-41ad-49a9-b016-556305ce472b}</Project>
       <Name>PhotoStore.CrossCutting</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804230010077_inicial.resx">
+      <DependentUpon>201804230010077_inicial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

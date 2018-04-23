@@ -57,7 +57,7 @@ namespace PhotoStore.ApplicationServices
 			if (string.IsNullOrWhiteSpace(upl.NomeArquivo))
 				upl.NomeArquivo = upl.ArquivoAnexo.FileName;
 
-			var evento = _eventSvc.GetById(upl.IdEvento);
+			var evento = _eventSvc.GetById(upl.EventoId);
 			var user = _userMng.FindByName(userName);
 
 			Foto foto = new Foto
