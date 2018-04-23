@@ -39,7 +39,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Index(FotoAdminIndexViewModel vm)
 		{
-			var qry = _appSvc.GetAll(x => x.Evento);
+			var qry = _appSvc.GetAll(x => x.Evento); 
 
 			if (!string.IsNullOrWhiteSpace(vm.Evento))
 				qry = qry.Where(x => x.Evento.Nome.Contains(vm.Evento));
@@ -50,7 +50,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 			if (!string.IsNullOrWhiteSpace(vm.Numero))
 				qry = qry.Where(x => x.Numero.Contains(vm.Numero));
 
-			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await _appSvc.GetAll(x => x.Evento).ToListAsync());
+			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await _appSvc.GetAll(x => x.Evento).ToListAsync()); 
 
 			vm.Fotos = fotos;
 

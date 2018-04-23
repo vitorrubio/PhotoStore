@@ -112,6 +112,7 @@
     <Compile Include="Interfaces\Services\IProdutoService.cs" />
     <Compile Include="Interfaces\Services\ITipoProdutoService.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
+    <Compile Include="Model\ArquivoCapa.cs" />
     <Compile Include="Model\ArquivoFoto.cs" />
     <Compile Include="Model\Entidade.cs" />
     <Compile Include="Model\Evento.cs" />

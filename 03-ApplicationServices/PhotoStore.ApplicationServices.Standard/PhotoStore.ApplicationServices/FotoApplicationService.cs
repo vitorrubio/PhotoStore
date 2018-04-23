@@ -62,7 +62,7 @@ namespace PhotoStore.ApplicationServices
 
 			Foto foto = new Foto
 			{
-				Evento = evento,
+				Evento = evento, 
 				Nome = upl.Nome,
 				NomeArquivo = upl.NomeArquivo,
 				Numero = upl.Numero,

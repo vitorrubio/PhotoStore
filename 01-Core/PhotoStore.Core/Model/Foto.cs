@@ -11,8 +11,6 @@ namespace PhotoStore.Core.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
 
-
-
         [Display(Name = "Evento")]		
 		public virtual Evento Evento { get; set; }
 
@@ -34,14 +32,15 @@ namespace PhotoStore.Core.Model
         [Display(Name = "Fotógrafo")]
         public virtual ApplicationUser Fotografo { get; set; }
 
+		[Display(Name = "Mostrar na Vitrine")]
 		public virtual bool Vitrine { get; set; }
 
+		[Display(Name = "Capa de Evento")]
+		public virtual bool CapaDeEvento { get; set; }
 
+		[Display(Name = "Arquivo da Foto")]
 		public virtual ArquivoFoto ArquivoFoto { get; set; }
 
-		[Display(Name = "Eventos dos quais esta foto é capa")]
-		[InverseProperty("FotoDeCapa")]
-		public virtual ICollection<Evento> EventosCapa { get; set; }
 	}
 
 

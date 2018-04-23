@@ -31,9 +31,13 @@ namespace PhotoStore.ViewModel
         [Display(Name = "Fotógrafo")]
         public virtual ApplicationUserViewModel Fotografo { get; set; }
 
+		[Display(Name = "Mostrar na Vitrine")]
 		public virtual bool Vitrine { get; set; }
 
+		[Display(Name = "Capa de Evento")]
+		public virtual bool CapaDeEvento { get; set; }
 
+		[Display(Name = "Arquivo da Foto")]
 		public virtual ArquivoFotoViewModel ArquivoFoto { get; set; }
 
     }

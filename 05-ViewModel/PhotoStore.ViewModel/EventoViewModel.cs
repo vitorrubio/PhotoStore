@@ -13,15 +13,13 @@ namespace PhotoStore.ViewModel
 			this.Inicio = DateTime.Today;
 		}
 
-		[Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public virtual int Id { get; set; }
 
         [Display(Name = "Fotos deste evento")]
         public virtual ICollection<FotoViewModel> Fotos { get; set; }
 
-		public virtual FotoViewModel Capa { get; set; }
-
+		[Display(Name = "Mostrar na Vitrine")]
 		public virtual bool Vitrine { get; set; }
 
 		[Display(Name = "Fotógrafos deste evento")]

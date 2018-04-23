@@ -6,8 +6,7 @@ namespace PhotoStore.ViewModel
 {
     public class ItemDoPedidoViewModel
 	{
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public virtual int Id { get; set; }
 
         [Display(Name = "Produto")]

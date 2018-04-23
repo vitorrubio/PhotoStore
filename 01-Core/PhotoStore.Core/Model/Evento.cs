@@ -20,11 +20,7 @@ namespace PhotoStore.Core.Model
         [Display(Name = "Fotos deste evento")]
         public virtual ICollection<Foto> Fotos { get; set; }
 
-		[ForeignKey("FotoDeCapa")]
-		public virtual int? FotoDeCapaId { get; set; }
-
-		public virtual Foto FotoDeCapa { get; set; }
-
+		[Display(Name = "Mostrar na Vitrine")]
 		public virtual bool Vitrine { get; set; }
 
 		[Display(Name = "Fotógrafos deste evento")]
@@ -48,6 +44,8 @@ namespace PhotoStore.Core.Model
 		[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
 		public virtual DateTime? Fim { get; set; }
 
+		[Display(Name = "Foto \"capa\" deste evento")]
+		public virtual ArquivoCapa ArquivoCapa { get; set; }
 
-    }
+	}
 }

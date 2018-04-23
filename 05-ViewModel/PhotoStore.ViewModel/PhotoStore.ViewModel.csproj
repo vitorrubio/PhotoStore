@@ -87,6 +87,7 @@
     <Compile Include="Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Admin\FotoAdmin\FotoAdminIndexViewModel.cs" />
     <Compile Include="ApplicationUserViewModel.cs" />
+    <Compile Include="ArquivoCapaViewModel.cs" />
     <Compile Include="ArquivoFotoViewModel.cs" />
     <Compile Include="EventoViewModel.cs" />
     <Compile Include="FotoViewModel.cs" />
