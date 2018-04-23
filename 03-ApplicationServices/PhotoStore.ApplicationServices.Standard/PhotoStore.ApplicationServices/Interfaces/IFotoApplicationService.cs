@@ -7,6 +7,6 @@ namespace PhotoStore.ApplicationServices.Interfaces
     {
 		Foto UpoadDeFotoViaAplicativo(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize);
 
-		Foto UpoadDeFoto(UploadFotoViewModel upl, string userName, string watermarkHorizontal, string watermarkVertical, string destination, int newSize);
+		Foto UpoadDeFoto(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize);
 	}
 }

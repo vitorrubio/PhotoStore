@@ -60,14 +60,16 @@ namespace PhotoStore.Areas.Admin.Controllers
 
 		public async Task<ActionResult> Editar(int? id)
 		{
+			PopulaEventos();
 			if ((id == null) || (id == 0))
 			{
-				return View(new Foto());
+				return View(new FotoViewModel());
 			}
 
 			try
 			{
-				Foto ft = await _appSvc.GetByIdAsync(id.Value);
+				Foto foto = await _appSvc.GetByIdAsync(id.Value);
+				FotoViewModel ft = Mapper.Map<FotoViewModel>(foto);
 
 				if (ft != null)
 				{
@@ -211,7 +213,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 		public virtual ActionResult Upload()
 		{
 			PopulaEventos();
-			return View();
+			return View(new UploadFotoViewModel());
 		}
 
 		[HttpPost]
@@ -227,9 +229,10 @@ namespace PhotoStore.Areas.Admin.Controllers
 					? HttpContext.User.Identity.Name
 					: "Anonymous";
 
+					fotoVm.Login = currentUsername;
+
 					Foto foto =  _appSvc.UpoadDeFoto(
 							fotoVm,
-							currentUsername,
 							Server.MapPath("~/content/images/horizontal.png"),
 							Server.MapPath("~/content/images/vertical.png"),
 							Server.MapPath("~/content/images/thumbnails/"),

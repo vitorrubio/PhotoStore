@@ -23,7 +23,7 @@
 
 
 
-@using (Html.BeginForm("FotoAdmin", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Upload", "FotoAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -78,7 +78,7 @@
                         <div class="form-group">
 
                             @Html.LabelFor(model => model.ArquivoAnexo, htmlAttributes: new { @class = "col-form-label " })
-                            <input type="file" name="ArquivoAnexo" id="ArquivoAnexo" />
+                            <input type="file" name="ArquivoAnexo" id="ArquivoAnexo" class="form-control-file" />
                             @Html.ValidationMessageFor(model => model.ArquivoAnexo, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             @Html.LabelFor(model => model.Vitrine, htmlAttributes: new { @class = "col-form-label" })
-                            @Html.CheckBoxFor(model => model.Vitrine, new { @class = "form-control checkbox" })
+                            @Html.CheckBoxFor(model => model.Vitrine, new { @class = "checkbox" })
                         </div>
                     </div>
 
@@ -98,7 +98,7 @@
                         <div class="form-group">
 
                             @Html.LabelFor(model => model.CapaDeEvento, htmlAttributes: new { @class = "col-form-label" })
-                            @Html.CheckBoxFor(model => model.CapaDeEvento, new { @class = "form-control checkbox" })
+                            @Html.CheckBoxFor(model => model.CapaDeEvento, new { @class = "checkbox" })
 
                         </div>
                     </div>

@@ -7,15 +7,15 @@
 
 @section scripts {
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
         $(function () {
 
 
         });
 
-</script>
-    
+    </script>
+
 }
 
 <h2>Cadastro de Fotos</h2>
@@ -42,13 +42,16 @@
 
 
                 <div class="row sp-vertical">
-                    <div class="col-sm-6">
-                        <div class="form-group">
+                    @if (Model.Id > 0 && System.IO.File.Exists(Server.MapPath("~/Content/Images/"+string.Format("{0}.thumb.jpg", Model.Id))))
+                    {
+                        <div class="col-sm-6">
+                            <div class="form-group">
 
-                            <img src='~/Content/Images/@string.Format("{0}.thumb.jpg", Model.Id)' />
+                                <img src='~/Content/Images/@string.Format("{0}.thumb.jpg", Model.Id)' />
 
+                            </div>
                         </div>
-                    </div>
+                    }
 
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -88,7 +91,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             @Html.LabelFor(model => model.Vitrine, htmlAttributes: new { @class = "col-form-label" })
-                            @Html.CheckBoxFor(model => model.Vitrine, new { @class = "form-control checkbox" })
+                            @Html.CheckBoxFor(model => model.Vitrine, new { @class = " checkbox" })
                         </div>
                     </div>
 
@@ -96,7 +99,7 @@
                         <div class="form-group">
 
                             @Html.LabelFor(model => model.CapaDeEvento, htmlAttributes: new { @class = "col-form-label" })
-                            @Html.CheckBoxFor(model => model.CapaDeEvento, new { @class = "form-control checkbox" })
+                            @Html.CheckBoxFor(model => model.CapaDeEvento, new { @class = " checkbox" })
 
                         </div>
                     </div>
@@ -115,6 +118,6 @@
         </div>
     </div>
 
-  
+
 
 }

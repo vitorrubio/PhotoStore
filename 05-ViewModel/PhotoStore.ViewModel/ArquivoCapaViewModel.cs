@@ -25,7 +25,7 @@ namespace PhotoStore.ViewModel
 			{
 				var extension = Path.GetExtension(NomeDoArquivo);
 				var base64 = Convert.ToBase64String(Bytes);
-				return String.Format("data:image/{0};base64,{1}", base64, extension);
+				return String.Format("data:image/{0};base64,{1}", extension, base64);
 			}
 		}
     }

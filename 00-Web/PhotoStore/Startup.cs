@@ -1,6 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
-
+using PhotoStore.App_Start;
 
 [assembly: OwinStartupAttribute(typeof(PhotoStore.Startup))]
 namespace PhotoStore
@@ -11,6 +11,7 @@ namespace PhotoStore
         public void Configuration(IAppBuilder app)
         {
 			ConfigureAuth(app);
+			AutoMapperBindings.Config();
 		}
 
 	}

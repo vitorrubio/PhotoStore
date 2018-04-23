@@ -6,36 +6,18 @@ namespace PhotoStore.App_Start
 
 	public static class AutoMapperBindings
 	{
-		private static bool _inicializado = false;
-
-
-		static AutoMapperBindings()
-		{
-			AutoMapperBindings.Config();
-		}
-
-
 		public static void Config()
 		{
 
-			if (!AutoMapperBindings._inicializado)
+			AutoMapper.Mapper.Initialize(cfg =>
 			{
+				DomainToDomain(cfg);
 
-				AutoMapper.Mapper.Initialize(cfg =>
-				{
-					DomainToDomain(cfg);
+				DomainToViewModel(cfg);
 
-					DomainToViewModel(cfg);
+				ViewModelToDomain(cfg);
 
-					ViewModelToDomain(cfg);
-
-				});
-
-
-
-				AutoMapperBindings._inicializado = true;
-
-			}
+			});
 		}
 
 		private static void ViewModelToDomain(AutoMapper.IMapperConfigurationExpression cfg)

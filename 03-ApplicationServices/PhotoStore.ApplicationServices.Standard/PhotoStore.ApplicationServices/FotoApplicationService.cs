@@ -8,6 +8,7 @@ using System.IO;
 using PhotoStore.ApplicationServices.Interfaces;
 using PhotoStore.Core.Interfaces.Services;
 using PhotoStore.CrossCutting;
+using System.Web;
 
 namespace PhotoStore.ApplicationServices
 {
@@ -42,59 +43,72 @@ namespace PhotoStore.ApplicationServices
 			if (status != SignInStatus.Success)
 				throw new Exception("Usuário ou Senha inválidos");
 
-			return SavePhoto(upl, upl.Login, watermarkHorizontal, watermarkVertical, destination, newSize);
+			return SavePhoto(upl, watermarkHorizontal, watermarkVertical, destination, newSize);
 
 		}
 
-		public virtual Foto UpoadDeFoto(UploadFotoViewModel upl, string userName, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
+		public virtual Foto UpoadDeFoto(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
-			return SavePhoto(upl, upl.Login, watermarkHorizontal, watermarkVertical, destination, newSize);
+			return SavePhoto(upl, watermarkHorizontal, watermarkVertical, destination, newSize);
 		}
 
 
-		private Foto SavePhoto(UploadFotoViewModel upl, string userName, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
+		private Foto SavePhoto(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
-			if (string.IsNullOrWhiteSpace(upl.NomeArquivo))
-				upl.NomeArquivo = upl.ArquivoAnexo.FileName;
 
-			var evento = _eventSvc.GetById(upl.EventoId);
-			var user = _userMng.FindByName(userName);
 
-			Foto foto = new Foto
+			if(upl.ArquivoAnexo != null && upl.ArquivoAnexo.ContentLength > 0)
 			{
-				Evento = evento, 
-				Nome = upl.Nome,
-				NomeArquivo = upl.NomeArquivo,
-				Numero = upl.Numero,
-				Vitrine = true,
-				Fotografo = user,
+				if (string.IsNullOrWhiteSpace(upl.NomeArquivo))
+					upl.NomeArquivo = upl.ArquivoAnexo.FileName;
 
-			};
+				var evento = _eventSvc.GetById(upl.EventoId);
+				var user = _userMng.FindByName(upl.Login);
 
-			ArquivoFoto arquivo = new ArquivoFoto();
-			arquivo.Foto = foto;
-			arquivo.Id = foto.Id;
-			foto.ArquivoFoto = arquivo;
+				Foto foto = new Foto
+				{
+					Evento = evento,
+					Nome = upl.Nome,
+					NomeArquivo = upl.NomeArquivo,
+					Numero = upl.Numero,
+					Vitrine = true,
+					Fotografo = user,
 
-			byte[] fileData = null;
-			using (var binaryReader = new BinaryReader(upl.ArquivoAnexo.InputStream))
-			{
-				fileData = binaryReader.ReadBytes(upl.ArquivoAnexo.ContentLength);
+				};
+
+
+
+				ArquivoFoto arquivo = new ArquivoFoto();
+				arquivo.Foto = foto;
+				arquivo.Id = foto.Id;
+				foto.ArquivoFoto = arquivo;
+
+				using (MemoryStream mem = new MemoryStream())
+				{
+
+					upl.ArquivoAnexo.InputStream.CopyTo(mem);
+					mem.Seek(0, SeekOrigin.Begin);
+					arquivo.Bytes = mem.ToArray();
+
+					this.Save(foto);
+
+					if (!Directory.Exists(destination))
+						Directory.CreateDirectory(destination);
+
+					_resizer.ResizeAndWatermark(
+						upl.ArquivoAnexo.InputStream,
+						watermarkHorizontal,
+						watermarkVertical,
+						string.Format(destination + "{0}.thumb.jpg", foto.Id),
+						newSize);
+				}
+
+				
+
+				return foto;
 			}
-			arquivo.Bytes = fileData;
 
-			this.Save(foto);
-
-			
-			_resizer.ResizeAndWatermark(
-				upl.ArquivoAnexo.InputStream, 
-				watermarkHorizontal, 
-				watermarkVertical, 
-				string.Format(destination + "{0}.thumb.jpg", foto.Id), 
-				newSize);
-
-
-			return foto;
+			return null;
 		}
 
 

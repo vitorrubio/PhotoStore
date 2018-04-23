@@ -13,7 +13,8 @@ namespace PhotoStore.CrossCutting
     {
 		public virtual void ResizeAndWatermark(Stream stream, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
-			stream.Position = 0;
+
+			stream.Seek(0, SeekOrigin.Begin);
 
 			Bitmap original = new Bitmap(Image.FromStream(stream));
 
