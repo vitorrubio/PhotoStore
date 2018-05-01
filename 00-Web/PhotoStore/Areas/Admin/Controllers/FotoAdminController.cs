@@ -50,7 +50,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 			if (!string.IsNullOrWhiteSpace(vm.Numero))
 				qry = qry.Where(x => x.Numero.Contains(vm.Numero));
 
-			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await _appSvc.GetAll(x => x.Evento).ToListAsync()); 
+			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await qry.ToListAsync()); 
 
 			vm.Fotos = fotos;
 
@@ -104,7 +104,6 @@ namespace PhotoStore.Areas.Admin.Controllers
 					MensagemParaUsuarioViewModel.MensagemSucesso("Registro Salvo.", TempData);
 
 					ModelState.Clear();
-					//ModelState["Id"].Value = new ValueProviderResult(ev.Id, "", new System.Globalization.CultureInfo("pt-BR"));
 					return View(fotoVm);
 				}
 				catch (DbUpdateConcurrencyException duce)

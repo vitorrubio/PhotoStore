@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace PhotoStore.Controllers
 {
-    public class HomeController : Controller
+	[PhotoStoreAuthorize(Roles = "Administrator")]
+	public class HomeController : Controller
     {
         public ActionResult Index()
         {

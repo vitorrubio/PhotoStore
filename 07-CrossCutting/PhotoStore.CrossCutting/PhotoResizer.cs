@@ -26,9 +26,6 @@ namespace PhotoStore.CrossCutting
 			}
 			catch { }
 		}
-
-
-
 		public virtual void ResizeAndWatermark(string fileName, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
 			Bitmap original = new Bitmap(Image.FromFile(fileName));
@@ -41,9 +38,6 @@ namespace PhotoStore.CrossCutting
 			}
 			catch { }
 		}
-
-
-
 		public virtual void ResizeAndWatermark(Bitmap original, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
 			
@@ -71,6 +65,51 @@ namespace PhotoStore.CrossCutting
 			catch { }
 		}
 
+
+
+		public virtual void JustResize(Stream stream, string destination, int newSize)
+		{
+
+			stream.Seek(0, SeekOrigin.Begin);
+
+			Bitmap original = new Bitmap(Image.FromStream(stream));
+
+			JustResize(original, destination, newSize);
+
+			try
+			{
+				original.Dispose();
+			}
+			catch { }
+		}
+		public virtual void JustResize(string fileName, string destination, int newSize)
+		{
+			Bitmap original = new Bitmap(Image.FromFile(fileName));
+
+			JustResize(original, destination, newSize);
+
+			try
+			{
+				original.Dispose();
+			}
+			catch { }
+		}
+		public virtual void JustResize(Bitmap original, string destination, int newSize)
+		{
+
+			var size = GetNewThumbnailSize(original, newSize);
+
+			Bitmap thumb = CreateThumbnail(original, size, out bool isPortrait);
+
+			thumb.Save(destination, ImageFormat.Jpeg);
+
+			try
+			{
+				thumb.Dispose();
+			}
+			catch { }
+
+		}
 
 
 		private  Bitmap CreateThumbnail(Bitmap loBMP, Size tamanho, out bool isPortrait)

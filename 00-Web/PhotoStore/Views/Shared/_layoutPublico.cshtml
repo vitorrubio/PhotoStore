@@ -1,0 +1,144 @@
+﻿@using PhotoStore.ViewModel
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/photostore.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,600,700" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" media="all" href="line-icons/Simple-Line-Icons-Webfont/simple-line-icons.css" />
+
+    <title>Fotos de Corrida</title>
+</head>
+
+
+<body>
+    <div class="topo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <p><span class="icon-envelope emailTopo"></span><strong>contato</strong>@@fotosdecorrida.com.br</p>
+                </div>
+                <div class="col-md-3 offset-md-5">
+                    <p class="social"><span class="icon-social-youtube"></span> <span class="icon-social-facebook"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 logoSpace">
+                    <div class="logo"><a href="#"><img class="img-fluid" src="img/fotos-de-corrida.png" alt="Fotos de corrida"></a></div>
+                </div>
+                <div class="col-12 col-md-9 menuArea">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="#"><img class="img-fluid" src="img/fotos-de-corrida.png" alt="Fotos de corrida"></a></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">EVENTOS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">QUEM SOMOS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">AJUDA</a>
+                                </li>
+                                <li class="nav-item mr0">
+                                    <a class="nav-link" href="#"><button class="btdownload" type="button"><span class="icon-cloud-download btnIcon"></span>BAIXAR MINHAS FOTOS</button></a>
+                                </li>
+                                <li class="nav-item dropdown mr0">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button class="btnUser" type="button"><span class="icon-user"></span></button></a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">ENTRAR</a>
+                                        <a class="dropdown-item" href="#">MEUS PEDIDOS</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item mr0">
+                                    <a class="nav-link" href="#"><button class="btnCart" type="button"><span class="icon-basket"></span></button></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @RenderBody()
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <h4>A FOTOS DE CORRIDA</h4>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Produtos oferecidos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h4>MINHA CONTA</h4>
+                    <ul>
+                        <li><a href="#">Acessar minha conta</a></li>
+                        <li><a href="#">Minhas compras</a></li>
+                        <li><a href="#">Meu carrinho</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h4>PRECISO DE AJUDA</h4>
+                    <ul>
+                        <li><a href="#">Como comprar</a></li>
+                        <li><a href="#">Este site é seguro?</a></li>
+                        <li><a href="#">Política de entrega</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>FALE CONOSCO</h4>
+                    <ul>
+                        <li><a href="#">contato@fotosdecorrida.com.br</a></li>
+                        <li><a href="#">Formulário de contato</a></li>
+                        <li><a href="#">tel: 11 0000 0000</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h4>FORMAS DE PAGAMENTO</h4>
+                    <p><img src="img/pag-seguro.png"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copy">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <p>© 2018 FotUp. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-2">
+                    <p class="social"><span class="icon-social-youtube"></span> <span class="icon-social-facebook"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+
+</html>

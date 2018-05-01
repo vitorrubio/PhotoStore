@@ -91,6 +91,7 @@
     <Compile Include="ArquivoFotoViewModel.cs" />
     <Compile Include="EventoViewModel.cs" />
     <Compile Include="FotoViewModel.cs" />
+    <Compile Include="Home\HomeIndexViewModel.cs" />
     <Compile Include="ItemDoPedidoViewModel.cs" />
     <Compile Include="ItemPaginaUploadFotoViewModel.cs" />
     <Compile Include="Manage\IndexViewModel.cs" />

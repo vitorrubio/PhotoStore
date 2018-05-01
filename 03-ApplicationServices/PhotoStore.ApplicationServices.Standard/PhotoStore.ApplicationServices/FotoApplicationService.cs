@@ -95,10 +95,17 @@ namespace PhotoStore.ApplicationServices
 					if (!Directory.Exists(destination))
 						Directory.CreateDirectory(destination);
 
+					mem.Seek(0, SeekOrigin.Begin);
 					_resizer.ResizeAndWatermark(
-						upl.ArquivoAnexo.InputStream,
+						mem,
 						watermarkHorizontal,
 						watermarkVertical,
+						string.Format(destination + "{0}.watermark.jpg", foto.Id),
+						newSize);
+
+					mem.Seek(0, SeekOrigin.Begin);
+					_resizer.JustResize(
+						mem,
 						string.Format(destination + "{0}.thumb.jpg", foto.Id),
 						newSize);
 				}
