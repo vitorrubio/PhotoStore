@@ -1,0 +1,459 @@
+*{margin: 0; padding: 0; border: none; outline: none;}
+
+/************************ STYLE GUIDE */
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color:#969696;
+    line-height: 1.7em;
+}
+
+.grafite{color: #1b1b1b;}
+.azul{color: #2D728F;}
+.turquesa{color: #00A0AF;}
+.vermelho{color: #FF5A5F;}
+.gelo{color: #f5f5f5;}
+.carrinhoCheio{
+    font-size: 46px;
+    position: absolute;
+    top: -10px;
+    right: -5px;
+}
+
+h1{
+    font-family: 'Dosis', sans-serif;
+    color: #ffffff;
+    font-size: 48px;
+}
+
+h2{
+    font-family: 'Dosis', sans-serif;
+    color: #00CBDE;
+    font-size: 36px;
+}
+
+h3{
+    font-family: 'Dosis', sans-serif;
+}
+
+h4{
+    font-family: 'Dosis', sans-serif;
+    color: #00CBDE;
+    font-size: 18px;
+}
+
+.spacerTop60{margin-top: 60px;}
+.spacerTop30{margin-top: 30px;}
+
+button{
+    font-family: 'Dosis',sans-serif;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 5px 25px;
+    outline: none!important;
+    transition: all 100ms linear;
+    cursor: pointer;
+}
+
+.btnTurquesa, .btnTurquesa:visited{background: #00CBDE;}
+.btnTurquesa:hover{background: #00E9FF;}
+.btnTurquesa:active{background: #0A9FAD;}
+.btnTurquesa_inativo{background: #E3E3E3; color: #B5B5B5;}
+.btnTurquesa_out, .btnTurquesa_out:visited{background: transparent; border: solid 1px #00CBDE; color: #00CBDE;}
+.btnTurquesa_out:hover{background: transparent; border: solid 1px #00E9FF; color: #00E9FF;}
+.btnTurquesa_out:active{background: transparent; border: solid 1px #0A9FAD; color: #0A9FAD;}
+
+.btnAzul, .btnAzul:visited{background: #2D728F; color: #ffffff;}
+.btnAzul:hover{background: #2194C4; color: #ffffff;}
+.btnAzul:active{background: #16475C; color: #ffffff;}
+.btnAzul_inativo{background: #8F8F8F; color: #C7C7C7;}
+.btnAzul_out, .btnAzul_out:visited{background: transparent; border: solid 1px #2D728F; color: #2D728F;}
+.btnAzul_out:hover{background: transparent; border: solid 1px #2194C4; color: #2194C4;}
+.btnAzul_out:active{background: transparent; border: solid 1px #16475C; color: #16475C;}
+
+.btnVermelho, .btnVermelho:visited{background: #FF5A5F; color: #ffffff;}
+.btnVermelho:hover{background: #FFA3A6; color: #ffffff;}
+.btnVermelho:active{background: #D1262B; color: #ffffff;}
+.btnVermelho_inativo{background: #E3E3E3; color: #B5B5B5;}
+.btnVermelho_out, .btnVermelho_out:visited{background: transparent; border: solid 1px #FF5A5F; color: #FF5A5F;}
+.btnVermelho_out:hover{background: transparent; border: solid 1px #FFA3A6; color: #FFA3A6;}
+.btnVermelho_out:active{background: transparent; border: solid 1px #D1262B; color: #D1262B;}
+
+.btnGrafite, .btnGrafite:visited{background: #1B1B1B; color: #ffffff;}
+.btnGrafite:hover{background: #383838; color: #ffffff;}
+.btnGrafite:active{background: #000000; color: #ffffff;}
+.btnGrafite_inativo{background: #8F8F8F; color: #C7C7C7;}
+.btnGrafite_out, .btnGrafite_out:visited{background: transparent; border: solid 1px #1B1B1B; color: #1B1B1B;}
+.btnGrafite_out:hover{background: transparent; border: solid 1px #999999; color: #999999;}
+.btnGrafite_out:active{background: transparent; border: solid 1px #000000; color: #000000;}
+
+/*************************************/
+
+
+
+
+
+.topo{
+    width: 100%; height: auto;
+    background-color: #1b1b1b;
+    padding:5px 0;
+    color: #fff;
+}
+
+.topo p{
+    margin: 0; padding: 0;
+}
+
+.emailTopo{
+    color:#00A0AF;
+    vertical-align: middle;
+    font-size: 21px;
+    margin-right: 10px;
+}
+
+p.social{
+    text-align: right;
+}
+
+.social span{
+    margin: 0 10px 0 0;
+    background: #828282;
+    color: #1b1b1b;
+    padding:4px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.menu{
+    height: 90px;
+    background: linear-gradient(to right, #ffffff 0%,#ffffff 25%,#00a0af 25%,#00a0af 100%);
+}
+
+.menu .dropdown-toggle::after {
+    display:none
+}
+
+.logoSpace{
+    background: #ffffff;
+    height: 90px;
+    padding: 20px 0;
+    transform: skewX(-15deg);
+}
+
+.logoSpace img{
+    transform: skewX(15deg);
+}
+
+.menuArea{
+    padding-top:15px;
+}
+
+a.nav-link{
+    font-family: 'Dosis', sans-serif;
+    font-size: 16px;
+    color: #ffffff!important;
+}
+
+a.nav-link:hover{
+    color: #00E9FF!important;
+}
+
+.nav-item{
+    margin-right: 30px;
+}
+
+.navbar-brand{
+    display: none;
+}
+
+.btdownload, .btnBusca{
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
+    background: #00CBDE;
+    padding:9px 20px;
+    border-radius: 3px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.btnCart{position: relative;}
+
+.btnUser, .btnCart{
+    font-size: 16px;
+    background: #00CBDE;
+    padding:9px 15px;
+    border-radius: 3px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.btdownload:hover, .btnUser:hover, .btnCart:hover, .btnBusca:hover{
+    background-color: #00E9FF;
+}
+
+.btdownload:focus, .btnUser:focus, .btnCart:focus, .btnBusca:focus{
+    background-color: #027F8B;
+    color: #ffffff;
+}
+
+.btnIcon{
+    margin-right: 15px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.btnIconBase{
+    margin-right: 15px;
+    font-size: 16px;
+    vertical-align:baseline;
+}
+
+.mr5{margin-right: 5px;}
+.mr0{margin-right: 0;}
+
+.mr0 .nav-link{
+    padding: 0;
+}
+
+.bannerInicial{
+    width: 100%; height: auto;
+    background:url("../img/img-topo.jpg") center top no-repeat;
+    background-size: cover;
+    padding: 90px 0;
+    color: #ffffff;
+}
+
+.bannerInterna{
+    width: 100%; height: auto;
+    background:url("../img/img-topo.jpg") center top no-repeat;
+    background-size: cover;
+    padding: 45px 0;
+    color: #ffffff;
+}
+
+.bannerInicial h1{font-size: 64px;}
+
+.linhaBusca{
+    width: 100%; height: auto;
+    background: #1B1B1B;
+    padding:15px 0;
+}
+
+.linhaBusca input{
+    border: none;
+    border-radius: 3px;
+    background: #424242;
+    height: 47px;
+    color: #cccccc;
+}
+
+.photoContainerHome{
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
+.photoContainerHome img{
+    -webkit-clip-path: inset(0 0 0 0 round 10px);
+    clip-path: inset(0 0 0 0 round 10px);
+}
+
+.photoContainer{
+    background: #00CBDE;
+    -webkit-clip-path: inset(0 0 0 0 round 10px);
+    clip-path: inset(0 0 0 0 round 10px);
+    margin-bottom: 20px;
+}
+
+.photoContainer a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 500ms linear;
+    -ms-transition: all 500ms linear;
+    transition: all 500ms linear;
+}
+
+.photoContainer a:hover{
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    -webkit-transition: all 500ms linear;
+    -ms-transition: all 500ms linear;
+    transition: all 500ms linear;
+}
+
+.mascaraAzul{
+    background: -moz-linear-gradient(top, rgba(45,114,143,0) 0%, rgba(45,114,143,0.8) 100%);
+    background: -webkit-linear-gradient(top, rgba(45,114,143,0) 0%,rgba(45,114,143,0.8) 100%);
+    background: linear-gradient(to bottom, rgba(45,114,143,0) 0%,rgba(45,114,143,0.8) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002d728f', endColorstr='#cc2d728f',GradientType=0 );
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    -webkit-clip-path: inset(0 0 0 0 round 10px);
+    clip-path: inset(0 0 0 0 round 10px);
+}
+
+.photoContent{
+    position: absolute;
+    padding: 20px;
+    color: #fff;
+    top: 0;
+    height: 100%;
+    padding-top: 110px;
+    background: rgba(45,144,143,0);
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+.photoContent:hover{
+    background: rgba(0,203,222,0.5);
+    -webkit-clip-path: inset(0 0 0 0 round 10px);
+    clip-path: inset(0 0 0 0 round 10px);
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+.photoContent h3{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.photoContent .icon-calendar{
+    margin-right: 5px;
+    color: #00CBDE;
+}
+
+.photoContent a{
+    width: 100%; height: 100%;
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+.eventosAntigos{
+    width: 100%;
+    background: #F5F5F5;
+    padding-bottom: 30px;
+}
+
+.iconRecuado img{
+    margin-top: -40px;
+    margin-bottom: 20px;
+}
+
+.eventosAntigos h2{
+    color:#2D728F;
+}
+
+.footer{
+    width: 100%;
+    background: #333333;
+    padding: 50px 0 30px 0;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.footer li{
+    list-style-type: none;
+}
+
+.footer a:link, .footer a:visited{
+    color: #CCCCCC;
+    text-decoration: none;
+}
+
+.footer a:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.copy{
+    width: 100%;
+    padding: 15px 0;
+    background: #1B1B1B;
+}
+
+.copy p{
+    margin: 0; padding: 0;
+    font-size: 12px;
+}
+
+.copy .social span{
+    font-size: 18px;
+}
+
+.paginacao{
+    margin: 20px auto;
+}
+
+.paginacao a{
+    color: #00CBDE;
+}
+
+.paginacao .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #00CBDE;
+    border-color: #00CBDE;
+}
+
+.selecaoTipoDownload{
+    margin: 45px 0 20px 0;
+    background: #00CBDE;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.selecaoTipoDownload h4{
+    margin: 0; padding: 0;
+}
+
+.descTipoDownload{
+    padding: 0 35px;
+}
+
+.comprar button{
+    margin: 0 10px;
+}
+
+@media screen and (max-width:800px){
+    .topo p{text-align: center;}
+    
+    .menuArea{padding-top: 5px;}
+    
+    .navbar-collapse{
+        background: #00A0AF;
+        z-index: 999;
+    }
+    
+    .menu .nav-item{
+        padding: 0 20px 0 20px;
+        margin: 0;
+        border-bottom: solid 1px #10B6C6;
+    }
+    
+    .btdownload, .btnUser, .btnCart {width: 100%;}
+    
+    .bannerInicial {text-align: center;}
+    .bannerInicial h1{font-size: 36px;}
+    
+    .navbar-brand{display:inline;}
+    .menu{background: #ffffff;}
+    .logoSpace{display: none;}
+    .mr0 .nav-link{padding: 10px 0;}
+    
+    .linhaBusca{text-align: center}
+    .linhaBusca button{width: 100%;}
+    .linhaBusca input{margin-bottom: 5px;}
+    
+    .photoContent{text-align: center;}
+    
+    .copy p{text-align: center;}
+    .copy .social span{text-align: center;}
+}

@@ -24,7 +24,22 @@ namespace PhotoStore.Infra.DbContext
         }
 
 
-        public DbSet<ArquivoFoto> ArquivosFotos { get; set; }
+		/// <summary>
+		/// traz um context especial sem lazy load, proxys ou validations para , em conjunto com noTracking, melhorar a performance das consultas
+		/// </summary>
+		/// <returns></returns>
+		public  ApplicationDbContext CreateDetachedContext()
+		{
+			ApplicationDbContext db = new ApplicationDbContext();
+			db.Configuration.AutoDetectChangesEnabled = false;
+			db.Configuration.LazyLoadingEnabled = false;
+			db.Configuration.ProxyCreationEnabled = false;
+			db.Configuration.ValidateOnSaveEnabled = false;
+			return db;
+		}
+
+
+		public DbSet<ArquivoFoto> ArquivosFotos { get; set; }
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Foto> Fotos { get; set; }
         public DbSet<ItemDoPedido> ItensDosPedidos { get; set; }

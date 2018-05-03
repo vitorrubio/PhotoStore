@@ -28,11 +28,17 @@ namespace PhotoStore.ApplicationServices.Interfaces
         /// <returns>List de T</returns>
         IQueryable<T> GetAll(params Expression<Func<T, object>>[] includeExpressions);
 
-        /// <summary>
-        /// salva ou atualiza um objeto na base
-        /// </summary>
-        /// <param name="ent">T - objeto a ser salvo</param>
-        void Save(T ent);
+		/// <summary>
+		/// obtém todos os objetos da base sem lazy load
+		/// </summary>
+		/// <returns>List de T</returns>
+		IQueryable<T> GetAllDetached(params Expression<Func<T, object>>[] includeExpressions);
+
+		/// <summary>
+		/// salva ou atualiza um objeto na base
+		/// </summary>
+		/// <param name="ent">T - objeto a ser salvo</param>
+		void Save(T ent);
 
 
         /// <summary>

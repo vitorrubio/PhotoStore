@@ -29,8 +29,8 @@ namespace PhotoStore.Areas.Admin.Controllers
 
 		public ActionResult Index()
         {
-
-			var qryRecentes = _eventoApp.GetAll(x => x.Fotos)
+			var qryRecentes = _eventoApp.GetAllDetached(x => x.Fotos)
+				.AsNoTracking()
 				.OrderByDescending(x => x.Inicio)
 				.Take(4)
 				.ToList();
@@ -38,8 +38,6 @@ namespace PhotoStore.Areas.Admin.Controllers
 			var qryAntigos = _eventoApp.GetAll(x => x.Fotos)
 				.Where(x => x.Vitrine && !qryRecentes.Contains(x))
 				.ToList();
-
-
 
 			var eventosRecentes = Mapper.Map<List<Evento>, List<EventoViewModel>>(qryRecentes);
 			var eventosAntigos = Mapper.Map<List<Evento>, List<EventoViewModel>>(qryAntigos);
@@ -56,7 +54,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Index(HomeIndexViewModel vm)
 		{
-			var qry = _fotoApp.GetAll(x => x.Evento);
+			var qry = _fotoApp.GetAllDetached(x => x.Evento);
 
 			if (!string.IsNullOrWhiteSpace(vm.Evento))
 				qry = qry.Where(x => x.Evento.Nome.Contains(vm.Evento));

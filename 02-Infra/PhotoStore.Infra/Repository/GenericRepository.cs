@@ -60,11 +60,26 @@ namespace PhotoStore.Infra.Repository
                     (_dbSet, (current, expression) => current.Include(expression));
         }
 
-        /// <summary>
-        /// salva ou atualiza um objeto na base
-        /// </summary>
-        /// <param name="ent">T - objeto a ser salvo</param>
-        public virtual void Save(T ent)
+
+		/// <summary>
+		/// obtém todos os objetos da base desconectados sem lazyLoad
+		/// </summary>
+		/// <returns>List de T</returns>
+		public virtual IQueryable<T> GetAllDetached(params Expression<Func<T, object>>[] includeExpressions)
+		{
+			var detchDb = this._db.CreateDetachedContext();
+			var detchDbset = detchDb.Set<T>();
+			return includeExpressions
+				  .Aggregate<Expression<Func<T, object>>, IQueryable<T>>
+					(detchDbset, (current, expression) => current.Include(expression))
+					.AsNoTracking();
+		}
+
+		/// <summary>
+		/// salva ou atualiza um objeto na base
+		/// </summary>
+		/// <param name="ent">T - objeto a ser salvo</param>
+		public virtual void Save(T ent)
         {
             if ((ent.Id == 0) || (!_dbSet.Any(x => x.Id == ent.Id)))
             {

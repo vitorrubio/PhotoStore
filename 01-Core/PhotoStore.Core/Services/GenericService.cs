@@ -38,6 +38,15 @@ namespace PhotoStore.Core.Services
 		}
 
 		/// <summary>
+		/// obtém todos os objetos da base desconectados sem lazyLoad
+		/// </summary>
+		/// <returns>List de T</returns>
+		public virtual IQueryable<T> GetAllDetached(params Expression<Func<T, object>>[] includeExpressions)
+		{
+			return this._genericRepository.GetAllDetached(includeExpressions);
+		}
+
+		/// <summary>
 		/// salva ou atualiza um objeto na base
 		/// </summary>
 		/// <param name="ent">T - objeto a ser salvo</param>

@@ -54,10 +54,10 @@
                         {
                             <div class="col-md-3">
                                 <div class="photoContainerHome">
-                                    <img class="img-fluid" src="img/sample-image-home.jpg">
+                                    <img class="img-fluid" src="@Url.Action("CapaEvento", "Home", new { Id = coluna.Id } )">
                                     <span class="mascaraAzul"></span>
                                     <div class="photoContent">
-                                        <a href="http://www.pudim.com.br"></a>
+                                        <a href="@Url.Action("Evento", "Home", new { Id = coluna.Id } )"></a>
                                         <h3>@coluna.Nome</h3>
                                         <p><span class="icon-calendar"></span> @coluna.Inicio.ToString("dddd dd/MM/yyyy")</p>
                                     </div>
@@ -103,10 +103,10 @@
                         {
                             <div class="col-md-3">
                                 <div class="photoContainerHome">
-                                    <img class="img-fluid" src="img/sample-image-home.jpg">
+                                    <img class="img-fluid" src="@Url.Action("CapaEvento", "Home", new { Id = coluna.Id } )">
                                     <span class="mascaraAzul"></span>
                                     <div class="photoContent">
-                                        <a href="http://www.pudim.com.br"></a>
+                                        <a href="@Url.Action("Evento", "Home", new { Id = coluna.Id } )"></a>
                                         <h3>@coluna.Nome</h3>
                                         <p><span class="icon-calendar"></span> @coluna.Inicio.ToString("dddd dd/MM/yyyy")</p>
                                     </div>

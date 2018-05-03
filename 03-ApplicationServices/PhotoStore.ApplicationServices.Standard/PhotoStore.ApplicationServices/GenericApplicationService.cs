@@ -40,11 +40,23 @@ namespace PhotoStore.ApplicationServices
             return this._genericService.GetAll(includeExpressions);
         }
 
-        /// <summary>
-        /// salva ou atualiza um objeto na base
-        /// </summary>
-        /// <param name="ent">T - objeto a ser salvo</param>
-        public virtual void Save(T ent)
+
+		/// <summary>
+		/// obtém todos os objetos da base desconectados sem lazyLoad
+		/// </summary>
+		/// <returns>List de T</returns>
+		public virtual IQueryable<T> GetAllDetached(params Expression<Func<T, object>>[] includeExpressions)
+		{
+			return this._genericService.GetAllDetached(includeExpressions);
+		}
+		
+
+
+		/// <summary>
+		/// salva ou atualiza um objeto na base
+		/// </summary>
+		/// <param name="ent">T - objeto a ser salvo</param>
+		public virtual void Save(T ent)
         {
 			this._genericService.Save(ent);
         }
