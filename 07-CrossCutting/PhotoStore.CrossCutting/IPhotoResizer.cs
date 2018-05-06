@@ -18,5 +18,13 @@ namespace PhotoStore.CrossCutting
 		void JustResize(string fileName, string destination, int newSize);
 		void JustResize(Bitmap original, string destination, int newSize);
 
+		void Crop(Stream stream, string destination, int newSize);
+		void Crop(string fileName, string destination, int newSize);
+		void Crop(Bitmap original, string destination, int newSize);
+
+		bool IsPortrait(Stream stream);
+		bool IsPortrait(string fileName);
+		bool IsPortrait(Bitmap original);
+
 	}
 }

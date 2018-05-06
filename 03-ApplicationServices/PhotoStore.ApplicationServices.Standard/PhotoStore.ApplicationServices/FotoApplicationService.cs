@@ -71,7 +71,8 @@ namespace PhotoStore.ApplicationServices
 					Nome = upl.Nome,
 					NomeArquivo = upl.NomeArquivo,
 					Numero = upl.Numero,
-					Vitrine = true,
+					Vitrine = upl.Vitrine,
+					CapaDeEvento = upl.CapaDeEvento,
 					Fotografo = user,
 
 				};

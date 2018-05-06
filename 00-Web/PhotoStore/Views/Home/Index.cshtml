@@ -53,13 +53,25 @@
                         @foreach (var coluna in linha)
                         {
                             <div class="col-md-3">
-                                <div class="photoContainerHome">
-                                    <img class="img-fluid" src="@Url.Action("CapaEvento", "Home", new { Id = coluna.Id } )">
+                                <div class="photoContainerHome thumbnail">
+                                    <img class="img-fluid portrait" src="@Url.Action("CapaDoEvento", "Eventos", new { Id = coluna.Id } )" >
                                     <span class="mascaraAzul"></span>
                                     <div class="photoContent">
-                                        <a href="@Url.Action("Evento", "Home", new { Id = coluna.Id } )"></a>
+                                        <a href="@Url.Action("Detalhes", "Eventos", new { Id = coluna.Id } )"></a>
                                         <h3>@coluna.Nome</h3>
                                         <p><span class="icon-calendar"></span> @coluna.Inicio.ToString("dddd dd/MM/yyyy")</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="photoContainerHome thumbnail">
+                                    <img class="img-fluid" src="img/sample-image-home.jpg">
+                                    <span class="mascaraAzul"></span>
+                                    <div class="photoContent">
+                                        <a href="http://www.pudim.com.br"></a>
+                                        <h3>Nome do evento lorem ipsun dolor eiusmod</h3>
+                                        <p><span class="icon-calendar"></span> Terça-feira 27/02/18</p>
                                     </div>
                                 </div>
                             </div>
@@ -67,6 +79,8 @@
 
                     </div>
                 }
+
+
             </div>
 
         </div>
@@ -103,10 +117,10 @@
                         {
                             <div class="col-md-3">
                                 <div class="photoContainerHome">
-                                    <img class="img-fluid" src="@Url.Action("CapaEvento", "Home", new { Id = coluna.Id } )">
+                                    <img class="img-fluid" src="@Url.Action("CapaDoEvento", "Eventos", new { Id = coluna.Id } )">
                                     <span class="mascaraAzul"></span>
                                     <div class="photoContent">
-                                        <a href="@Url.Action("Evento", "Home", new { Id = coluna.Id } )"></a>
+                                        <a href="@Url.Action("Detalhes", "Eventos", new { Id = coluna.Id } )"></a>
                                         <h3>@coluna.Nome</h3>
                                         <p><span class="icon-calendar"></span> @coluna.Inicio.ToString("dddd dd/MM/yyyy")</p>
                                     </div>

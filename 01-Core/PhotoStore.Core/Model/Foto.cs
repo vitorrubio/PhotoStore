@@ -41,6 +41,9 @@ namespace PhotoStore.Core.Model
 		[Display(Name = "Arquivo da Foto")]
 		public virtual ArquivoFoto ArquivoFoto { get; set; }
 
+		[Display(Name = "Retrato ou Paisagem")]
+		public virtual bool Retrato { get; set; }
+
 	}
 
 

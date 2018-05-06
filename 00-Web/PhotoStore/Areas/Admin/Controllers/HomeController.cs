@@ -27,49 +27,6 @@ namespace PhotoStore.Areas.Admin.Controllers
 			_fotoApp = fotoSvc;
 		}
 
-		public ActionResult Index()
-        {
-			var qryRecentes = _eventoApp.GetAllDetached(x => x.Fotos)
-				.AsNoTracking()
-				.OrderByDescending(x => x.Inicio)
-				.Take(4)
-				.ToList();
 
-			var qryAntigos = _eventoApp.GetAll(x => x.Fotos)
-				.Where(x => x.Vitrine && !qryRecentes.Contains(x))
-				.ToList();
-
-			var eventosRecentes = Mapper.Map<List<Evento>, List<EventoViewModel>>(qryRecentes);
-			var eventosAntigos = Mapper.Map<List<Evento>, List<EventoViewModel>>(qryAntigos);
-
-			return View( new HomeIndexViewModel
-			{
-				EventosMaisRecentes = eventosRecentes,
-				EventosMaisAntigos = eventosAntigos
-			});
-		}
-
-
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Index(HomeIndexViewModel vm)
-		{
-			var qry = _fotoApp.GetAllDetached(x => x.Evento);
-
-			if (!string.IsNullOrWhiteSpace(vm.Evento))
-				qry = qry.Where(x => x.Evento.Nome.Contains(vm.Evento));
-
-			if (!string.IsNullOrWhiteSpace(vm.Nome))
-				qry = qry.Where(x => x.Nome.Contains(vm.Nome));
-
-			if (!string.IsNullOrWhiteSpace(vm.Numero))
-				qry = qry.Where(x => x.Numero.Contains(vm.Numero));
-
-			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await qry.ToListAsync());
-
-			vm.Fotos = fotos;
-
-			return View(vm);
-		}
     }
 }

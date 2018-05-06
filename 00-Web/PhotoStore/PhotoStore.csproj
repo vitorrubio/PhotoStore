@@ -64,6 +64,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventosController.cs" />
+    <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\FotosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -273,6 +274,7 @@
     <Content Include="Content\Images\new_folder.png" />
     <Content Include="Content\Images\pare.png" />
     <Content Include="Content\Images\reload.gif" />
+    <Content Include="Content\Images\thumbnails\0.thumb.jpg" />
     <Content Include="Content\Images\time.png" />
     <Content Include="Content\Images\update.png" />
     <Content Include="Content\Images\vertical.png" />
@@ -785,6 +787,7 @@
     <Folder Include="Areas\Fotografo\Controllers\" />
     <Folder Include="Areas\Fotografo\Models\" />
     <Folder Include="Areas\Fotografo\Views\Shared\" />
+    <Folder Include="Views\Eventos\" />
     <Folder Include="Views\Fotos\" />
     <Folder Include="Views\Styles\" />
   </ItemGroup>

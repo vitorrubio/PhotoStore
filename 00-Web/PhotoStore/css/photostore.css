@@ -308,6 +308,7 @@ a.nav-link:hover{
     -webkit-transition: background-color 500ms linear;
     -ms-transition: background-color 500ms linear;
     transition: background-color 500ms linear;
+    width:100%;
 }
 
 .photoContent:hover{
@@ -457,3 +458,31 @@ a.nav-link:hover{
     .copy p{text-align: center;}
     .copy .social span{text-align: center;}
 }
+
+
+
+
+
+.thumbnail {
+    position: relative;
+    width: 255px;
+    height: 255px;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 255px;
+    width: auto;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.thumbnail img.portrait {
+    width: 100%;
+    height: auto;
+}
+

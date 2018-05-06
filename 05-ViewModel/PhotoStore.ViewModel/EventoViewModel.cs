@@ -43,11 +43,6 @@ namespace PhotoStore.ViewModel
 		[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
 		public virtual DateTime? Fim { get; set; }
 
-		public virtual string GetImageUrl()
-		{
-			var capa = this.Fotos.Where(x => x.CapaDeEvento).FirstOrDefault();
-			if(capa != null)
-				return 
-		}
+
     }
 }

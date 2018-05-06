@@ -40,7 +40,10 @@ namespace PhotoStore.ViewModel
 		[Display(Name = "Arquivo da Foto")]
 		public virtual ArquivoFotoViewModel ArquivoFoto { get; set; }
 
-    }
+		[Display(Name = "Retrato ou Paisagem")]
+		public virtual bool Retrato { get; set; }
+
+	}
 
 
 }
