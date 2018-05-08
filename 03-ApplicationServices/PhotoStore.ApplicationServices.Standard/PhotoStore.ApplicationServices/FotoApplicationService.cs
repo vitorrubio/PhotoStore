@@ -93,11 +93,13 @@ namespace PhotoStore.ApplicationServices
 					mem.Seek(0, SeekOrigin.Begin);
 					arquivo.Bytes = mem.ToArray();
 
-					this.Save(foto);
+					mem.Seek(0, SeekOrigin.Begin);
+					foto.Retrato = _resizer.IsPortrait(mem);
 
 
 
 					GenerateThumbs(watermarkHorizontal, watermarkVertical, destination, newSize, foto, mem);
+					this.Save(foto);
 				}
 
 				return foto;
@@ -110,13 +112,23 @@ namespace PhotoStore.ApplicationServices
 		{
 			Foto foto =  this.GetById(fotoVm.Id) ?? new Foto();
 			Mapper.Map(fotoVm, foto);
-			this.Save(foto);
+			
 
+			using (MemoryStream mem = new MemoryStream(foto.ArquivoFoto.Bytes))
+			{
+				mem.Seek(0, SeekOrigin.Begin);
+				foto.Retrato = _resizer.IsPortrait(mem);
+
+				GenerateThumbs(watermarkHorizontal, watermarkVertical, destination, newSize, foto, mem);
+			}
+
+			this.Save(foto);
 			return foto;
 		}
 
 		public void GenerateThumbs(string watermarkHorizontal, string watermarkVertical, string destination, int newSize, Foto foto, MemoryStream mem)
 		{
+
 			if (!Directory.Exists(destination))
 				Directory.CreateDirectory(destination);
 
