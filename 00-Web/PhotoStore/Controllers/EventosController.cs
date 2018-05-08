@@ -47,7 +47,7 @@ namespace PhotoStore.Controllers
 			}
 
 			var dir = Server.MapPath("~/Content/Images/thumbnails/");
-			var path = Path.Combine(dir, string.Format("{0}.thumb.jpg", idThumb));
+			var path = Path.Combine(dir, string.Format("{0}.cover.jpg", idThumb));
 
 			if (System.IO.File.Exists(path))
 			{
@@ -55,8 +55,17 @@ namespace PhotoStore.Controllers
 			}
 			else
 			{
-				return File(Server.MapPath("~/Content/Images/thumbnails/0.thumb.jpg"), "image/jpeg");
+				path = Path.Combine(dir, string.Format("{0}.thumb.jpg", idThumb));
+				if (System.IO.File.Exists(path))
+				{
+					return File(path, "image/jpeg");
+				}
+				else
+				{
+					return File(Server.MapPath("~/Content/Images/thumbnails/0.thumb.jpg"), "image/jpeg");
+				}
 			}
+
 		}
 	}
 }

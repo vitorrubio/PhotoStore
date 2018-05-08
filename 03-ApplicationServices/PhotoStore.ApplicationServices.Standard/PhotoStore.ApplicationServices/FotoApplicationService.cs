@@ -9,6 +9,7 @@ using PhotoStore.ApplicationServices.Interfaces;
 using PhotoStore.Core.Interfaces.Services;
 using PhotoStore.CrossCutting;
 using System.Web;
+using AutoMapper;
 
 namespace PhotoStore.ApplicationServices
 {
@@ -19,6 +20,7 @@ namespace PhotoStore.ApplicationServices
 		private IPhotoResizer _resizer;
 		private ApplicationUserManager _userMng;
 		private ApplicationSignInManager _sigMng;
+
 
 		public FotoApplicationService(
 			IEventoService evtsvc,
@@ -53,7 +55,7 @@ namespace PhotoStore.ApplicationServices
 		}
 
 
-		private Foto SavePhoto(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
+		public  Foto SavePhoto(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
 
 
@@ -93,25 +95,10 @@ namespace PhotoStore.ApplicationServices
 
 					this.Save(foto);
 
-					if (!Directory.Exists(destination))
-						Directory.CreateDirectory(destination);
 
-					mem.Seek(0, SeekOrigin.Begin);
-					_resizer.ResizeAndWatermark(
-						mem,
-						watermarkHorizontal,
-						watermarkVertical,
-						string.Format(destination + "{0}.watermark.jpg", foto.Id),
-						newSize);
 
-					mem.Seek(0, SeekOrigin.Begin);
-					_resizer.JustResize(
-						mem,
-						string.Format(destination + "{0}.thumb.jpg", foto.Id),
-						newSize);
+					GenerateThumbs(watermarkHorizontal, watermarkVertical, destination, newSize, foto, mem);
 				}
-
-				
 
 				return foto;
 			}
@@ -119,6 +106,42 @@ namespace PhotoStore.ApplicationServices
 			return null;
 		}
 
+		public Foto EditPhoto(FotoViewModel fotoVm, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
+		{
+			Foto foto =  this.GetById(fotoVm.Id) ?? new Foto();
+			Mapper.Map(fotoVm, foto);
+			this.Save(foto);
 
+			return foto;
+		}
+
+		public void GenerateThumbs(string watermarkHorizontal, string watermarkVertical, string destination, int newSize, Foto foto, MemoryStream mem)
+		{
+			if (!Directory.Exists(destination))
+				Directory.CreateDirectory(destination);
+
+			mem.Seek(0, SeekOrigin.Begin);
+			_resizer.ResizeAndWatermark(
+				mem,
+				watermarkHorizontal,
+				watermarkVertical,
+				string.Format(destination + "{0}.watermark.jpg", foto.Id),
+				newSize);
+
+			mem.Seek(0, SeekOrigin.Begin);
+			_resizer.JustResize(
+				mem,
+				string.Format(destination + "{0}.thumb.jpg", foto.Id),
+				newSize);
+
+			if (foto.CapaDeEvento)
+			{
+				mem.Seek(0, SeekOrigin.Begin);
+				_resizer.Crop(
+					mem,
+					string.Format(destination + "{0}.cover.jpg", foto.Id),
+					newSize);
+			}
+		}
 	}
 }

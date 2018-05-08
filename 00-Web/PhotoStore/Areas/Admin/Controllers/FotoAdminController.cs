@@ -97,10 +97,12 @@ namespace PhotoStore.Areas.Admin.Controllers
 			{
 				try
 				{
-					Foto foto = await _appSvc.GetByIdAsync(fotoVm.Id) ?? new Foto();
-					Mapper.Map(fotoVm, foto);
-					await _appSvc.SaveAsync(foto);
 
+					_appSvc.EditPhoto(fotoVm,
+							Server.MapPath("~/content/images/horizontal.png"),
+							Server.MapPath("~/content/images/vertical.png"),
+							Server.MapPath("~/content/images/thumbnails/"),
+							450);
 					MensagemParaUsuarioViewModel.MensagemSucesso("Registro Salvo.", TempData);
 
 					ModelState.Clear();

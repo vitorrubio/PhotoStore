@@ -13,56 +13,36 @@ namespace PhotoStore.CrossCutting
     {
 		public virtual void ResizeAndWatermark(Stream stream, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
-
 			stream.Seek(0, SeekOrigin.Begin);
 
-			Bitmap original = new Bitmap(Image.FromStream(stream));
-
-			ResizeAndWatermark(original, watermarkHorizontal, watermarkVertical,  destination, newSize);
-
-			try
+			using (Bitmap original = new Bitmap(Image.FromStream(stream)))
 			{
-				original.Dispose();
+				ResizeAndWatermark(original, watermarkHorizontal, watermarkVertical, destination, newSize);
 			}
-			catch { }
+
 		}
 		public virtual void ResizeAndWatermark(string fileName, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
-			Bitmap original = new Bitmap(Image.FromFile(fileName));
-
-			ResizeAndWatermark(original, watermarkHorizontal, watermarkVertical, destination, newSize);
-
-			try
+			using (Bitmap original = new Bitmap(Image.FromFile(fileName)))
 			{
-				original.Dispose();
+				ResizeAndWatermark(original, watermarkHorizontal, watermarkVertical, destination, newSize);
 			}
-			catch { }
 		}
 		public virtual void ResizeAndWatermark(Bitmap original, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
-		{
-			
+		{			
 			var size = GetNewThumbnailSize(original, newSize);
 
-			Bitmap thumb = CreateThumbnail(original, size, out bool isPortrait);
-
-			Bitmap marcadagua = (isPortrait)? new Bitmap(Image.FromFile(watermarkVertical)) : new Bitmap(Image.FromFile(watermarkHorizontal));
-
-			DrawWatermark(marcadagua, thumb, 1, 1);
-
-			thumb.Save(destination, ImageFormat.Jpeg);
-
-			try
+			using (Bitmap thumb = CreateThumbnail(original, size, out bool isPortrait))
 			{
-				thumb.Dispose();
-			}
-			catch { }
+				using (Bitmap marcadagua = (isPortrait) ? new Bitmap(Image.FromFile(watermarkVertical)) : new Bitmap(Image.FromFile(watermarkHorizontal)))
+				{
 
+					DrawWatermark(marcadagua, thumb, 1, 1);
 
-			try
-			{
-				marcadagua.Dispose();
+					thumb.Save(destination, ImageFormat.Jpeg);
+				}
 			}
-			catch { }
+
 		}
 
 
@@ -72,44 +52,119 @@ namespace PhotoStore.CrossCutting
 
 			stream.Seek(0, SeekOrigin.Begin);
 
-			Bitmap original = new Bitmap(Image.FromStream(stream));
-
-			JustResize(original, destination, newSize);
-
-			try
+			using (Bitmap original = new Bitmap(Image.FromStream(stream)))
 			{
-				original.Dispose();
+
+				JustResize(original, destination, newSize);
+
 			}
-			catch { }
+
 		}
 		public virtual void JustResize(string fileName, string destination, int newSize)
 		{
-			Bitmap original = new Bitmap(Image.FromFile(fileName));
-
-			JustResize(original, destination, newSize);
-
-			try
+			using (Bitmap original = new Bitmap(Image.FromFile(fileName)))
 			{
-				original.Dispose();
+
+				JustResize(original, destination, newSize);
+
 			}
-			catch { }
+
 		}
 		public virtual void JustResize(Bitmap original, string destination, int newSize)
 		{
 
 			var size = GetNewThumbnailSize(original, newSize);
 
-			Bitmap thumb = CreateThumbnail(original, size, out bool isPortrait);
-
-			thumb.Save(destination, ImageFormat.Jpeg);
-
-			try
+			using (Bitmap thumb = CreateThumbnail(original, size, out bool isPortrait))
 			{
-				thumb.Dispose();
+
+				thumb.Save(destination, ImageFormat.Jpeg);
+
 			}
-			catch { }
 
 		}
+
+
+
+		public virtual void Crop(Stream stream, string destination, int newSize)
+		{
+			stream.Seek(0, SeekOrigin.Begin);
+
+			using (Bitmap original = new Bitmap(Image.FromStream(stream)))
+			{
+
+				Crop(original, destination, newSize);
+
+			}
+		}
+		public virtual void Crop(string fileName, string destination, int newSize)
+		{
+			using (Bitmap original = new Bitmap(Image.FromFile(fileName)))
+			{
+				Crop(original, destination, newSize);
+			}
+		}
+		public virtual void Crop(Bitmap original, string destination, int newSize)
+		{
+
+			// Check if it is a bitmap:
+			if (original == null)
+				throw new ArgumentException("No valid bitmap");
+
+			var size = GetNewThumbnailSize(original, newSize);
+
+			using (Bitmap thumb = CreateThumbnail(original, size, out bool isPortrait))
+			{
+
+				if (size.Height > size.Width)
+				{
+					Rectangle selection = new Rectangle(0, (size.Height - size.Width) / 2, size.Width, size.Width);
+					using (Bitmap cropBmp = original.Clone(selection, original.PixelFormat))
+					{
+						cropBmp.Save(destination, ImageFormat.Jpeg);
+					}
+				}
+				else if (size.Height < size.Width)
+				{
+					Rectangle selection = new Rectangle((size.Width - size.Height) / 2, 0, size.Height, size.Height);
+					using (Bitmap cropBmp = original.Clone(selection, original.PixelFormat))
+					{
+						cropBmp.Save(destination, ImageFormat.Jpeg);
+					}
+				}
+				else
+				{
+					thumb.Save(destination, ImageFormat.Jpeg);
+				}
+
+			}
+		}
+
+
+		public virtual bool IsPortrait(Stream stream)
+		{
+			stream.Seek(0, SeekOrigin.Begin);
+
+			using (Bitmap original = new Bitmap(Image.FromStream(stream)))
+			{
+
+				return IsPortrait(original);
+
+			}
+		}
+		public virtual bool IsPortrait(string fileName)
+		{
+			using (Bitmap original = new Bitmap(Image.FromFile(fileName)))
+			{
+				return IsPortrait(original);
+			}
+		}
+		public virtual bool IsPortrait(Bitmap original)
+		{
+			return original.Height > original.Width;
+		}
+
+
 
 
 		private  Bitmap CreateThumbnail(Bitmap loBMP, Size tamanho, out bool isPortrait)
@@ -161,7 +216,6 @@ namespace PhotoStore.CrossCutting
 			return bmpOut;
 		}
 
-
 		private Size GetNewThumbnailSize(Bitmap original, int newSize)
 		{
 
@@ -192,7 +246,6 @@ namespace PhotoStore.CrossCutting
 			}
 		}
 
-
 		private void DrawWatermark(Bitmap watermark_bm, Bitmap result_bm, int x, int y)
 		{
 			const byte ALPHA = 128;
@@ -217,5 +270,6 @@ namespace PhotoStore.CrossCutting
 				gr.DrawImage(watermark_bm, x, y);
 			}
 		}
+
 	}
 }
