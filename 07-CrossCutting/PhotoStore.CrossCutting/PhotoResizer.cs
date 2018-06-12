@@ -118,19 +118,35 @@ namespace PhotoStore.CrossCutting
 
 				if (size.Height > size.Width)
 				{
-					Rectangle selection = new Rectangle(0, (size.Height - size.Width) / 2, size.Width, size.Width);
-					using (Bitmap cropBmp = original.Clone(selection, original.PixelFormat))
+					Rectangle selection = new Rectangle(0, ((int)((size.Height - size.Width) / 2)), size.Width, size.Width);
+					using (Bitmap bmp = new Bitmap(selection.Width, selection.Height))
 					{
-						cropBmp.Save(destination, ImageFormat.Jpeg);
+						using (Graphics gph = Graphics.FromImage(bmp))
+						{
+							gph.DrawImage(thumb, new Rectangle(0, 0, bmp.Width, bmp.Height), selection, GraphicsUnit.Pixel);
+						}
+						bmp.Save(destination, ImageFormat.Jpeg);
 					}
+					//using (Bitmap cropBmp = thumb.Clone(selection, thumb.PixelFormat))
+					//{
+					//	cropBmp.Save(destination, ImageFormat.Jpeg);
+					//}
 				}
 				else if (size.Height < size.Width)
 				{
 					Rectangle selection = new Rectangle((size.Width - size.Height) / 2, 0, size.Height, size.Height);
-					using (Bitmap cropBmp = original.Clone(selection, original.PixelFormat))
+					using (Bitmap bmp = new Bitmap(selection.Width, selection.Height))
 					{
-						cropBmp.Save(destination, ImageFormat.Jpeg);
+						using (Graphics gph = Graphics.FromImage(bmp))
+						{
+							gph.DrawImage(thumb, new Rectangle(0, 0, bmp.Width, bmp.Height), selection, GraphicsUnit.Pixel);
+						}
+						bmp.Save(destination, ImageFormat.Jpeg);
 					}
+					//using (Bitmap cropBmp = thumb.Clone(selection, thumb.PixelFormat))
+					//{
+					//	cropBmp.Save(destination, ImageFormat.Jpeg);
+					//}
 				}
 				else
 				{
