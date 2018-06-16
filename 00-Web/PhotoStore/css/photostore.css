@@ -273,13 +273,14 @@ a.nav-link:hover{
 .photoContainerHome img{
     -webkit-clip-path: inset(0 0 0 0 round 10px);
     clip-path: inset(0 0 0 0 round 10px);
+    min-height: 100%;
 }
 
 .photoContainer{
     background: #00CBDE;
     -webkit-clip-path: inset(0 0 0 0 round 10px);
     clip-path: inset(0 0 0 0 round 10px);
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .photoContainer a{
@@ -320,12 +321,12 @@ a.nav-link:hover{
     padding: 20px;
     color: #fff;
     top: 0;
-    height: 100%;
-    padding-top: 110px;
     background: rgba(45,144,143,0);
     -webkit-transition: background-color 500ms linear;
     -ms-transition: background-color 500ms linear;
     transition: background-color 500ms linear;
+    width: 100%; height: 100%;
+    display: flex;
 }
 
 .photoContent:hover{
@@ -335,6 +336,20 @@ a.nav-link:hover{
     -webkit-transition: background-color 500ms linear;
     -ms-transition: background-color 500ms linear;
     transition: background-color 500ms linear;
+    width: 100%; height: 100%;
+}
+
+.bgImagem{
+    background-color: #ebebeb;
+    width: 100%; height: 95%;
+    -webkit-clip-path: inset(0 0 0 0 round 10px);
+    clip-path: inset(0 0 0 0 round 10px);
+    display: flex;
+    align-items: center;
+}
+
+.textos{
+    align-self: flex-end;
 }
 
 .photoContent h3{

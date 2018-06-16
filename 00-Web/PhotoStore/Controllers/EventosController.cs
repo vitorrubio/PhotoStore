@@ -22,6 +22,18 @@ namespace PhotoStore.Controllers
 			_fotoApp = fotoSvc;
 		}
 
+		public ActionResult Index(int id)
+		{
+			var evento = _eventoApp.GetById(id);
+			if (evento == null)
+			{
+				//return new HttpNotFoundResult("Evento não encontrado");
+				return RedirectToAction("Index", "Home");
+			}
+
+			return View(evento);
+
+		}
 
 		[OutputCache(Duration = 3600, VaryByParam = "id", Location = OutputCacheLocation.ServerAndClient)]
 		public ActionResult CapaDoEvento(int id)
