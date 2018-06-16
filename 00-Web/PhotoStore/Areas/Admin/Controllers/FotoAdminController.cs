@@ -90,7 +90,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Editar(FotoViewModel fotoVm)
+		public ActionResult Editar(FotoViewModel fotoVm)
 		{
 			PopulaEventos(fotoVm?.EventoId);
 			if (ModelState.IsValid)

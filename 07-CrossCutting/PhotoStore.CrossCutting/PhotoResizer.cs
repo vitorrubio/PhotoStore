@@ -287,5 +287,91 @@ namespace PhotoStore.CrossCutting
 			}
 		}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public virtual MemoryStream CropStream(Stream stream, int newSize)
+		{
+			stream.Seek(0, SeekOrigin.Begin);
+
+			using (Bitmap original = new Bitmap(Image.FromStream(stream)))
+			{
+
+				return CropStream(original, newSize);
+
+			}
+		}
+		public virtual MemoryStream CropStream(string fileName, int newSize)
+		{
+			using (Bitmap original = new Bitmap(Image.FromFile(fileName)))
+			{
+				return CropStream(original, newSize);
+			}
+		}
+		public virtual MemoryStream CropStream(Bitmap original, int newSize)
+		{
+
+			// Check if it is a bitmap:
+			if (original == null)
+				throw new ArgumentException("No valid bitmap");
+
+			var size = GetNewThumbnailSize(original, newSize);
+
+			MemoryStream result = new MemoryStream();
+
+			using (Bitmap thumb = CreateThumbnail(original, size, out bool isPortrait))
+			{
+
+				if (size.Height > size.Width)
+				{
+					Rectangle selection = new Rectangle(0, ((int)((size.Height - size.Width) / 2)), size.Width, size.Width);
+					using (Bitmap bmp = new Bitmap(selection.Width, selection.Height))
+					{
+						using (Graphics gph = Graphics.FromImage(bmp))
+						{
+							gph.DrawImage(thumb, new Rectangle(0, 0, bmp.Width, bmp.Height), selection, GraphicsUnit.Pixel);
+						}
+						bmp.Save(result, ImageFormat.Jpeg);
+					}
+
+				}
+				else if (size.Height < size.Width)
+				{
+					Rectangle selection = new Rectangle((size.Width - size.Height) / 2, 0, size.Height, size.Height);
+					using (Bitmap bmp = new Bitmap(selection.Width, selection.Height))
+					{
+						using (Graphics gph = Graphics.FromImage(bmp))
+						{
+							gph.DrawImage(thumb, new Rectangle(0, 0, bmp.Width, bmp.Height), selection, GraphicsUnit.Pixel);
+						}
+						bmp.Save(result, ImageFormat.Jpeg);
+					}
+
+				}
+				else
+				{
+					thumb.Save(result, ImageFormat.Jpeg);
+				}
+
+			}
+
+
+			return result;
+		}
 	}
 }

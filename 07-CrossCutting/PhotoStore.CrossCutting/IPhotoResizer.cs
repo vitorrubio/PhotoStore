@@ -26,5 +26,14 @@ namespace PhotoStore.CrossCutting
 		bool IsPortrait(string fileName);
 		bool IsPortrait(Bitmap original);
 
+
+
+
+
+		MemoryStream CropStream(Stream stream, int newSize);
+		MemoryStream CropStream(string fileName, int newSize);
+		MemoryStream CropStream(Bitmap original, int newSize);
+
+
 	}
 }

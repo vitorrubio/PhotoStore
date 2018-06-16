@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using PhotoStore.ApplicationServices.Interfaces;
 using PhotoStore.ViewModel;
+using AutoMapper;
 
 namespace PhotoStore.Areas.Admin.Controllers
 {
@@ -60,14 +61,14 @@ namespace PhotoStore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Editar([Bind(Include = "Id, Nome, Descricao, Inicio, Fim")] Evento ev)
+        public async Task<ActionResult> Editar([Bind(Include = "Id, Nome, Descricao, Inicio, Fim, ArquivoCapa")] EventoViewModel evVm)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
 
-                    await _appSvc.SaveAsync(ev);
+                    var ev = await _appSvc.UploadAndSaveAsync(evVm, 450);
 
 					MensagemParaUsuarioViewModel.MensagemSucesso("Registro Salvo.", TempData);
 					ModelState.Clear();
@@ -82,7 +83,7 @@ namespace PhotoStore.Areas.Admin.Controllers
                     MensagemParaUsuarioViewModel.MensagemErro("Esse registro não pôde ser salvo. " + err.Message, TempData, ModelState);
                 }
             }
-            return View(ev);
+            return View(Mapper.Map<Evento>(evVm));
         }
 
         public async Task<ActionResult> Delete(int? id)

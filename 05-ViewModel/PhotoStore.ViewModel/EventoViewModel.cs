@@ -1,8 +1,10 @@
-﻿using System;
+﻿using PhotoStore.CrossCutting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace PhotoStore.ViewModel
@@ -44,5 +46,14 @@ namespace PhotoStore.ViewModel
 		public virtual DateTime? Fim { get; set; }
 
 
-    }
+		[Display(Name = "Foto \"capa\" deste evento")]
+		public virtual ArquivoCapaViewModel ArquivoCapa { get; set; }
+
+
+		[FileTypes("jpg,jpeg,png,bmp,gif")]
+		[DataType(DataType.Upload)]
+		[Display(Name = "Foto \"capa\" deste evento")]
+		public virtual HttpPostedFileBase ArquivoAnexo { get; set; }
+
+	}
 }

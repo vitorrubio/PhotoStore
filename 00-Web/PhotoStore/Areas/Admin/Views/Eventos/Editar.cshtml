@@ -1,4 +1,4 @@
-﻿@model PhotoStore.Core.Model.Evento
+﻿@model PhotoStore.ViewModel.EventoViewModel
 
 @{
     ViewBag.Title = "Cadastro de Eventos";
@@ -76,6 +76,16 @@
 
                 </div>
 
+                <div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.ArquivoAnexo, htmlAttributes: new { @class = "col-form-label " })
+                            <input type="file" name="ArquivoAnexo" id="ArquivoAnexo" class="form-control-file" />
+                            @Html.ValidationMessageFor(model => model.ArquivoAnexo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
 

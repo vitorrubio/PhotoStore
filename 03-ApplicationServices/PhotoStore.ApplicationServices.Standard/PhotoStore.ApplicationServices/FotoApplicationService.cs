@@ -55,7 +55,7 @@ namespace PhotoStore.ApplicationServices
 		}
 
 
-		public  Foto SavePhoto(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
+		public virtual Foto SavePhoto(UploadFotoViewModel upl, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
 
 
@@ -108,7 +108,7 @@ namespace PhotoStore.ApplicationServices
 			return null;
 		}
 
-		public Foto EditPhoto(FotoViewModel fotoVm, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
+		public virtual Foto EditPhoto(FotoViewModel fotoVm, string watermarkHorizontal, string watermarkVertical, string destination, int newSize)
 		{
 			Foto foto =  this.GetById(fotoVm.Id) ?? new Foto();
 			Mapper.Map(fotoVm, foto);
@@ -126,7 +126,7 @@ namespace PhotoStore.ApplicationServices
 			return foto;
 		}
 
-		public void GenerateThumbs(string watermarkHorizontal, string watermarkVertical, string destination, int newSize, Foto foto, MemoryStream mem)
+		public virtual void GenerateThumbs(string watermarkHorizontal, string watermarkVertical, string destination, int newSize, Foto foto, MemoryStream mem)
 		{
 
 			if (!Directory.Exists(destination))
