@@ -14,6 +14,8 @@ namespace PhotoStore.ViewModel
 		public EventoViewModel()
 		{
 			this.Inicio = DateTime.Today;
+			this.Fotos = new List<FotoViewModel>();
+			this.Fotografos = new List<ApplicationUserViewModel>();
 		}
 
 

@@ -90,6 +90,7 @@
     <Compile Include="ArquivoCapaViewModel.cs" />
     <Compile Include="ArquivoFotoViewModel.cs" />
     <Compile Include="EventoViewModel.cs" />
+    <Compile Include="FotografoViewModel.cs" />
     <Compile Include="FotoViewModel.cs" />
     <Compile Include="Home\HomeIndexViewModel.cs" />
     <Compile Include="ItemDoPedidoViewModel.cs" />

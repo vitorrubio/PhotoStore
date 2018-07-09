@@ -7,6 +7,12 @@ namespace PhotoStore.ViewModel
 
     public class ApplicationUserViewModel
 	{
+		public ApplicationUserViewModel()
+		{
+			this.Fotos = new List<FotoViewModel>();
+			this.Eventos = new List<EventoViewModel>();
+		}
+
 		[Display(Name = "Login")]
 		public virtual string UserName { get; set; }
 

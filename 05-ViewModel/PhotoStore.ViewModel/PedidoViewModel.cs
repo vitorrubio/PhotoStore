@@ -10,7 +10,12 @@ namespace PhotoStore.ViewModel
     public class PedidoViewModel
 	{
 
-        [Key]
+		public PedidoViewModel()
+		{
+			Itens = new List<ItemDoPedidoViewModel>();
+		}
+
+		[Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
 

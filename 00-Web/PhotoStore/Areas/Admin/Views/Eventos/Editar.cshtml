@@ -23,7 +23,7 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Editar", "Eventos", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 

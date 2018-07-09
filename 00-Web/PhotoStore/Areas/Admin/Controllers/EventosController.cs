@@ -35,16 +35,18 @@ namespace PhotoStore.Areas.Admin.Controllers
         {
             if ((id == null) || (id == 0))
             {
-                return View(new Evento());
+                return View(new EventoViewModel());
             }
 
             try
             {
                 Evento ev = await _appSvc.GetByIdAsync(id.Value);
+				EventoViewModel evvm = Mapper.Map<EventoViewModel>(ev);
 
-                if (ev != null)
+
+				if (evvm != null)
                 {
-                    return View(ev);
+                    return View(evvm);
                 }
 				else
 				{
@@ -56,7 +58,7 @@ namespace PhotoStore.Areas.Admin.Controllers
                 MensagemParaUsuarioViewModel.MensagemErro("Esse registro não pôde ser visualizado. " + err.Message, TempData, ModelState);
             }
 
-            return View();
+            return View(new EventoViewModel());
         }
 
         [HttpPost]
@@ -68,11 +70,11 @@ namespace PhotoStore.Areas.Admin.Controllers
                 try
                 {
 
-                    var ev = await _appSvc.UploadAndSaveAsync(evVm, 450);
+                    await _appSvc.UploadAndSaveAsync(evVm, 450);
 
 					MensagemParaUsuarioViewModel.MensagemSucesso("Registro Salvo.", TempData);
 					ModelState.Clear();
-					return View(ev);
+					return View(evVm);
                 }
                 catch (DbUpdateConcurrencyException duce)
                 {
@@ -83,7 +85,7 @@ namespace PhotoStore.Areas.Admin.Controllers
                     MensagemParaUsuarioViewModel.MensagemErro("Esse registro não pôde ser salvo. " + err.Message, TempData, ModelState);
                 }
             }
-            return View(Mapper.Map<Evento>(evVm));
+            return View(evVm);
         }
 
         public async Task<ActionResult> Delete(int? id)
