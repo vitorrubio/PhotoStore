@@ -11,6 +11,8 @@ namespace PhotoStore.Core.Model
 		public Evento()
 		{
 			this.Inicio = DateTime.Today;
+
+
 		}
 
 		[Key]

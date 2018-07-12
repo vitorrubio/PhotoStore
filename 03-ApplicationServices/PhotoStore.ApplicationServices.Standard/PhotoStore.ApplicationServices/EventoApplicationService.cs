@@ -26,6 +26,7 @@ namespace PhotoStore.ApplicationServices
 				{
 					evVm.ArquivoCapa = new ArquivoCapaViewModel
 					{
+						Id = evVm.Id,
 						Evento = evVm,
 						NomeDoArquivo = evVm.ArquivoAnexo.FileName,
 						Bytes = mem.ToArray()

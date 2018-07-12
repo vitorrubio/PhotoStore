@@ -63,7 +63,7 @@ namespace PhotoStore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Editar([Bind(Include = "Id, Nome, Descricao, Inicio, Fim, ArquivoCapa")] EventoViewModel evVm)
+        public async Task<ActionResult> Editar([Bind(Include = "Id, Nome, Descricao, Inicio, Fim, ArquivoAnexo")] EventoViewModel evVm)
         {
             if (ModelState.IsValid)
             {

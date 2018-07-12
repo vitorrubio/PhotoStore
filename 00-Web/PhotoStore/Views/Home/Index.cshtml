@@ -111,8 +111,10 @@
                                 <span class="mascaraAzul"></span>
                                 <div class="photoContent">
                                     <a href="@Url.Action("Detalhes", "Eventos", new { Id = coluna.Id } )"></a>
-                                    <h3>@coluna.Nome</h3>
-                                    <p><span class="icon-calendar"></span> @coluna.Inicio.ToString("dddd dd/MM/yyyy")</p>
+                                    <div class="textos">
+                                        <h3>@coluna.Nome</h3>
+                                        <p><span class="icon-calendar"></span>  @coluna.Inicio.ToString("dddd dd/MM/yyyy")</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

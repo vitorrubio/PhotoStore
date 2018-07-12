@@ -23,10 +23,9 @@ namespace PhotoStore.App_Start
 		private static void ViewModelToDomain(AutoMapper.IMapperConfigurationExpression cfg)
 		{
 			cfg.CreateMap<EventoViewModel, Evento>()
-				.ForMember(x => x.Fotos, member => {
-					member.MapFrom(src => src.Fotos);
-					member.UseDestinationValue();
-				})
+				.ForMember(x => x.Fotos, member => member.Ignore())
+				.ForMember(x => x.Fotografos, member => member.Ignore())
+				.ForMember(x => x.ArquivoCapa, member => member.MapFrom(src => src.ArquivoCapa))
 				.PreserveReferences();
 			cfg.CreateMap<ProdutoViewModel, Produto>()
 				.PreserveReferences();
@@ -52,10 +51,10 @@ namespace PhotoStore.App_Start
 		private static void DomainToViewModel(AutoMapper.IMapperConfigurationExpression cfg)
 		{
 			cfg.CreateMap<Evento, EventoViewModel>()
-				.ForMember(x => x.Fotos, member => {
-					member.MapFrom(src => src.Fotos);
-					member.UseDestinationValue();
-				})
+				.ForMember(x => x.Fotos, member => member.MapFrom(src => src.Fotos))
+				.ForMember(x => x.Fotografos, member => member.MapFrom(src => src.Fotografos))
+				.ForMember(x => x.ArquivoCapa, member => member.MapFrom(src => src.ArquivoCapa))
+
 				.PreserveReferences();
 			cfg.CreateMap<Produto, ProdutoViewModel>()
 				.PreserveReferences();
