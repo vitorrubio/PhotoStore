@@ -50,28 +50,92 @@ namespace PhotoStore.Controllers
 		}
 
 
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Index(HomeIndexViewModel vm)
+
+		public async Task<ActionResult> Index(BuscaEventoViewModel vm)
 		{
 			var qry = _fotoApp.GetAllDetached(x => x.Evento);
 
 			if (!string.IsNullOrWhiteSpace(vm.Evento))
 				qry = qry.Where(x => x.Evento.Nome.Contains(vm.Evento));
 
-			if (!string.IsNullOrWhiteSpace(vm.Nome))
-				qry = qry.Where(x => x.Nome.Contains(vm.Nome));
+			if (!string.IsNullOrWhiteSpace(vm.NomeOuNumero))
+				qry = qry.Where(x => x.Nome.Contains(vm.NomeOuNumero) || x.Numero.Contains(vm.NomeOuNumero));
 
-			if (!string.IsNullOrWhiteSpace(vm.Numero))
-				qry = qry.Where(x => x.Numero.Contains(vm.Numero));
+
+
+			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await qry.ToListAsync());
+
+
+			return View("EventoSelecionado", new HomeIndexViewModel
+			{
+				Fotos = fotos
+			});
+		}
+
+
+
+
+
+		//[HttpPost]
+		//[ValidateAntiForgeryToken]
+		//public async Task<ActionResult> Index(HomeIndexViewModel vm)
+		//{
+		//	var qry = _fotoApp.GetAllDetached(x => x.Evento);
+
+		//	if (!string.IsNullOrWhiteSpace(vm.Evento))
+		//		qry = qry.Where(x => x.Evento.Nome.Contains(vm.Evento));
+
+		//	if (!string.IsNullOrWhiteSpace(vm.Nome))
+		//		qry = qry.Where(x => x.Nome.Contains(vm.Nome) || x.Numero.Contains(vm.Nome));
+
+
+
+		//	var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await qry.ToListAsync());
+
+		//	vm.Fotos = fotos;
+
+		//	return RedirectToAction("EventoSelecionado", vm);
+		//	//return View("EventoSelecionado", vm);
+		//}
+
+
+
+
+
+		public async Task<ActionResult> EventoSelecionado(int Id)
+		{
+			HomeIndexViewModel vm = new HomeIndexViewModel();
+
+			var qry = _fotoApp.GetAllDetached(x => x.Evento).Where(x => x.EventoId == Id);
+
+
 
 			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await qry.ToListAsync());
 
 			vm.Fotos = fotos;
 
+
 			return View(vm);
 		}
 
+
+
+		public async Task<ActionResult> EventoSelecionado(BuscaFotoViewModel vm)
+		{
+			HomeIndexViewModel hivm = new HomeIndexViewModel();
+
+			var qry = _fotoApp.GetAllDetached(x => x.Evento).Where(x => x.EventoId == vm.EventoId);
+
+			if (!string.IsNullOrWhiteSpace(vm.NomeOuNumero))
+				qry = qry.Where(x => x.Nome.Contains(vm.NomeOuNumero) || x.Numero.Contains(vm.NomeOuNumero));
+
+			var fotos = Mapper.Map<List<Foto>, List<FotoViewModel>>(await qry.ToListAsync());
+
+			hivm.Fotos = fotos;
+
+
+			return View(hivm);
+		}
 
 	}
 }

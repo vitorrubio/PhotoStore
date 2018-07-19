@@ -35,7 +35,7 @@ namespace PhotoStore.Areas.Admin.Controllers
         {
             if ((id == null) || (id == 0))
             {
-                return View(new EventoViewModel());
+                return View(new EventoViewModel() { Vitrine = true });
             }
 
             try

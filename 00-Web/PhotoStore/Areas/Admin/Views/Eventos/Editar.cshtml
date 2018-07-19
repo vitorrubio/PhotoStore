@@ -77,12 +77,19 @@
                 </div>
 
                 <div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="form-group">
 
                             @Html.LabelFor(model => model.ArquivoAnexo, htmlAttributes: new { @class = "col-form-label " })
                             <input type="file" name="ArquivoAnexo" id="ArquivoAnexo" class="form-control-file" />
                             @Html.ValidationMessageFor(model => model.ArquivoAnexo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Vitrine, htmlAttributes: new { @class = "col-form-label" })
+                            @Html.CheckBoxFor(model => model.Vitrine, new { @class = "checkbox" })
                         </div>
                     </div>
                 </div>

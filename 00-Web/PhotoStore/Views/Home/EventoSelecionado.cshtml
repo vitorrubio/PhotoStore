@@ -1,0 +1,74 @@
+﻿@using PhotoStore.ViewModel.Home
+@model PhotoStore.ViewModel.Home.HomeIndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_layoutPublico.cshtml";
+}
+
+<div class="bannerInterna">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>NOME DA CORRIDA / EVENTO</h1>
+                <p>24 de abril de 2018 - São Paulo - SP</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="linhaBusca">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-2">
+                <input type="text" class="form-control" placeholder="Digite seu nome ou número">
+            </div>
+            <div class="col-md-2">
+                <button class="btnBusca" type="button"><span class="icon-magnifier btnIcon"></span> BUSCAR FOTOS</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (Model != null && Model.Fotos != null && Model.Fotos.Count() > 0)
+{
+    var matriz = Model.ObterMatrizFotos(Model.Fotos);
+
+
+    <div class="galeria">
+        <div class="container">
+
+            <div class="spacerTop60">
+                @foreach (var linha in matriz)
+                {
+                    <div class="row ">
+
+                        @foreach (var coluna in linha)
+                        {
+
+                            <div class="col-md-3">
+                                <div class="bgImagem">
+                                    <div class="contentImagem">
+                                        <p class="photoContainer"><a href="@Url.Action("Detalhes", "Fotos", new { Id = coluna.Id } )"><img class="img-fluid" src="@Url.Action("Foto", "Fotos", new { Id = coluna.Id } )"></a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+
+}
+
+
+
+

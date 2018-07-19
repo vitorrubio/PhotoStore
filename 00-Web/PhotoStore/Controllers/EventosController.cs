@@ -35,7 +35,7 @@ namespace PhotoStore.Controllers
 
 		}
 
-		[OutputCache(Duration = 3600, VaryByParam = "id", Location = OutputCacheLocation.ServerAndClient)]
+		[OutputCache(Duration = 3600, VaryByParam = "*", Location = OutputCacheLocation.Client)]
 		public ActionResult CapaDoEvento(int id)
 		{
 			int idThumb = 0;

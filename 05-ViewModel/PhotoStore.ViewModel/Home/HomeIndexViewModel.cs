@@ -22,6 +22,8 @@ namespace PhotoStore.ViewModel.Home
 		[Display(Name = "Número")]
 		public virtual string Numero { get; set; }
 
+		public virtual int? EventoId { get; set; }
+
 
 		public virtual IList<PhotoStore.ViewModel.FotoViewModel> Fotos { get; set; }
 		public virtual IList<PhotoStore.ViewModel.EventoViewModel> EventosMaisRecentes { get; set; }

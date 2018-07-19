@@ -791,6 +791,7 @@
     <Content Include="Areas\Admin\Views\TipoProduto\Index.cshtml" />
     <Content Include="Views\Scripts\DynamicCulture.cshtml" />
     <Content Include="Views\Shared\_layoutPublico.cshtml" />
+    <Content Include="Views\Home\EventoSelecionado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
